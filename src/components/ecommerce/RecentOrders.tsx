@@ -168,51 +168,51 @@ export default function RecentOrders() {
           </button>
         </div>
       </div>
-      <div className="overflow-hidden rounded-2xl border border-b border-gray-200 bg-white  pb-3 pt-4 dark:border-gray-800 dark:bg-white/[0.03] ">
+      <div className="overflow-hidden rounded-2xl border border-b border-gray-200 bg-white  pb-1  dark:border-gray-800 dark:bg-white/[0.03] ">
         <div className="max-w-full overflow-x-auto">
           <Table>
             {/* Table Header */}
             <TableHeader className="border-gray-100 dark:border-gray-800 border-b">
-              <TableRow className="w-full mx-3">
+              <TableRow className="w-full">
                 <TableCell
                   isHeader
-                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 px-3"
+                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
                 >
                   Invoice number
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 px-3"
+                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
                 >
                   Customer Name
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 px-3"
+                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
                 >
                   SKU
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 px-3"
+                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
                 >
                   Date
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 px-3"
+                  className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
                 >
                   Price
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 px-3"
+                  className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
                 >
                   Payment
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 px-3"
+                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
                 >
                   Action
                 </TableCell>
@@ -224,7 +224,7 @@ export default function RecentOrders() {
             <TableBody className="divide-y divide-gray-100 dark:divide-gray-800 ">
               {tableData.map((product) => (
                 <TableRow key={product.id} className="">
-                  <TableCell className="py-3 px-3">
+                  <TableCell className="py-3 p-3">
                     <div className="flex items-center gap-3">
                       <div>
                         <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
@@ -233,7 +233,7 @@ export default function RecentOrders() {
                       </div>
                     </div>
                   </TableCell>
-                  <TableCell className="py-3 px-3">
+                  <TableCell className="py-3 p-3">
                     <div className="flex items-center gap-3">
                       <div className="h-[50px] w-[50px] overflow-hidden rounded-md">
                         <img
@@ -249,7 +249,7 @@ export default function RecentOrders() {
                       </div>
                     </div>
                   </TableCell>
-                  <TableCell className="py-3 px-3">
+                  <TableCell className="py-3 p-3">
                     <div className="flex items-center gap-3">
                       <div>
                         <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
@@ -258,7 +258,7 @@ export default function RecentOrders() {
                       </div>
                     </div>
                   </TableCell>
-                  <TableCell className="py-3 px-3">
+                  <TableCell className="py-3 p-3">
                     <div className="flex items-center gap-3">
                       <div>
                         <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
@@ -288,7 +288,7 @@ export default function RecentOrders() {
                       {product.payment_status}
                     </Badge>
                   </TableCell>
-                  <TableCell className="py-3 px-3">
+                  <TableCell className="py-3 p-3">
                     <div className="flex items-center gap-3">
                       <div>
                         <svg
@@ -342,29 +342,29 @@ export default function RecentOrders() {
         
       </div>
       <div className="flex justify-end items-center space-x-2 p-4">
-      <button className="px-3 py-2 border rounded-lg hover:bg-gray-100">
+      <button className="p-3 py-2 border rounded-lg hover:bg-gray-100">
         ←
       </button>
 
-      <button className="px-3 py-2 border rounded-lg bg-gray-200 font-semibold">
+      <button className="p-3 py-2 border rounded-lg bg-gray-200 font-semibold">
         1
       </button>
 
-      <button className="px-3 py-2 border rounded-lg hover:bg-gray-100">
+      <button className="p-3 py-2 border rounded-lg hover:bg-gray-100">
         2
       </button>
 
-      <span className="px-3 py-2">...</span>
+      <span className="p-3 py-2">...</span>
 
-      <button className="px-3 py-2 border rounded-lg hover:bg-gray-100">
+      <button className="p-3 py-2 border rounded-lg hover:bg-gray-100">
         9
       </button>
 
-      <button className="px-3 py-2 border rounded-lg hover:bg-gray-100">
+      <button className="p-3 py-2 border rounded-lg hover:bg-gray-100">
         10
       </button>
 
-      <button className="px-3 py-2 border rounded-lg hover:bg-gray-100">
+      <button className="p-3 py-2 border rounded-lg hover:bg-gray-100">
         →
       </button>
     </div>
