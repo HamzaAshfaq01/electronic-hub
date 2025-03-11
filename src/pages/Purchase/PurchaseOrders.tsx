@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-
+import { Search, ChevronDown, ArrowDown } from 'lucide-react';
 interface Order {
   id: string
   sku: string
@@ -76,15 +76,15 @@ export default function PurchaseOrders() {
     <div>
      
      <div>
-     <div className="">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+     <div className=""> 
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6 bg-[#FFFFFF] p-[20px] rounded-[8px]  border-white border-2">
         <div>
-          <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="search" className="block text-[14px] font-medium text-[#344054] mb-[6px] leading-[20px]">
             Search for order
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              {/* <Search className="h-5 w-5 text-gray-400" /> */}
+              <Search className="h-5 w-5 text-gray-400" />
             </div>
             <input
               type="text"
@@ -96,7 +96,7 @@ export default function PurchaseOrders() {
         </div>
 
         <div>
-          <label htmlFor="status" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="status" className="block text-[14px] font-medium text-[#344054] mb-[6px] leading-[20px]">
             Status
           </label>
           <div className="relative">
@@ -114,14 +114,14 @@ export default function PurchaseOrders() {
                 <option value="failed">Failed</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                {/* <ChevronDown className="h-4 w-4 text-gray-400" /> */}
+                <ChevronDown className="h-4 w-4 text-gray-400" />
               </div>
             </div>
           </div>
         </div>
 
         <div>
-          <label htmlFor="dealer" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="dealer" className="block text-[14px] font-medium text-[#344054] mb-[6px] leading-[20px]">
             Dealer
           </label>
           <div className="relative">
@@ -136,13 +136,13 @@ export default function PurchaseOrders() {
               <option value="dealer3">Dealer 3</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-              {/* <ChevronDown className="h-4 w-4 text-gray-400" /> */}
+              <ChevronDown className="h-4 w-4 text-gray-400" />
             </div>
           </div>
         </div>
 
         <div>
-          <label htmlFor="subaccount" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="subaccount" className="block text-[14px] font-medium text-[#344054] mb-[6px] leading-[20px]">
             Sub account
           </label>
           <div className="relative">
@@ -157,15 +157,15 @@ export default function PurchaseOrders() {
               <option value="sub3">Sub Account 3</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-              {/* <ChevronDown className="h-4 w-4 text-gray-400" /> */}
+              <ChevronDown className="h-4 w-4 text-gray-400" />
             </div>
           </div>
         </div>
       </div>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200 rounded-[4px] bg-white border ">
-          <thead className="bg-white">
+        <table className="min-w-full divide-y divide-gray-200 rounded-[8px] bg-white border-white border-2 ">
+          <thead className="bg-white rounded">
             <tr>
               <th
                 scope="col"
@@ -175,12 +175,12 @@ export default function PurchaseOrders() {
                   <input
                     type="checkbox"
                     id="select-all"
-                    className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                    className="h-4 w-4 text-[#09a5ec] border-[#D0D5DD] rounded focus:ring-[#09a5ec]"
                   />
                   <label htmlFor="select-all" className="ml-2">
                     Invoice
                   </label>
-                  {/* <ArrowDown className="h-4 w-4 text-gray-500" /> */}
+                  <ArrowDown className="h-4 w-4 text-gray-500" />
                 </div>
               </th>
               <th
@@ -229,7 +229,7 @@ export default function PurchaseOrders() {
                     <input
                       type="checkbox"
                       id={`order-${order.id}`}
-                      className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                      className="h-4 w-4 text-[#09a5ec] border-[#D0D5DD] rounded focus:ring-[#09a5ec]"
                     />
                     <label htmlFor={`order-${order.id}`} className="ml-2 text-sm text-gray-900">
                       {order.id}
@@ -244,8 +244,8 @@ export default function PurchaseOrders() {
                   <span
                     className={`inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium ${
                       order.status === "Arrived"
-                        ? "bg-green-100 text-green-800 border border-green-500"
-                        : "bg-orange-100 text-orange-800 border border-orange-500"
+                        ? "bg-green-100 text-[#067647] border border-green-500"
+                        : "bg-orange-100 text-[#B54708] border border-orange-500"
                     }`}
                   >
                     <div

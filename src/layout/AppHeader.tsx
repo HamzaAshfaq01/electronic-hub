@@ -2,13 +2,11 @@ import { useEffect, useRef, useState } from "react";
 
 import { Link } from "react-router";
 import { useSidebar } from "../context/SidebarContext";
-import { ThemeToggleButton } from "../components/common/ThemeToggleButton";
-import NotificationDropdown from "../components/header/NotificationDropdown";
-import UserDropdown from "../components/header/UserDropdown";
+import DownloadReportModal from "../components/modal/DownloadReportModal";
 
 const AppHeader: React.FC = () => {
   const [isApplicationMenuOpen, setApplicationMenuOpen] = useState(false);
-
+  const [modalOpen, setModalOpen] = useState(false);
   const { isMobileOpen, toggleSidebar, toggleMobileSidebar } = useSidebar();
 
   const handleToggle = () => {
@@ -71,7 +69,7 @@ const AppHeader: React.FC = () => {
               </svg>
               Filter
             </button>
-            <button className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0b78ec] hover:text-[#fff] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
+            <button    onClick={() => setModalOpen(true)} className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0b78ec] hover:text-[#fff] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
               <svg
                 width="20"
                 height="20"
@@ -214,6 +212,7 @@ const AppHeader: React.FC = () => {
       
           <UserDropdown />
         </div> */}
+        <DownloadReportModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </header>
   );
 };
