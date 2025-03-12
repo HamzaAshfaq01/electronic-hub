@@ -71,9 +71,6 @@ const navItems: NavItem[] = [
       { name: "404 Error", path: "/error-404", pro: false },
     ],
   },
-];
-
-const othersItems: NavItem[] = [
   {
     icon: <PieChartIcon />,
     name: "Clients",
@@ -117,6 +114,19 @@ const othersItems: NavItem[] = [
       { name: "Sign In", path: "/signin", pro: false },
       { name: "Sign Up", path: "/signup", pro: false },
     ],
+  },
+];
+
+const othersItems: NavItem[] = [
+  {
+    icon: <EmployeeIcon />,
+    name: "Support",
+    path: "/support",
+  },
+  {
+    icon: <EmployeeIcon />,
+    name: "Setting",
+    path: "/setting"
   },
 ];
 
