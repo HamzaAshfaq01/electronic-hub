@@ -17,7 +17,9 @@ import { ReactComponent as FileIcon } from "./file.svg?react";
 import { ReactComponent as DownloadIcon } from "./download.svg?react";
 import { ReactComponent as ArrowRightIcon } from "./arrow-right.svg?react";
 import { ReactComponent as GroupIcon } from "./group.svg?react";
-import { ReactComponent as EmployeeIcon } from "./employee.svg?react";  
+import { ReactComponent as EmployeeIcon } from "./employee.svg?react"; 
+import { ReactComponent as SettingIcon } from "./setting.svg?react"; 
+import { ReactComponent as SupportIcon } from "./support.svg?react"; 
 import { ReactComponent as AccountingIcon } from "./accounting.svg?react"; 
 import { ReactComponent as PaymentsIcon } from "./payments.svg?react"; 
 import { ReactComponent as BoxIconLine } from "./box-line.svg?react";
@@ -115,4 +117,7 @@ export {
   ChatIcon,
   EmployeeIcon,
   PaymentsIcon,
-  AccountingIcon};
+  AccountingIcon,
+  SupportIcon,
+  SettingIcon
+};

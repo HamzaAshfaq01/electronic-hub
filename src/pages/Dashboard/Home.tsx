@@ -1,29 +1,23 @@
-import EcommerceMetrics from "../../components/ecommerce/ViewSales";
-import Credits from "../../components/ecommerce/Credits";
-import MonthlySalesChart from "../../components/ecommerce/MonthlySalesChart";
-import StatisticsChart from "../../components/ecommerce/StatisticsChart";
-import MonthlyTarget from "../../components/ecommerce/MonthlyTarget";
-import RecentOrders from "../../components/ecommerce/RecentOrders";
-import DemographicCard from "../../components/ecommerce/DemographicCard";
+import ViewSales from "../../components/sales/ViewSales";
+import RecentSale from "../../components/home/RecentSale";
+import RecentCredits from "../../components/home/RecentCredits";
 import PageMeta from "../../components/common/PageMeta";
 
-export default function Home() {
+export default function Overview() {
   return (
     <>
-      <PageMeta
-        title="Electronic Hub"
-        description=""
-      />
-      <div className="grid grid-cols-12 gap-4 md:gap-6">
-        <div className="col-span-12 space-y-6 xl:col-span-6">
-          <EcommerceMetrics />
+      <PageMeta title="Electronic Hub" description="" />
+      <div className="grid grid-cols-12 gap-4 md:gap-6 mb-5">
+        <div className="col-span-12 space-y-6 xl:col-span-12">
+          <ViewSales />
         </div>
-        <div className="col-span-12 space-y-6 xl:col-span-6">
-          <Credits />
+      </div>
+      <div className="grid grid-cols-7 gap-10">
+        <div className="col-span-12 lg:col-span-5">
+          <RecentSale />
         </div>
-
-        <div className="col-span-12 xl:col-span-12">
-          <RecentOrders />
+        <div className="col-span-12 lg:col-span-2">
+          <RecentCredits />
         </div>
       </div>
     </>

@@ -14,6 +14,7 @@ import BarChart from "./pages/Charts/BarChart";
 import Calendar from "./pages/Calendar";
 import BasicTables from "./pages/Tables/BasicTables";
 import FormElements from "./pages/Forms/FormElements";
+import Overview from "./pages/Sales/Overview";
 import ManageInvoices from "./pages/Sales/ManageInvoices";
 import ProductSaleQuotation from "./pages/Sales/ProductSaleQuotation";
 import Refunds from "./pages/Sales/Refunds";
@@ -35,6 +36,7 @@ export default function App() {
           <Route element={<AppLayout />}>
             <Route index path="/" element={<Home />} />
              {/* Sales Page */}
+             <Route path="/overview" element={<Overview />} />
             <Route path="/manage-invoices" element={<ManageInvoices />} />
             <Route path="/product-sale-quotation" element={<ProductSaleQuotation />} />
             <Route path="/refunds" element={<Refunds />} />

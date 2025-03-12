@@ -334,30 +334,30 @@ export default function SalesSummary() {
           </div>
         </div>
       </div>
-      <div className="flex justify-end items-center space-x-2 p-4 border-t border-[#EAECF0] mx-5  ">
-        <button className="p-3 py-2 border rounded-lg hover:bg-gray-100">
+      <div className="flex justify-end items-center p-4 border-t border-[#EAECF0] mx-5  ">
+        <button className="p-3 py-2 border hover:bg-gray-100 bg-white">
           ←
         </button>
 
-        <button className="p-3 py-2 border rounded-lg bg-gray-200 font-semibold">
+        <button className="p-3 py-2 border  bg-gray-200 font-semibold">
           1
         </button>
 
-        <button className="p-3 py-2 border rounded-lg hover:bg-gray-100">
+        <button className="p-3 py-2 border hover:bg-gray-100 bg-white">
           2
         </button>
 
-        <span className="p-3 py-2">...</span>
+        <span className="p-3 py-2 border hover:bg-gray-100 bg-white">...</span>
 
-        <button className="p-3 py-2 border rounded-lg hover:bg-gray-100">
+        <button className="p-3 py-2 border hover:bg-gray-100 bg-white">
           9
         </button>
 
-        <button className="p-3 py-2 border rounded-lg hover:bg-gray-100">
+        <button className="p-3 py-2 border hover:bg-gray-100 bg-white">
           10
         </button>
 
-        <button className="p-3 py-2 border rounded-lg hover:bg-gray-100">
+        <button className="p-3 py-2 border hover:bg-gray-100 bg-white">
           →
         </button>
       </div>
