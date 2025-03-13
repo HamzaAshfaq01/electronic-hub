@@ -51,7 +51,7 @@ export default function ViewSales() {
            10,512 pkr
            </h4>
       
-           <Badge color="success">
+           <Badge color="warning">
            <UpGraphIcon />
            11.01%
          </Badge>
@@ -81,7 +81,7 @@ export default function ViewSales() {
            10,512 pkr
            </h4>
       
-           <Badge color="success">
+           <Badge color="info">
            <UpGraphIcon />
            11.01%
          </Badge>
@@ -113,8 +113,8 @@ export default function ViewSales() {
            512,456 pkr
            </h4>
       
-           <Badge color="success">
-           <UpGraphIcon />
+           <Badge color="error">
+           <UpGraphIcon  className="text-[#FF0000]"/>
            11.01%
          </Badge>
           </div>

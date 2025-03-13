@@ -1,6 +1,5 @@
 import {
-  ArrowDownIcon,
-  BoxIconLine,
+
   UpGraphIcon
 } from "../../icons";
 import Badge from "../ui/badge/Badge";
@@ -52,13 +51,13 @@ export default function ViewSales() {
            10,512 pkr
            </h4>
       
-           <Badge color="success">
+           <Badge color="info">
            <UpGraphIcon />
            11.01%
          </Badge>
           </div>
           <span className="text-sm text-[#767C80] ">
-          10 items credits today
+          10 items credits todaya
             </span>
         </div>
         <div className="flex justify-end">

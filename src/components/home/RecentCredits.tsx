@@ -5,38 +5,33 @@ export default function RecentCredits() {
       id: "Wa #23453",
       name: "Umar hassan",
       amount: "16,000pkr",
-      image: "../../../public/images/cards/card-01.jpg",
+    
     },
     {
       id: "Wa #23453",
       name: "Umar hassan",
       amount: "16,000pkr",
-      image: "../../../public/images/cards/card-02.jpg",
+     
     },
     {
       id: "Wa #23453",
       name: "Umar hassan",
       amount: "16,000pkr",
-      image: "../../../public/images/cards/card-03.jpg",
+  
     },
     {
       id: "Wa #23453",
       name: "Umar hassan",
       amount: "16,000pkr",
-      image: "../../../public/images/cards/card-03.jpg",
+   
     },
     {
       id: "Wa #23453",
       name: "Umar hassan",
       amount: "16,000pkr",
-      image: "../../../public/images/cards/card-01.jpg",
+    
     },
-    {
-      id: "Wa #23453",
-      name: "Umar hassan",
-      amount: "16,000pkr",
-      image: "../../../public/images/cards/card-02.jpg",
-    },
+  
   ];
 
   return (
@@ -50,14 +45,6 @@ export default function RecentCredits() {
           <div key={index} className="w-full">
             <div className="flex items-center justify-between py-4">
               <div className="flex items-center gap-4">
-                <div className="h-12 w-12 overflow-hidden rounded-full">
-                  <img
-                    src={item.image || "/placeholder.svg?height=48&width=48"}
-                    alt={item.name}
-                    className=" h-full w-full object-cover"
-                    width={48}
-                  />
-                </div>
                 <div>
                   <p className="text-[14px] font-medium text-[#101828] dark:text-white/90">
                     {item.id}
