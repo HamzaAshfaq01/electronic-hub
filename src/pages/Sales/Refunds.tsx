@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
+import AddRefundModal from "../../components/modal/AddRefund";
 import {
   Table,
   TableBody,
@@ -104,7 +104,7 @@ const registeredInvoices: Invoice[] = [
 
 export default function Refunds() {
   const [activeFilter, setActiveFilter] = useState<string>("all");
-
+  const [modalOpen, setModalOpen] = useState(false);
   const getFilteredData = () => {
     switch (activeFilter) {
       case "walkin":
@@ -178,7 +178,7 @@ export default function Refunds() {
               </button>
             ))}
           </div>
-          <button className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0b78ec] hover:text-[#fff] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
+          <button  onClick={() => setModalOpen(true)} className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0b78ec] hover:text-[#fff] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
             <svg
               width="20"
               height="20"
@@ -386,6 +386,10 @@ export default function Refunds() {
           →
         </button>
       </div>
+      <AddRefundModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+      />
     </div>
   );
 }

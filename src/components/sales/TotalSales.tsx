@@ -149,7 +149,7 @@ export default function RecentOrders() {
                 strokeLinejoin="round"
               />
             </svg>
-            Add Coustomer
+            Add Customer
           </button>
         </div>
       </div>
