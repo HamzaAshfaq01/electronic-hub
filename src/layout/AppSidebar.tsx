@@ -44,9 +44,9 @@ const navItems: NavItem[] = [
     subItems: [
       { name: "Overview", path: "/overview", pro: false },
       { name: "Manage Invoices", path: "/manage-invoices", pro: false },
-      { name: "Product Sale Quotation", path: "/product-sale-quotation", pro: false },
       { name: "Refunds", path: "/refunds", pro: false },
       { name: "Sales Summary", path: "/sales-summary", pro: false },
+      { name: "Product Sale Quotation", path: "/product-sale-quotation", pro: false },
     ],
   },
   {
@@ -61,8 +61,8 @@ const navItems: NavItem[] = [
     name: "Warehouse",
     icon: <Package className="w-5 h-5" />,
     subItems: [
-      { name: "Inventory", path: "/inventory", pro: false },
-      { name: "Stock Management", path: "/stock-management", pro: false },
+      { name: "All Ware house", path: "/all-warehouse", pro: false },
+      { name: "Ware house 1", path: "/warehouse", pro: false },
     ],
   },
   {
@@ -81,14 +81,7 @@ const navItems: NavItem[] = [
       { name: "Installment Schedule", path: "/installment-schedule", pro: false },
     ],
   },
-  {
-    icon: <CreditCard className="w-5 h-5" />,
-    name: "Payments",
-    subItems: [
-      { name: "Payment Methods", path: "/payment-methods", pro: false },
-      { name: "Transaction History", path: "/transaction-history", pro: false },
-    ],
-  },
+  
   {
     icon: <ClipboardList className="w-5 h-5" />,
     name: "Accounting",
@@ -108,11 +101,7 @@ const navItems: NavItem[] = [
 ]
 
 const othersItems: NavItem[] = [
-  {
-    icon: <LifeBuoy className="w-5 h-5" />,
-    name: "Support",
-    path: "/support",
-  },
+  
   {
     icon: <Settings className="w-5 h-5" />,
     name: "Settings",

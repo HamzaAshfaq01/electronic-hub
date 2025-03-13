@@ -1,3 +1,4 @@
+import { useState } from "react";
 interface AddInvoiceModalProps {
     isOpen: boolean;
     onClose: () => void;
@@ -5,7 +6,7 @@ interface AddInvoiceModalProps {
 
 const AddInvoiceModal = ({ isOpen, onClose }: AddInvoiceModalProps) => {
     if (!isOpen) return null;
-
+  const [enabled, setEnabled] = useState(false);
     return (
         <div className="fixed inset-0 right-0 bg-opacity-50 flex justify-end items-center h-full">
             <div className="bg-white p-6 rounded-lg w-full max-w-[588px] shadow-lg h-full relative">
@@ -52,9 +53,18 @@ const AddInvoiceModal = ({ isOpen, onClose }: AddInvoiceModalProps) => {
                         ))}
                     </div>
 
-                    <div className="flex items-center justify-between mt-4">
+                    <div className="flex items-center gap-[24px]  mt-4">
                         <label className="text-sm font-medium text-gray-700">Enable User</label>
-                        <input type="checkbox" className="toggle-checkbox" />
+                        <div
+        className={`relative w-[36px] h-6 rounded-full transition-colors cursor-pointer 
+          ${enabled ? "bg-[#75E0A7]" : "bg-gray-300"}`}
+        onClick={() => setEnabled(!enabled)}
+      >
+        <div
+          className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-all  cursor-pointer 
+            ${enabled ? "translate-x-3 border-purple-500" : "border-gray-400"}`}
+        />
+      </div>
                     </div>
                 </div>
 

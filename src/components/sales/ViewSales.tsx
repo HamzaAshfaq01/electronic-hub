@@ -20,7 +20,7 @@ export default function ViewSales() {
            </h4>
       
            <Badge color="success">
-           <UpGraphIcon />
+           <UpGraphIcon className="stroke-[#429D93]"/>
            11.01%
          </Badge>
           </div>
@@ -28,7 +28,7 @@ export default function ViewSales() {
             10 items sold today
             </span>
         </div>
-        <div className="flex justify-end">
+        <div className="flex justify-end mt-[21px]">
         <Link
                   to="/"
                   className="text-[#767676] hover:text-brand-600 dark:text-brand-400 underline"
@@ -52,7 +52,7 @@ export default function ViewSales() {
            </h4>
       
            <Badge color="warning">
-           <UpGraphIcon />
+           <UpGraphIcon className="stroke-[#B54708]"/>
            11.01%
          </Badge>
           </div>
@@ -60,7 +60,7 @@ export default function ViewSales() {
           10 items credits today
             </span>
         </div>
-        <div className="flex justify-end">
+        <div className="flex justify-end mt-[21px]">
         <Link
                   to="/"
                   className="text-[#767676] hover:text-brand-600 dark:text-brand-400 underline"
@@ -71,31 +71,31 @@ export default function ViewSales() {
       </div>
 
       <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6">
-      <p className="text-[#878787] font-[400] text-[16px]">Mix Cash/Credits</p>
+      <p className="text-[#878787] font-[400] text-[16px]">Stock</p>
 
         <div className=" mt-[10px]">
           <div className="flex items-end gap-[14px] mb-[21px]">
         
            
            <h4 className="mt-2 font-[400] text-[#000] text-[22px] dark:text-white/90">
-           10,512 pkr
+           312
            </h4>
       
            <Badge color="info">
-           <UpGraphIcon />
-           11.01%
+           <UpGraphIcon className="stroke-[#0086C9]"/>
+           13%
          </Badge>
           </div>
           <span className="text-sm text-[#767C80] ">
-          Sales today
+          Pieces left in inventory
             </span>
         </div>
-        <div className="flex justify-end">
+        <div className="flex justify-end mt-[21px]">
         <Link
                   to="/"
                   className="text-[#767676] hover:text-brand-600 dark:text-brand-400 underline"
                 >
-                View Mix list
+               Add StockAdd Stock
                 </Link>
 
     
@@ -103,32 +103,32 @@ export default function ViewSales() {
       </div>
 
       <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] md:p-6">
-      <p className="text-[#878787] font-[400] text-[16px]">Due Payments</p>
+      <p className="text-[#878787] font-[400] text-[16px]">Recent purchase</p>
 
         <div className=" mt-[10px]">
           <div className="flex items-end gap-[14px] mb-[21px]">
         
            
            <h4 className="mt-2 font-[400] text-[#000] text-[22px] dark:text-white/90">
-           512,456 pkr
+           312
            </h4>
       
            <Badge color="error">
-           <UpGraphIcon  className="text-[#FF0000]"/>
-           11.01%
+           <UpGraphIcon  className="stroke-[#B42318]"/>
+           13%
          </Badge>
           </div>
           <span className="text-sm text-[#767C80] ">
-          10 items due a month ago
+          Pieces left in inventory
             </span>
         </div>
       
-        <div className="flex justify-end">
+        <div className="flex justify-end mt-[21px]">
         <Link
                   to="/"
                   className="text-[#767676] hover:text-brand-600 dark:text-brand-400 underline"
                 >
-                View Due list
+               Add Purchase
                 </Link>
 
     

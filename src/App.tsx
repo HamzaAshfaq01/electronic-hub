@@ -21,6 +21,8 @@ import Refunds from "./pages/Sales/Refunds";
 import SalesSummary from "./pages/Sales/SalesSummary";
 import PurchaseOrders from "./pages/Purchase/PurchaseOrders";
 import ManageSuppliers from "./pages/Purchase/ManageSuppliers";
+import AllWareHouse from "./pages/warehouse/AllWarehouse";
+import WareHouse from "./pages/warehouse/WareHouse";
 import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
@@ -44,7 +46,9 @@ export default function App() {
              {/* Purchase Page */}
              <Route path="/purchase-orders" element={<PurchaseOrders />} />
              <Route path="/manage-suppliers" element={<ManageSuppliers />} />
-        
+         {/* Purchase Page */}
+         <Route path="/all-warehouse" element={<AllWareHouse />} />
+             <Route path="/warehouse" element={<WareHouse />} />
             {/* Others Page */}
             <Route path="/profile" element={<UserProfiles />} />
             <Route path="/calendar" element={<Calendar />} />
