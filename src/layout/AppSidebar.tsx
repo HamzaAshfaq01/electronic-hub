@@ -21,7 +21,8 @@ import {
   CirclePercent,
   ChartPie,
   UsersRound,
-  Landmark
+  Landmark,
+  SquareUser
 } from "lucide-react"
 import { useSidebar } from "../context/SidebarContext"
 
@@ -95,7 +96,7 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    icon: <CircleUser className="w-5 h-5" />,
+    icon: <SquareUser className="w-5 h-5" />,
     name: "Employee",
     subItems: [
       { name: "Employee List", path: "/employee-list", pro: false },
