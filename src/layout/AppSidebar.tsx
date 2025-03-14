@@ -18,6 +18,10 @@ import {
   Settings,
   ShoppingCart,
   Users,
+  CirclePercent,
+  ChartPie,
+  UsersRound,
+  Landmark
 } from "lucide-react"
 import { useSidebar } from "../context/SidebarContext"
 
@@ -39,7 +43,7 @@ const navItems: NavItem[] = [
   },
   {
     name: "Sales",
-    icon: <BarChart3 className="w-5 h-5" />,
+    icon: <CirclePercent className="w-5 h-5" />,
 
     subItems: [
       { name: "Overview", path: "/overview", pro: false },
@@ -59,35 +63,35 @@ const navItems: NavItem[] = [
   },
   {
     name: "Warehouse",
-    icon: <Package className="w-5 h-5" />,
+    icon: <ChartPie className="w-5 h-5" />,
     subItems: [
       { name: "All Ware house", path: "/all-warehouse", pro: false },
       { name: "Ware house 1", path: "/warehouse", pro: false },
     ],
   },
   {
-    icon: <Users className="w-5 h-5" />,
+    icon: <UsersRound className="w-5 h-5" />,
     name: "Clients",
     subItems: [
-      { name: "Client List", path: "/client-list", pro: false },
-      { name: "Add Client", path: "/add-client", pro: false },
+      { name: "All Client", path: "/all-client", pro: false },
     ],
   },
   {
     icon: <Calendar className="w-5 h-5" />,
     name: "Installments",
     subItems: [
-      { name: "Payment Plans", path: "/payment-plans", pro: false },
-      { name: "Installment Schedule", path: "/installment-schedule", pro: false },
+      { name: "All Installments", path: "/all-installments", pro: false },
+      // { name: "Installment Schedule", path: "/installment-schedule", pro: false },
     ],
   },
   
   {
-    icon: <ClipboardList className="w-5 h-5" />,
+    icon: <Landmark className="w-5 h-5" />,
     name: "Accounting",
     subItems: [
-      { name: "General Ledger", path: "/general-ledger", pro: false },
-      { name: "Financial Reports", path: "/financial-reports", pro: false },
+      { name: "Expenses", path: "/expenses", pro: false },
+      { name: "Income", path: "/income", pro: false },
+      { name: "Reports", path: "/reports", pro: false },
     ],
   },
   {
@@ -105,7 +109,7 @@ const othersItems: NavItem[] = [
   {
     icon: <Settings className="w-5 h-5" />,
     name: "Settings",
-    path: "/settings",
+    path: "/profile",
     isActive: false,
   },
 ]
@@ -327,7 +331,7 @@ const AppSidebar: React.FC = () => {
         </div>
         <div className="mt-2 border-t border-gray-200 dark:border-gray-700"></div>
         <div className="p-4 mt-auto ">
-          <div className="flex items-center">
+          <Link to="/signin" className="flex items-center">
             <img src="/images/user/user-03.jpg" alt="Olivia Rhye" className="w-10 h-10 rounded-full" />
             <div className="ml-3">
               <p className="text-sm font-medium text-gray-900 dark:text-white">Olivia Rhye</p>
@@ -344,7 +348,7 @@ const AppSidebar: React.FC = () => {
                 />
               </svg>
             </button>
-          </div>
+          </Link>
         </div>
       </div>
     </aside>

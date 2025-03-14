@@ -19,7 +19,7 @@ const UploadModal = ({ isOpen, onClose }: UploadModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+    <div className="fixed inset-0 bg-[#10182885]  flex justify-center items-center z-50">
       <div className="bg-white p-6 rounded-lg w-full max-w-[480px] shadow-lg relative">
         <div className="flex justify-between items-start mb-4 border-b pb-3">
           <div>

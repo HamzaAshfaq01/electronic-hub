@@ -7,8 +7,8 @@ const AddRefundModalProps = ({ isOpen, onClose }: AddRefundModalProps) => {
   if (!isOpen) return null;
   const [enabled, setEnabled] = useState(false);
   return (
-    <div className="fixed inset-0  right-0 bg-opacity-50 flex justify-end items-center h-full">
-      <div className="bg-white p-6 rounded-lg w-full max-w-[588px] shadow-lg h-full relative">
+    <div className="fixed inset-0  right-0 bg-[#10182885] flex justify-end items-center h-full z-50">
+      <div className="bg-white p-6  w-full max-w-[588px] shadow-lg h-full relative">
         <div className="flex justify-between items-center mb-4 border-b border-[]">
           <h2 className="text-[20px] font-medium text-[#1B1F29]">
             Add Refunds

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Search, ChevronDown } from "lucide-react";
-import AddProductModal from "../../components/modal/AddProductModal";
+import Badge from "../../components/ui/badge/Badge";
 import {
   Table,
   TableBody,
@@ -12,80 +12,97 @@ import {
 } from "../../components/ui/table";
 interface Order {
   id: string;
-  name: string;
-  qty: string;
-  raw: string;
-  column: string;
-  price: "Arrived" | "Not arrived";
+  customer_name: string;
+  sku: string;
+  purchase_date: string;
+  price: string;
+  payment: "Completed" | "Due" | "Pending";
+  due_date?: string;
 }
 
-export default function WareHouse() {
-  const [modalOpen, setModalOpen] = useState(false);
+export default function AllInstallments() {
   const [orders] = useState<Order[]>([
     {
       id: "INV-3066",
-      name: "Dawlance SBS 600 INV GD BLack",
-      qty: "Jan 6, 2022",
-      raw: "wwww",
-      column: "W1",
-      price: "Arrived",
+      customer_name: "Omar Rizwan",
+      sku: "Dawlance SBS 600 INV GD Black",
+      purchase_date: "12-06-2025",
+      payment: "Completed",
+      price: "35,000 ",
     },
     {
       id: "INV-3065",
-      name: "Dawlance SBS 600 INV GD BLack",
-      qty: "Jan 6, 2022",
-      raw: "wwww",
-      column: "W1",
-      price: "Arrived",
+      customer_name: "Omar Rizwan",
+      sku: "Dawlance SBS 600 INV GD Black",
+      purchase_date: "12-06-2025",
+      payment: "Completed",
+      price: "35,000",
     },
     {
       id: "INV-3064",
-      name: "Dawlance SBS 600 INV GD BLack",
-      qty: "Jan 6, 2022",
-      raw: "wwww",
-      column: "W1",
-      price: "Arrived",
+      customer_name: "Omar Rizwan",
+      sku: "Dawlance SBS 600 INV GD Black",
+      purchase_date: "12-06-2025",
+      payment: "Due",
+      price: "35,000",
+      due_date: "2023-09-10",
     },
     {
       id: "INV-3063",
-      name: "Dawlance SBS 600 INV GD BLack",
-      qty: "Jan 6, 2022",
-      raw: "wwww",
-      column: "W1",
-      price: "Arrived",
+      customer_name: "Omar Rizwan",
+      sku: "Dawlance SBS 600 INV GD Black",
+      purchase_date: "12-06-2025",
+      payment: "Pending",
+      price: "35,000",
     },
     {
       id: "INV-3062",
-      name: "Dawlance SBS 600 INV GD BLack",
-      qty: "Jan 6, 2022",
-      raw: "wwww",
-      column: "W1",
-      price: "Arrived",
+      customer_name: "Omar Rizwan",
+      sku: "Dawlance SBS 600 INV GD Black",
+      purchase_date: "12-06-2025",
+      payment: "Pending",
+      price: "35,000",
     },
     {
       id: "INV-3061",
-      name: "Dawlance SBS 600 INV GD BLack",
-      qty: "Jan 6, 2022",
-      raw: "wwww",
-      column: "W1",
-      price: "Arrived",
+      customer_name: "Omar Rizwan",
+      sku: "Dawlance SBS 600 INV GD Black",
+      purchase_date: "12-06-2025",
+      payment: "Pending",
+      price: "35,000",
     },
     {
       id: "INV-3060",
-      name: "Dawlance SBS 600 INV GD BLack",
-      qty: "Jan 6, 2022",
-      raw: "wwww",
-      column: "W1",
-      price: "Arrived",
+      customer_name: "Omar Rizwan",
+      sku: "Dawlance SBS 600 INV GD Black",
+      purchase_date: "12-06-2025",
+      payment: "Due",
+      price: "35,000 ",
+      due_date: "2023-09-10",
     },
   ]);
   return (
     <div className="">
       <div className="flex justify-between items-center mb-[16px]">
-        <h2>Ware house 1</h2>
+        <h2>All Installments</h2>
         <div>
-          <button onClick={() => setModalOpen(true)} className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0b78ec] hover:text-[#fff] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
-            Add Product
+          <button className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0b78ec] hover:text-[#fff] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.0001 4.16669V15.8334M4.16675 10H15.8334"
+                stroke="white"
+                strokeWidth="1.66667"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            Create Installment
           </button>
         </div>
       </div>
@@ -95,7 +112,7 @@ export default function WareHouse() {
             htmlFor="search"
             className="block text-[14px] font-medium text-[#344054] mb-[6px] leading-[20px]"
           >
-            Search for product
+            Search for client
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -115,7 +132,7 @@ export default function WareHouse() {
             htmlFor="status"
             className="block text-[14px] font-medium text-[#344054] mb-[6px] leading-[20px]"
           >
-            Category
+            Status
           </label>
           <div className="relative">
             <div className="flex items-center">
@@ -168,20 +185,24 @@ export default function WareHouse() {
             <TableHeader className="border-gray-100 dark:border-gray-800 border-b">
               <TableRow className="w-full mx-3">
                 <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
-                  Name
+                  Invoice number
                 </TableCell>
                 <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
-                  Qty
+                  Customer Name
                 </TableCell>
                 <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
-                  Raw
+                  SKU
                 </TableCell>
                 <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
-                  Column
+                  Purchase Date
                 </TableCell>
                 <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
                   Price
                 </TableCell>
+                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                  Payment
+                </TableCell>
+
                 <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
                   Action
                 </TableCell>
@@ -190,11 +211,48 @@ export default function WareHouse() {
             <TableBody className="divide-y divide-gray-100 dark:divide-gray-800 ">
               {orders.map((order) => (
                 <TableRow key={order.id} className="w-full mx-3">
-                  <TableCell className="py-3 p-3">{order.name}</TableCell>
-                  <TableCell className="py-3 p-3">{order.qty}</TableCell>
-                  <TableCell className="py-3 p-3">{order.raw}</TableCell>
-                  <TableCell className="py-3 p-3">{order.column}</TableCell>
+                  <TableCell className="py-3 p-3">{order.id}</TableCell>
+                  <TableCell className="py-3 p-3">
+                    {order.customer_name}
+                  </TableCell>
+                  <TableCell className="py-3 p-3">{order.sku}</TableCell>
+                  <TableCell className="py-3 p-3">
+                    {order.purchase_date}
+                  </TableCell>
                   <TableCell className="py-3 p-3">{order.price}</TableCell>
+                  <TableCell className="py-3 p-3">
+                    {order.payment === "Completed" && (
+                      <span className="inline-flex items-center px-2.5 py-0.5 justify-center gap-1 rounded-full font-medium text-theme-xs bg-white text-[#079455] border border-[#079455] dark:bg-success-500/15 dark:text-[#079455]">
+                        <span className="w-[6px] h-[6px] rounded-full bg-[#079455]"></span>{" "}
+                        Completed
+                      </span>
+                    )}
+                    {order.payment === "Due" && (
+                      <div className="flex flex-col gap-2">
+                        <div className="flex gap-2 items-center">
+                          <span className="inline-flex items-center px-2.5 py-0.5 justify-center gap-1 rounded-full font-medium text-theme-xs bg-white border border-[#DC6803]  text-[#B54708] dark:bg-warning-500/15 dark:text-[#B54708]">
+                            <span className="w-[6px] h-[6px] rounded-full bg-[#DC6803]"></span>{" "}
+                            Due
+                          </span>
+                          <p className="text-[#0BA5EC] decoration-underline text-[12px] cursor-pointer">
+                            Remind
+                          </p>
+                        </div>
+                        {order.due_date && (
+                          <div className="text-xs text-gray-500">
+                            Due date: {order.due_date}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                    {order.payment === "Pending" && (
+                      <span className="inline-flex items-center px-2.5 py-0.5 justify-center gap-1 rounded-full font-medium text-theme-xs bg-white   border border-[#DC6803]  text-warning-600 dark:bg-warning-500/15 dark:text-orange-400">
+                        <span className="w-[6px] h-[6px] rounded-full bg-[#DC6803]"></span>{" "}
+                        Pending
+                      </span>
+                    )}
+                  </TableCell>
+
                   <TableCell>
                     <div className="flex items-center gap-3">
                       <div>
@@ -273,7 +331,6 @@ export default function WareHouse() {
           →
         </button>
       </div>
-     <AddProductModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
   );
 }

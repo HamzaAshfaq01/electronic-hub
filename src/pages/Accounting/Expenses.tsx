@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Search, ChevronDown } from "lucide-react";
-import AddProductModal from "../../components/modal/AddProductModal";
 import {
   Table,
   TableBody,
@@ -10,112 +9,91 @@ import {
   TableHeader,
   TableRow,
 } from "../../components/ui/table";
-interface Order {
+interface Expense {
   id: string;
-  name: string;
-  qty: string;
-  raw: string;
-  column: string;
-  price: "Arrived" | "Not arrived";
+  expense_type: string;
+  pay: string;
+  month: string;
+
 }
 
-export default function WareHouse() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [orders] = useState<Order[]>([
+export default function Expenses() {
+  const [expenses] = useState<Expense[]>([
     {
       id: "INV-3066",
-      name: "Dawlance SBS 600 INV GD BLack",
-      qty: "Jan 6, 2022",
-      raw: "wwww",
-      column: "W1",
-      price: "Arrived",
+      expense_type: "Dawlance SBS 600 INV GD BLack",
+      pay: "23000",
+      month: "March",
+    
     },
     {
       id: "INV-3065",
-      name: "Dawlance SBS 600 INV GD BLack",
-      qty: "Jan 6, 2022",
-      raw: "wwww",
-      column: "W1",
-      price: "Arrived",
+      expense_type: "Dawlance SBS 600 INV GD BLack",
+      pay: "23000",
+      month: "March",
+     
     },
     {
       id: "INV-3064",
-      name: "Dawlance SBS 600 INV GD BLack",
-      qty: "Jan 6, 2022",
-      raw: "wwww",
-      column: "W1",
-      price: "Arrived",
+      expense_type: "Dawlance SBS 600 INV GD BLack",
+      pay: "23000",
+      month: "March",
+     
     },
     {
       id: "INV-3063",
-      name: "Dawlance SBS 600 INV GD BLack",
-      qty: "Jan 6, 2022",
-      raw: "wwww",
-      column: "W1",
-      price: "Arrived",
+      expense_type: "Dawlance SBS 600 INV GD BLack",
+      pay: "23000",
+      month: "March",
+     
     },
     {
       id: "INV-3062",
-      name: "Dawlance SBS 600 INV GD BLack",
-      qty: "Jan 6, 2022",
-      raw: "wwww",
-      column: "W1",
-      price: "Arrived",
+      expense_type: "Dawlance SBS 600 INV GD BLack",
+      pay: "23000",
+      month: "March",
+     
     },
     {
       id: "INV-3061",
-      name: "Dawlance SBS 600 INV GD BLack",
-      qty: "Jan 6, 2022",
-      raw: "wwww",
-      column: "W1",
-      price: "Arrived",
+      expense_type: "Dawlance SBS 600 INV GD BLack",
+      pay: "23000",
+      month: "March",
+     
     },
     {
       id: "INV-3060",
-      name: "Dawlance SBS 600 INV GD BLack",
-      qty: "Jan 6, 2022",
-      raw: "wwww",
-      column: "W1",
-      price: "Arrived",
+      expense_type: "Dawlance SBS 600 INV GD BLack",
+      pay: "23000",
+      month: "March",
+     
     },
   ]);
   return (
     <div className="">
       <div className="flex justify-between items-center mb-[16px]">
-        <h2>Ware house 1</h2>
+        <h2>All expenses</h2>
         <div>
-          <button onClick={() => setModalOpen(true)} className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0b78ec] hover:text-[#fff] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
-            Add Product
+          <button className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0b78ec] hover:text-[#fff] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10.0001 4.16669V15.8334M4.16675 10H15.8334"
+                stroke="white"
+                strokeWidth="1.66667"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg> Add new expense
           </button>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-[#FFFFFF] p-[20px] rounded-[8px]  border-white border-2">
-        <div>
-          <label
-            htmlFor="search"
-            className="block text-[14px] font-medium text-[#344054] mb-[6px] leading-[20px]"
-          >
-            Search for product
-          </label>
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-5 w-5 text-gray-400" />
-            </div>
-            <input
-              type="text"
-              id="search"
-              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm"
-              placeholder="Search"
-            />
-          </div>
-        </div>
-
-        <div>
+      <div>
           <label
             htmlFor="status"
             className="block text-[14px] font-medium text-[#344054] mb-[6px] leading-[20px]"
           >
-            Category
+            Status
           </label>
           <div className="relative">
             <div className="flex items-center">
@@ -137,13 +115,37 @@ export default function WareHouse() {
             </div>
           </div>
         </div>
+        <div>
+          <label
+            htmlFor="status"
+            className="block text-[14px] font-medium text-[#344054] mb-[6px] leading-[20px]"
+          >
+            Type
+          </label>
+          <div className="relative">
+            <div className="flex items-center">
+              <select
+                id="status"
+                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm"
+                defaultValue="paid"
+              >
+                <option value="paid">Paid</option>
+                <option value="pending">Pending</option>
+                <option value="failed">Failed</option>
+              </select>
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                <ChevronDown className="h-4 w-4 text-gray-400" />
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div>
           <label
             htmlFor="dealer"
             className="block text-[14px] font-medium text-[#344054] mb-[6px] leading-[20px]"
           >
-            Dealer
+            Date
           </label>
           <div className="relative">
             <select
@@ -168,33 +170,26 @@ export default function WareHouse() {
             <TableHeader className="border-gray-100 dark:border-gray-800 border-b">
               <TableRow className="w-full mx-3">
                 <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
-                  Name
+                Expense type
                 </TableCell>
                 <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
-                  Qty
+                Pay
                 </TableCell>
                 <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
-                  Raw
+                Month
                 </TableCell>
-                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
-                  Column
-                </TableCell>
-                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
-                  Price
-                </TableCell>
+              
                 <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
                   Action
                 </TableCell>
               </TableRow>
             </TableHeader>
             <TableBody className="divide-y divide-gray-100 dark:divide-gray-800 ">
-              {orders.map((order) => (
-                <TableRow key={order.id} className="w-full mx-3">
-                  <TableCell className="py-3 p-3">{order.name}</TableCell>
-                  <TableCell className="py-3 p-3">{order.qty}</TableCell>
-                  <TableCell className="py-3 p-3">{order.raw}</TableCell>
-                  <TableCell className="py-3 p-3">{order.column}</TableCell>
-                  <TableCell className="py-3 p-3">{order.price}</TableCell>
+              {expenses.map((expense) => (
+                <TableRow key={expense.id} className="w-full mx-3">
+                  <TableCell className="py-3 p-3">{expense.expense_type}</TableCell>
+                  <TableCell className="py-3 p-3">{expense.pay}</TableCell>
+                  <TableCell className="py-3 p-3">{expense.month}</TableCell>
                   <TableCell>
                     <div className="flex items-center gap-3">
                       <div>
@@ -273,7 +268,6 @@ export default function WareHouse() {
           →
         </button>
       </div>
-     <AddProductModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
   );
 }
