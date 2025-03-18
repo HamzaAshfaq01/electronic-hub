@@ -130,7 +130,7 @@ export default function ManageSuppliers() {
                         {supplier.total_payments}
                       </TableCell>
                       <TableCell className=" py-[26px] p-3 text-[#475467] font-normal">
-                      <a href="#" className="text-blue-500 hover:text-blue-700">
+                      <a href="#" className="text-[#0BA5EC] hover:text-blue-700">
                         Download
                       </a>
                       </TableCell>

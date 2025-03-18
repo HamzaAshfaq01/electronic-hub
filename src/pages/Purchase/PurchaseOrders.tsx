@@ -257,7 +257,7 @@ export default function PurchaseOrders() {
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm">
-                  <a href="#" className="text-blue-500 hover:text-blue-700">
+                  <a href="#" className="text-[#0BA5EC] hover:text-blue-700">
                     Download
                   </a>
                 </td>

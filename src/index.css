@@ -776,3 +776,9 @@ span.flatpickr-weekday,
 .simplebar-scrollbar.simplebar-visible:before {
   @apply opacity-100;
 }
+
+
+.backdrop-bg{
+  backdrop-filter: blur(4px)
+
+}

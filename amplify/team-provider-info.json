@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-electronichub-dev-154737-authRole",
+      "UnauthRoleArn": "arn:aws:iam::084828585029:role/amplify-electronichub-dev-154737-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::084828585029:role/amplify-electronichub-dev-154737-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-electronichub-dev-154737-deployment",
+      "UnauthRoleName": "amplify-electronichub-dev-154737-unauthRole",
+      "StackName": "amplify-electronichub-dev-154737",
+      "StackId": "arn:aws:cloudformation:ap-south-1:084828585029:stack/amplify-electronichub-dev-154737/6cea4820-03e6-11f0-882c-0a558ff6e3d7",
+      "AmplifyAppId": "dvj2ras9dpfq8"
+    }
+  }
+}

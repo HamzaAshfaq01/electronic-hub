@@ -41,7 +41,7 @@ const AddInvoiceModal = ({ isOpen, onClose }: AddInvoiceModalProps) => {
                     <div><h3>Payment information</h3></div>
                     <div className="flex justify-between items-center">
                         <label className="block text-[14px] font-medium text-[#4F5B67]">Payment Type</label>
-                        <a href="#" className="text-blue-500 text-[14px]">Change default bank</a>
+                        <a href="#" className="text-[#0BA5EC] text-[14px]">Change default bank</a>
                     </div>
                     <select className="w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1">
                         <option>Bank MCB</option>

@@ -1,6 +1,4 @@
 import {
-  ArrowDownIcon,
-  BoxIconLine,
   UpGraphIcon
 } from "../../icons";
 import Badge from "../ui/badge/Badge";

@@ -37,7 +37,7 @@ const UploadModal = ({ isOpen, onClose }: UploadModalProps) => {
 
         <div className="border border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center text-center relative">
           <CloudUpload className="text-4xl text-gray-400 mb-2" />
-          <p className="text-blue-500 font-medium cursor-pointer">
+          <p className="text-[#0BA5EC] font-medium cursor-pointer">
             Click to upload
           </p>
           <p className="text-xs text-gray-400">
@@ -191,7 +191,7 @@ const UploadModal = ({ isOpen, onClose }: UploadModalProps) => {
                 <div className="bg-blue-500 h-1.5 rounded-full w-full"></div>
               </div>
             </div>
-            <span className="text-blue-500 text-lg"><CircleCheck /></span>
+            <span className="text-[#0BA5EC] text-lg"><CircleCheck /></span>
           </div>
         )}
 
