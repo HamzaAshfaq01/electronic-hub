@@ -68,16 +68,16 @@ export default function MonthlyTarget() {
       <div className="px-5 pt-5 bg-white shadow-default rounded-2xl pb-11 dark:bg-gray-900 sm:px-6 sm:pt-6">
         <div className="flex justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
+            <h3 className="text-lg font-semibold text-[#212121] dark:text-white/90">
               Monthly Target
             </h3>
-            <p className="mt-1 text-gray-500 text-theme-sm dark:text-gray-400">
+            <p className="mt-1 text-gray-500 text-theme-sm dark:text-[#667085]">
               Target you’ve set for each month
             </p>
           </div>
           <div className="relative inline-block">
             <button className="dropdown-toggle" onClick={toggleDropdown}>
-              <MoreDotIcon className="text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 size-6" />
+              <MoreDotIcon className="text-[#667085] hover:text-[#494949] dark:hover:text-gray-300 size-6" />
             </button>
             <Dropdown
               isOpen={isOpen}
@@ -86,13 +86,13 @@ export default function MonthlyTarget() {
             >
               <DropdownItem
                 onItemClick={closeDropdown}
-                className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
+                className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-[#494949] dark:text-[#667085] dark:hover:bg-white/5 dark:hover:text-gray-300"
               >
                 View More
               </DropdownItem>
               <DropdownItem
                 onItemClick={closeDropdown}
-                className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
+                className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-[#494949] dark:text-[#667085] dark:hover:bg-white/5 dark:hover:text-gray-300"
               >
                 Delete
               </DropdownItem>
@@ -109,7 +109,7 @@ export default function MonthlyTarget() {
             />
           </div>
 
-          <span className="absolute left-1/2 top-full -translate-x-1/2 -translate-y-[95%] rounded-full bg-success-50 px-3 py-1 text-xs font-medium text-success-600 dark:bg-success-500/15 dark:text-success-500">
+          <span className="absolute left-1/2 top-full -translate-x-1/2 -translate-y-[95%] rounded-full bg-success-50 px-3 py-1 text-xs font-medium text-[#079455] dark:bg-success-500/15 dark:text-success-500">
             +10%
           </span>
         </div>
@@ -121,10 +121,10 @@ export default function MonthlyTarget() {
 
       <div className="flex items-center justify-center gap-5 px-6 py-3.5 sm:gap-8 sm:py-5">
         <div>
-          <p className="mb-1 text-center text-gray-500 text-theme-xs dark:text-gray-400 sm:text-sm">
+          <p className="mb-1 text-center text-gray-500 text-theme-xs dark:text-[#667085] sm:text-sm">
             Target
           </p>
-          <p className="flex items-center justify-center gap-1 text-base font-semibold text-gray-800 dark:text-white/90 sm:text-lg">
+          <p className="flex items-center justify-center gap-1 text-base font-semibold text-[#212121] dark:text-white/90 sm:text-lg">
             $20K
             <svg
               width="16"
@@ -146,10 +146,10 @@ export default function MonthlyTarget() {
         <div className="w-px bg-gray-200 h-7 dark:bg-gray-800"></div>
 
         <div>
-          <p className="mb-1 text-center text-gray-500 text-theme-xs dark:text-gray-400 sm:text-sm">
+          <p className="mb-1 text-center text-gray-500 text-theme-xs dark:text-[#667085] sm:text-sm">
             Revenue
           </p>
-          <p className="flex items-center justify-center gap-1 text-base font-semibold text-gray-800 dark:text-white/90 sm:text-lg">
+          <p className="flex items-center justify-center gap-1 text-base font-semibold text-[#212121] dark:text-white/90 sm:text-lg">
             $20K
             <svg
               width="16"
@@ -171,10 +171,10 @@ export default function MonthlyTarget() {
         <div className="w-px bg-gray-200 h-7 dark:bg-gray-800"></div>
 
         <div>
-          <p className="mb-1 text-center text-gray-500 text-theme-xs dark:text-gray-400 sm:text-sm">
+          <p className="mb-1 text-center text-gray-500 text-theme-xs dark:text-[#667085] sm:text-sm">
             Today
           </p>
-          <p className="flex items-center justify-center gap-1 text-base font-semibold text-gray-800 dark:text-white/90 sm:text-lg">
+          <p className="flex items-center justify-center gap-1 text-base font-semibold text-[#212121] dark:text-white/90 sm:text-lg">
             $20K
             <svg
               width="16"

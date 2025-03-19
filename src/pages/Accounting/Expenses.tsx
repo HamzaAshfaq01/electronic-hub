@@ -74,7 +74,7 @@ export default function Expenses() {
       <div className="flex justify-between items-center mb-[16px]">
         <h2>All expenses</h2>
         <div>
-          <button className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0b78ec] hover:text-[#fff] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
+          <button className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0BA5EC] hover:text-[#fff]  dark:bg-gray-800 dark:text-[#667085] dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M10.0001 4.16669V15.8334M4.16675 10H15.8334"
@@ -87,7 +87,7 @@ export default function Expenses() {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-[#FFFFFF] p-[20px] rounded-[8px]  border-white border-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-[#FFFFFF] p-[20px] rounded-[8px]   border-white border-2">
       <div>
           <label
             htmlFor="status"
@@ -110,7 +110,7 @@ export default function Expenses() {
                 <option value="failed">Failed</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                <ChevronDown className="h-4 w-4 text-gray-400" />
+                <ChevronDown className="h-4 w-4 text-[#667085]" />
               </div>
             </div>
           </div>
@@ -134,7 +134,7 @@ export default function Expenses() {
                 <option value="failed">Failed</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                <ChevronDown className="h-4 w-4 text-gray-400" />
+                <ChevronDown className="h-4 w-4 text-[#667085]" />
               </div>
             </div>
           </div>
@@ -159,7 +159,7 @@ export default function Expenses() {
               <option value="dealer3">Dealer 3</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-              <ChevronDown className="h-4 w-4 text-gray-400" />
+              <ChevronDown className="h-4 w-4 text-[#667085]" />
             </div>
           </div>
         </div>
@@ -169,17 +169,17 @@ export default function Expenses() {
           <Table>
             <TableHeader className="border-gray-100 dark:border-gray-800 border-b">
               <TableRow className="w-full mx-3">
-                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3">
                 Expense type
                 </TableCell>
-                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3">
                 Pay
                 </TableCell>
-                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3">
                 Month
                 </TableCell>
               
-                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3">
                   Action
                 </TableCell>
               </TableRow>

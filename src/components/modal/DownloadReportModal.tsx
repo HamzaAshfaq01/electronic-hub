@@ -36,11 +36,11 @@ const UploadModal = ({ isOpen, onClose }: UploadModalProps) => {
         </div>
 
         <div className="border border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center text-center relative">
-          <CloudUpload className="text-4xl text-gray-400 mb-2" />
+          <CloudUpload className="text-4xl text-[#667085] mb-2" />
           <p className="text-[#0BA5EC] font-medium cursor-pointer">
             Click to upload
           </p>
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-[#667085]">
             SVG, PNG, JPG or GIF (max. 800×400px)
           </p>
           <div className="absolute right-0 -bottom-10">
@@ -188,7 +188,7 @@ const UploadModal = ({ isOpen, onClose }: UploadModalProps) => {
               </p>
               <p className="text-xs text-gray-500">{uploadedFile.size}</p>
               <div className="w-full bg-gray-200 rounded-full h-1.5 mt-2">
-                <div className="bg-blue-500 h-1.5 rounded-full w-full"></div>
+                <div className="bg-[#0BA5EC] h-1.5 rounded-full w-full"></div>
               </div>
             </div>
             <span className="text-[#0BA5EC] text-lg"><CircleCheck /></span>
@@ -198,7 +198,7 @@ const UploadModal = ({ isOpen, onClose }: UploadModalProps) => {
         <div className="flex justify-between mt-6">
           <button
             onClick={onClose}
-            className="px-4 py-2 text-gray-700 bg-gray-200 rounded-lg"
+            className="px-4 py-2 text-[#494949] bg-gray-200 rounded-lg"
           >
             Cancel
           </button>

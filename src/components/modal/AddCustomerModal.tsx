@@ -40,7 +40,7 @@ const AddCustomerModal = ({ isOpen, onClose }: AddCustomerModalProps) => {
           ))}
 
           <div className="flex items-center gap-[24px]">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-[#494949]">
               Enable User
             </label>
             <div
@@ -56,7 +56,7 @@ const AddCustomerModal = ({ isOpen, onClose }: AddCustomerModalProps) => {
           </div>
 
           <div className="flex justify-end shadow absolute bottom-0 w-full right-0 p-5">
-            <button className="w-[67px] bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+            <button className="w-[67px] bg-[#0BA5EC] text-white p-2 rounded-[8px] hover:bg-[#0BA5EC]">
               Save
             </button>
           </div>

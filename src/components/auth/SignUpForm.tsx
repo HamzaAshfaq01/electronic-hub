@@ -13,16 +13,16 @@ export default function SignUpForm() {
       <div className="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
         <div>
           <div className="mb-5 sm:mb-8">
-            <h1 className="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md">
+            <h1 className="mb-2 font-semibold text-[#212121] text-title-sm dark:text-white/90 sm:text-title-md">
               Sign Up
             </h1>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-gray-500 dark:text-[#667085]">
               Enter your email and password to sign up!
             </p>
           </div>
           <div>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
-              <button className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
+              <button className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-[#494949] transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-[#212121] dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
                 <svg
                   width="20"
                   height="20"
@@ -49,7 +49,7 @@ export default function SignUpForm() {
                 </svg>
                 Sign up with Google
               </button>
-              <button className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
+              <button className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-[#494949] transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-[#212121] dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
                 <svg
                   width="21"
                   className="fill-current"
@@ -68,7 +68,7 @@ export default function SignUpForm() {
                 <div className="w-full border-t border-gray-200 dark:border-gray-800"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="p-2 text-gray-400 bg-white dark:bg-gray-900 sm:px-5 sm:py-2">
+                <span className="p-2 text-[#667085] bg-white dark:bg-gray-900 sm:px-5 sm:py-2">
                   Or
                 </span>
               </div>
@@ -142,13 +142,13 @@ export default function SignUpForm() {
                     checked={isChecked}
                     onChange={setIsChecked}
                   />
-                  <p className="inline-block font-normal text-gray-500 dark:text-gray-400">
+                  <p className="inline-block font-normal text-gray-500 dark:text-[#667085]">
                     By creating an account means you agree to the{" "}
-                    <span className="text-gray-800 dark:text-white/90">
+                    <span className="text-[#212121] dark:text-white/90">
                       Terms and Conditions,
                     </span>{" "}
                     and our{" "}
-                    <span className="text-gray-800 dark:text-white">
+                    <span className="text-[#212121] dark:text-white">
                       Privacy Policy
                     </span>
                   </p>
@@ -163,7 +163,7 @@ export default function SignUpForm() {
             </form>
 
             <div className="mt-5">
-              <p className="text-sm font-normal text-center text-gray-700 dark:text-gray-400 sm:text-start">
+              <p className="text-sm font-normal text-center text-[#494949] dark:text-[#667085] sm:text-start">
                 Already have an account? {""}
                 <Link
                   to="/signin"

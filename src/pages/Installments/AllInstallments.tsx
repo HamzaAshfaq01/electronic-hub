@@ -86,7 +86,7 @@ export default function AllInstallments() {
       <div className="flex justify-between items-center mb-[16px]">
         <h2>All Installments</h2>
         <div>
-          <button className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0b78ec] hover:text-[#fff] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
+          <button className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0BA5EC] hover:text-[#fff]  dark:bg-gray-800 dark:text-[#667085] dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
             <svg
               width="20"
               height="20"
@@ -106,7 +106,7 @@ export default function AllInstallments() {
           </button>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-[#FFFFFF] p-[20px] rounded-[8px]  border-white border-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-[#FFFFFF] p-[20px] rounded-[8px]   border-white border-2">
         <div>
           <label
             htmlFor="search"
@@ -116,7 +116,7 @@ export default function AllInstallments() {
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-5 w-5 text-gray-400" />
+              <Search className="h-5 w-5 text-[#667085]" />
             </div>
             <input
               type="text"
@@ -149,7 +149,7 @@ export default function AllInstallments() {
                 <option value="failed">Failed</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                <ChevronDown className="h-4 w-4 text-gray-400" />
+                <ChevronDown className="h-4 w-4 text-[#667085]" />
               </div>
             </div>
           </div>
@@ -174,7 +174,7 @@ export default function AllInstallments() {
               <option value="dealer3">Dealer 3</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-              <ChevronDown className="h-4 w-4 text-gray-400" />
+              <ChevronDown className="h-4 w-4 text-[#667085]" />
             </div>
           </div>
         </div>
@@ -184,26 +184,26 @@ export default function AllInstallments() {
           <Table>
             <TableHeader className="border-gray-100 dark:border-gray-800 border-b">
               <TableRow className="w-full mx-3">
-                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                   Invoice number
                 </TableCell>
-                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                   Customer Name
                 </TableCell>
-                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                   SKU
                 </TableCell>
-                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                   Purchase Date
                 </TableCell>
-                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                   Price
                 </TableCell>
-                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                   Payment
                 </TableCell>
 
-                <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                   Action
                 </TableCell>
               </TableRow>
@@ -239,7 +239,7 @@ export default function AllInstallments() {
                           </p>
                         </div>
                         {order.due_date && (
-                          <div className="text-xs text-gray-500">
+                          <div className="text-xs text-[#494949]">
                             Due date: {order.due_date}
                           </div>
                         )}

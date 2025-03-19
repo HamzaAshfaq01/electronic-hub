@@ -18,16 +18,16 @@ export default function DemographicCard() {
     <div className="rounded-2xl border border-gray-200 bg-white p-5 dark:border-gray-800 dark:bg-white/[0.03] sm:p-6">
       <div className="flex justify-between">
         <div>
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
+          <h3 className="text-lg font-semibold text-[#212121] dark:text-white/90">
             Customers Demographic
           </h3>
-          <p className="mt-1 text-gray-500 text-theme-sm dark:text-gray-400">
+          <p className="mt-1 text-gray-500 text-theme-sm dark:text-[#667085]">
             Number of customer based on country
           </p>
         </div>
         <div className="relative inline-block">
           <button className="dropdown-toggle" onClick={toggleDropdown}>
-            <MoreDotIcon className="text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 size-6" />
+            <MoreDotIcon className="text-[#667085] hover:text-[#494949] dark:hover:text-gray-300 size-6" />
           </button>
           <Dropdown
             isOpen={isOpen}
@@ -36,13 +36,13 @@ export default function DemographicCard() {
           >
             <DropdownItem
               onItemClick={closeDropdown}
-              className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
+              className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-[#494949] dark:text-[#667085] dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
               View More
             </DropdownItem>
             <DropdownItem
               onItemClick={closeDropdown}
-              className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
+              className="flex w-full font-normal text-left text-gray-500 rounded-lg hover:bg-gray-100 hover:text-[#494949] dark:text-[#667085] dark:hover:bg-white/5 dark:hover:text-gray-300"
             >
               Delete
             </DropdownItem>
@@ -65,10 +65,10 @@ export default function DemographicCard() {
               <img src="./images/country/country-01.svg" alt="usa" />
             </div>
             <div>
-              <p className="font-semibold text-gray-800 text-theme-sm dark:text-white/90">
+              <p className="font-semibold text-[#212121] text-theme-sm dark:text-white/90">
                 USA
               </p>
-              <span className="block text-gray-500 text-theme-xs dark:text-gray-400">
+              <span className="block text-gray-500 text-theme-xs dark:text-[#667085]">
                 2,379 Customers
               </span>
             </div>
@@ -78,7 +78,7 @@ export default function DemographicCard() {
             <div className="relative block h-2 w-full max-w-[100px] rounded-sm bg-gray-200 dark:bg-gray-800">
               <div className="absolute left-0 top-0 flex h-full w-[79%] items-center justify-center rounded-sm bg-brand-500 text-xs font-medium text-white"></div>
             </div>
-            <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
+            <p className="font-medium text-[#212121] text-theme-sm dark:text-white/90">
               79%
             </p>
           </div>
@@ -90,10 +90,10 @@ export default function DemographicCard() {
               <img src="./images/country/country-02.svg" alt="france" />
             </div>
             <div>
-              <p className="font-semibold text-gray-800 text-theme-sm dark:text-white/90">
+              <p className="font-semibold text-[#212121] text-theme-sm dark:text-white/90">
                 France
               </p>
-              <span className="block text-gray-500 text-theme-xs dark:text-gray-400">
+              <span className="block text-gray-500 text-theme-xs dark:text-[#667085]">
                 589 Customers
               </span>
             </div>
@@ -103,7 +103,7 @@ export default function DemographicCard() {
             <div className="relative block h-2 w-full max-w-[100px] rounded-sm bg-gray-200 dark:bg-gray-800">
               <div className="absolute left-0 top-0 flex h-full w-[23%] items-center justify-center rounded-sm bg-brand-500 text-xs font-medium text-white"></div>
             </div>
-            <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
+            <p className="font-medium text-[#212121] text-theme-sm dark:text-white/90">
               23%
             </p>
           </div>

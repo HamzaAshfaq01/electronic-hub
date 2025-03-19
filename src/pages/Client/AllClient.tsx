@@ -74,7 +74,7 @@ export default function Managewarehouses() {
                 <div>
                 <button
             onClick={() => setModalOpen(true)}
-            className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0b78ec] hover:text-[#fff] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
+            className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0BA5EC] hover:text-[#fff]  dark:bg-gray-800 dark:text-[#667085] dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
           >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -93,25 +93,25 @@ export default function Managewarehouses() {
               <Table>
                 <TableHeader className="border-gray-100 dark:border-gray-800 border-b">
                   <TableRow className="w-full mx-3 col-span-12">
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                     Customer Name
                     </TableCell>
 
                    
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                     ID card number
                     </TableCell>
 
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                     Last purchase date
                     </TableCell>
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                     Number
                     </TableCell>
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                     Total Purchase
                     </TableCell>
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                       Action
                     </TableCell>
                   </TableRow>

@@ -14,10 +14,10 @@ export default function SignInForm() {
       <div className="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
         <div>
           <div className="mb-5 sm:mb-8">
-            <h1 className="mb-2 font-semibold text-gray-800 text-title-sm dark:text-white/90 sm:text-title-md">
+            <h1 className="mb-2 font-semibold text-[#212121] text-title-sm dark:text-white/90 sm:text-title-md">
             Log in
             </h1>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-gray-500 dark:text-[#667085]">
             Welcome back! Please enter your details.
             </p>
           </div>
@@ -56,7 +56,7 @@ export default function SignInForm() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <Checkbox checked={isChecked} onChange={setIsChecked} />
-                    <span className="block font-normal text-gray-700 text-theme-sm dark:text-gray-400">
+                    <span className="block font-normal text-[#494949] text-theme-sm dark:text-[#667085]">
                     Remember me
                     </span>
                   </div>
@@ -76,7 +76,7 @@ export default function SignInForm() {
             </form>
 
             {/* <div className="mt-5">
-              <p className="text-sm font-normal text-center text-gray-700 dark:text-gray-400 sm:text-start">
+              <p className="text-sm font-normal text-center text-[#494949] dark:text-[#667085] sm:text-start">
                 Don&apos;t have an account? {""}
                 <Link
                   to="/signup"

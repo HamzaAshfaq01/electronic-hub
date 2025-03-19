@@ -21,12 +21,12 @@ const AddProductModal = ({ isOpen, onClose }: AddCustomerModalProps) => {
 
         {/* Product Information */}
         <div className="space-y-4 mt-4">
-          <h3 className="font-semibold text-gray-800">Product Information</h3>
+          <h3 className="font-semibold text-[#212121]">Product Information</h3>
           <div>
             <label className="block text-sm font-medium text-gray-600">
               Product
             </label>
-            <select className="w-full p-2 border bg-gray-100 rounded mt-1">
+            <select className="w-full p-2 border bg-gray-100 rounded-[8px] mt-1">
               <option>Type product Name, Model number</option>
             </select>
           </div>
@@ -39,7 +39,7 @@ const AddProductModal = ({ isOpen, onClose }: AddCustomerModalProps) => {
               <input
                 type="text"
                 value="50,000"
-                className="w-full p-2 border bg-gray-100 rounded mt-1"
+                className="w-full p-2 border bg-gray-100 rounded-[8px] mt-1"
                 readOnly
               />
             </div>
@@ -50,7 +50,7 @@ const AddProductModal = ({ isOpen, onClose }: AddCustomerModalProps) => {
               <input
                 type="text"
                 value="50,000"
-                className="w-full p-2 border bg-gray-100 rounded mt-1"
+                className="w-full p-2 border bg-gray-100 rounded-[8px] mt-1"
                 readOnly
               />
             </div>
@@ -59,12 +59,12 @@ const AddProductModal = ({ isOpen, onClose }: AddCustomerModalProps) => {
 
         {/* Product Location */}
         <div className="mt-6 space-y-4">
-          <h3 className="font-semibold text-gray-800">Product Location</h3>
+          <h3 className="font-semibold text-[#212121]">Product Location</h3>
           <div>
             <label className="block text-sm font-medium text-gray-600">
               Warehouse
             </label>
-            <select className="w-full p-2 border bg-gray-100 rounded mt-1">
+            <select className="w-full p-2 border bg-gray-100 rounded-[8px] mt-1">
               <option>Warehouse 1</option>
             </select>
           </div>
@@ -77,7 +77,7 @@ const AddProductModal = ({ isOpen, onClose }: AddCustomerModalProps) => {
               <input
                 type="text"
                 value="abc@gamil.com"
-                className="w-full p-2 border bg-gray-100 rounded mt-1"
+                className="w-full p-2 border bg-gray-100 rounded-[8px] mt-1"
                 readOnly
               />
             </div>
@@ -88,7 +88,7 @@ const AddProductModal = ({ isOpen, onClose }: AddCustomerModalProps) => {
               <input
                 type="text"
                 value="abc@gamil.com"
-                className="w-full p-2 border bg-gray-100 rounded mt-1"
+                className="w-full p-2 border bg-gray-100 rounded-[8px] mt-1"
                 readOnly
               />
             </div>
@@ -97,7 +97,7 @@ const AddProductModal = ({ isOpen, onClose }: AddCustomerModalProps) => {
 
         {/* Transportation */}
         <div className="mt-6 space-y-4">
-          <h3 className="font-semibold text-gray-800">Transportation</h3>
+          <h3 className="font-semibold text-[#212121]">Transportation</h3>
           <div>
             <label className="block text-sm font-medium text-gray-600">
               Expenses
@@ -105,14 +105,14 @@ const AddProductModal = ({ isOpen, onClose }: AddCustomerModalProps) => {
             <input
               type="text"
               value="24500"
-              className="w-full p-2 border bg-gray-100 rounded mt-1"
+              className="w-full p-2 border bg-gray-100 rounded-[8px] mt-1"
               readOnly
             />
           </div>
 
           {/* In Stock Toggle */}
           <div className="flex items-center gap-4">
-            <label className="text-sm font-medium text-gray-700">
+            <label className="text-sm font-medium text-[#494949]">
               In Stock
             </label>
             <div
@@ -130,10 +130,10 @@ const AddProductModal = ({ isOpen, onClose }: AddCustomerModalProps) => {
 
         {/* Footer Buttons */}
         <div className="flex justify-end shadow absolute bottom-0 w-full right-0 p-5">
-          <button className="px-4 py-2 border rounded text-gray-600 mr-4">
+          <button className="px-4 py-2 border rounded-[8px] text-gray-600 mr-4">
             Print
           </button>
-          <button className="px-5 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+          <button className="px-5 py-2 bg-[#0BA5EC] text-white rounded-[8px] hover:bg-[#0BA5EC]">
             Save
           </button>
         </div>

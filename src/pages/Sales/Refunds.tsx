@@ -35,7 +35,7 @@ const allInvoices: Invoice[] = [
     price: "$500.00",
     payment_status: "Cash",
     refund_status: "Done",
-    image: "/images/sales/Avatar.jpg",
+    
   },
   {
     id: 2,
@@ -46,7 +46,7 @@ const allInvoices: Invoice[] = [
     price: "$1000.00",
     payment_status: "Credit",
     refund_status: "Done",
-    image: "/images/sales/Avatar.jpg",
+    
     due_date: "2023-09-10",
   },
   {
@@ -58,7 +58,7 @@ const allInvoices: Invoice[] = [
     price: "$250.00",
     payment_status: "Mix Cash/Credit",
     refund_status: "Pending",
-    image: "/images/sales/Avatar.jpg",
+    
   },
 ];
 
@@ -72,7 +72,7 @@ const walkinInvoices: Invoice[] = [
     price: "$500.00",
     payment_status: "Cash",
     refund_status: "Done",
-    image: "/images/sales/Avatar.jpg",
+    
   },
   {
     id: 3,
@@ -83,7 +83,7 @@ const walkinInvoices: Invoice[] = [
     price: "$250.00",
     payment_status: "Mix Cash/Credit",
     refund_status: "Pending",
-    image: "/images/sales/Avatar.jpg",
+    
   },
 ];
 
@@ -97,7 +97,7 @@ const registeredInvoices: Invoice[] = [
     price: "$1000.00",
     payment_status: "Credit",
     refund_status: "Done",
-    image: "/images/sales/Avatar.jpg",
+    
     due_date: "2023-09-10",
   },
 ];
@@ -121,7 +121,7 @@ export default function Refunds() {
       <div className="mb-6">
         <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between px-4">
           <div>
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
+            <h3 className="text-lg font-semibold text-[#212121] dark:text-white/90">
             Refunds Summary
             </h3>
           </div>
@@ -150,7 +150,7 @@ export default function Refunds() {
                   <input
                     type="text"
                     placeholder="Search"
-                    className="bg-white dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-200  py-2.5 pl-12 pr-14 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-800  dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 xl:w-[100%]"
+                    className="bg-white dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-200  py-2.5 pl-12 pr-14 text-sm text-[#212121] shadow-theme-xs placeholder:text-[#667085]  focus:outline-hidden  focus:ring-brand-500/10 dark:border-gray-800  dark:text-white/90 dark:placeholder:text-white/30  xl:w-[100%]"
                   />
                 </div>
               </form>
@@ -178,7 +178,7 @@ export default function Refunds() {
               </button>
             ))}
           </div>
-          <button  onClick={() => setModalOpen(true)} className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0b78ec] hover:text-[#fff] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
+          <button  onClick={() => setModalOpen(true)} className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0BA5EC] hover:text-[#fff]  dark:bg-gray-800 dark:text-[#667085] dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
             <svg
               width="20"
               height="20"
@@ -204,31 +204,31 @@ export default function Refunds() {
               <Table>
                 <TableHeader className="border-gray-100 dark:border-gray-800 border-b">
                   <TableRow className="w-full mx-3">
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                       Invoice number
                     </TableCell>
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                       Customer Name
                     </TableCell>
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                      SKU
                     </TableCell>
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                     Purchase Date
                     </TableCell>
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3">
                     Pay
                     </TableCell>
                  
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3">
                       Payment
                     </TableCell>
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3">
                     Refund status
                     </TableCell>
                     <TableCell
                       isHeader
-                      className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
+                      className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3"
                     >
                       Action
                     </TableCell>
@@ -238,7 +238,7 @@ export default function Refunds() {
                   {getFilteredData().map((invoice) => (
                     <TableRow key={invoice.id}>
                       <TableCell className="py-[26px] px-[15px] ">
-                        <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                        <p className="font-medium text-[#212121] text-theme-sm dark:text-white/90">
                           {invoice.invoice_number}
                         </p>
                       </TableCell>
@@ -255,7 +255,7 @@ export default function Refunds() {
                       </TableCell>
                       <TableCell className="py-[26px] px-[15px]">
                         {invoice.payment_status === "Cash" && (
-                          <span className="inline-flex items-center px-2.5 py-0.5 justify-center gap-1 rounded-full font-medium text-theme-xs bg-success-50 text-success-600 border border-[#079455] dark:bg-success-500/15 dark:text-success-500">
+                          <span className="inline-flex items-center px-2.5 py-0.5 justify-center gap-1 rounded-full font-medium text-theme-xs bg-transparent  text-[#079455] border border-[#079455]">
                             <span className="w-[6px] h-[6px] rounded-full bg-[#079455]"></span>{" "}
                             Cash
                           </span>
@@ -287,7 +287,7 @@ export default function Refunds() {
                       </TableCell>
                       <TableCell className="py-[26px] px-[15px]">
                         {invoice.refund_status === "Done" && (
-                          <span className="inline-flex items-center px-2.5 py-0.5 justify-center gap-1 rounded-[6px] font-medium text-theme-xs bg-[#EFF8FF] text-success-600 border border-[#B2DDFF] dark:bg-success-500/15 dark:text-success-500">
+                          <span className="inline-flex items-center px-2.5 py-0.5 justify-center gap-1 rounded-[6px] font-medium text-theme-xs bg-[#EFF8FF] text-[#079455] border border-[#B2DDFF] dark:bg-success-500/15 dark:text-success-500">
                             <span className="w-[6px] h-[6px] rounded-full bg-[#079455]"></span>{" "}
                             Done
                           </span>

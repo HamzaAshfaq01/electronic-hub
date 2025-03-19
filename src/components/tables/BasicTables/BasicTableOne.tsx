@@ -120,31 +120,31 @@ export default function BasicTableOne() {
               <TableRow>
                 <TableCell
                   isHeader
-                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085]"
                 >
                   User
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085]"
                 >
                   Project Name
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085]"
                 >
                   Team
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085]"
                 >
                   Status
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
+                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085]"
                 >
                   Budget
                 </TableCell>
@@ -166,19 +166,19 @@ export default function BasicTableOne() {
                         />
                       </div>
                       <div>
-                        <span className="block font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                        <span className="block font-medium text-[#212121] text-theme-sm dark:text-white/90">
                           {order.user.name}
                         </span>
-                        <span className="block text-gray-500 text-theme-xs dark:text-gray-400">
+                        <span className="block text-gray-500 text-theme-xs dark:text-[#667085]">
                           {order.user.role}
                         </span>
                       </div>
                     </div>
                   </TableCell>
-                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-[#667085]">
                     {order.projectName}
                   </TableCell>
-                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-[#667085]">
                     <div className="flex -space-x-2">
                       {order.team.images.map((teamImage, index) => (
                         <div
@@ -196,7 +196,7 @@ export default function BasicTableOne() {
                       ))}
                     </div>
                   </TableCell>
-                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
+                  <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-[#667085]">
                     <Badge
                       size="sm"
                       color={
@@ -210,7 +210,7 @@ export default function BasicTableOne() {
                       {order.status}
                     </Badge>
                   </TableCell>
-                  <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                  <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-[#667085]">
                     {order.budget}
                   </TableCell>
                 </TableRow>

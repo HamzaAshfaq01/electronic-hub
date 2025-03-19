@@ -27,7 +27,7 @@ const tableData: Product[] = [
     date: "2023-08-01",
     price: "$2399.00",
     payment_status: "Cash",
-    image: "/images/sales/Avatar.jpg", // Replace with actual image URL
+     // Replace with actual image URL
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ const tableData: Product[] = [
     date: "2023-08-01",
     price: "$879.00",
     payment_status: "Credit",
-    image: "/images/sales/Avatar.jpg", // Replace with actual image URL
+     // Replace with actual image URL
   },
   {
     id: 3,
@@ -47,7 +47,7 @@ const tableData: Product[] = [
     date: "2023-08-01",
     price: "$1869.00",
     payment_status: "Credit",
-    image: "/images/sales/Avatar.jpg", // Replace with actual image URL
+     // Replace with actual image URL
   },
   {
     id: 4,
@@ -57,7 +57,7 @@ const tableData: Product[] = [
     date: "2023-08-01",
     price: "$1699.00",
     payment_status: "Mix Cash/Credit",
-    image: "/images/sales/Avatar.jpg", // Replace with actual image URL
+     // Replace with actual image URL
   },
   {
     id: 5,
@@ -67,7 +67,7 @@ const tableData: Product[] = [
     date: "2023-08-01",
     price: "$240.00",
     payment_status: "Cash",
-    image: "/images/sales/Avatar.jpg", // Replace with actual image URL
+     // Replace with actual image URL
   },
 ]
 
@@ -80,7 +80,7 @@ export default function RecentOrders() {
     <div>
       <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">Total sales</h3>
+          <h3 className="text-lg font-semibold text-[#212121] dark:text-white/90">Total sales</h3>
         </div>
 
         <div className="flex items-center gap-3">
@@ -107,12 +107,12 @@ export default function RecentOrders() {
                 <input
                   type="text"
                   placeholder="Search"
-                  className="bg-white dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-200  py-2.5 pl-12 pr-14 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-800  dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 xl:w-[100%]"
+                  className="bg-white dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-200  py-2.5 pl-12 pr-14 text-sm text-[#212121] shadow-theme-xs placeholder:text-[#667085]  focus:outline-hidden  focus:ring-brand-500/10 dark:border-gray-800  dark:text-white/90 dark:placeholder:text-white/30  xl:w-[100%]"
                 />
               </div>
             </form>
           </div>
-          <button className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
+          <button className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-[#494949] shadow-theme-xs hover:bg-gray-50 hover:text-[#212121]  dark:bg-gray-800 dark:text-[#667085] dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M5 10H15M2.5 5H17.5M7.5 15H12.5"
@@ -124,7 +124,7 @@ export default function RecentOrders() {
             </svg>
             Filter
           </button>
-          <button     onClick={() => setInvoiceModalOpen(true)} className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
+          <button     onClick={() => setInvoiceModalOpen(true)} className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-[#494949] shadow-theme-xs hover:bg-gray-50 hover:text-[#212121]  dark:bg-gray-800 dark:text-[#667085] dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M16.6666 17.5C16.6666 16.337 16.6666 15.7555 16.5231 15.2824C16.1999 14.217 15.3662 13.3834 14.3009 13.0602C13.8277 12.9167 13.2462 12.9167 12.0832 12.9167H7.91659C6.75362 12.9167 6.17213 12.9167 5.69897 13.0602C4.63363 13.3834 3.79995 14.217 3.47678 15.2824C3.33325 15.7555 3.33325 16.337 3.33325 17.5M13.7499 6.25C13.7499 8.32107 12.071 10 9.99992 10C7.92885 10 6.24992 8.32107 6.24992 6.25C6.24992 4.17893 7.92885 2.5 9.99992 2.5C12.071 2.5 13.7499 4.17893 13.7499 6.25Z"
@@ -138,7 +138,7 @@ export default function RecentOrders() {
           </button>
           <button
             onClick={() => setModalOpen(true)}
-            className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0b78ec] hover:text-[#fff] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
+            className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0BA5EC] hover:text-[#fff]  dark:bg-gray-800 dark:text-[#667085] dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
           >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -161,43 +161,43 @@ export default function RecentOrders() {
               <TableRow className="w-full">
                 <TableCell
                   isHeader
-                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
+                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3"
                 >
                   Invoice number
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
+                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3"
                 >
                   Customer Name
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
+                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3"
                 >
                   SKU
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
+                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3"
                 >
                   Date
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
+                  className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3"
                 >
                   Price
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
+                  className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3"
                 >
                   Payment
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
+                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3"
                 >
                   Action
                 </TableCell>
@@ -212,7 +212,7 @@ export default function RecentOrders() {
                   <TableCell className="py-3 p-3">
                     <div className="flex items-center gap-3">
                       <div>
-                        <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                        <p className="font-medium text-[#212121] text-theme-sm dark:text-white/90">
                           {product.Invoice_number}
                         </p>
                       </div>
@@ -220,15 +220,9 @@ export default function RecentOrders() {
                   </TableCell>
                   <TableCell className="py-3 p-3">
                     <div className="flex items-center gap-3">
-                      <div className="h-[50px] w-[50px] overflow-hidden rounded-md">
-                        <img
-                          src={product.image || "/placeholder.svg"}
-                          className="h-[50px] w-[50px]"
-                          alt={product.image}
-                        />
-                      </div>
+                      
                       <div>
-                        <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                        <p className="font-medium text-[#212121] text-theme-sm dark:text-white/90">
                           {product.customer_name}
                         </p>
                       </div>
@@ -237,20 +231,20 @@ export default function RecentOrders() {
                   <TableCell className="py-3 p-3">
                     <div className="flex items-center gap-3">
                       <div>
-                        <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">{product.sku}</p>
+                        <p className="font-medium text-[#212121] text-theme-sm dark:text-white/90">{product.sku}</p>
                       </div>
                     </div>
                   </TableCell>
                   <TableCell className="py-3 p-3">
                     <div className="flex items-center gap-3">
                       <div>
-                        <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">{product.date}</p>
+                        <p className="font-medium text-[#212121] text-theme-sm dark:text-white/90">{product.date}</p>
                       </div>
                     </div>
                   </TableCell>
-                  <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">{product.price}</TableCell>
+                  <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-[#667085]">{product.price}</TableCell>
 
-                  <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                  <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-[#667085]">
                     <Badge
                       size="sm"
                       color={

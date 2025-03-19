@@ -33,7 +33,7 @@ const tableData: Product[] = [
     date: "2023-08-01",
     price: "$2399.00",
     payment_status: "Cash",
-    image: "/images/sales/Avatar.jpg", // Replace with actual image URL
+     // Replace with actual image URL
   },
   {
     id: 2,
@@ -43,7 +43,7 @@ const tableData: Product[] = [
     date: "2023-08-01",
     price: "$879.00",
     payment_status: "Credit",
-    image: "/images/sales/Avatar.jpg", // Replace with actual image URL
+     // Replace with actual image URL
   },
   {
     id: 3,
@@ -53,7 +53,7 @@ const tableData: Product[] = [
     date: "2023-08-01",
     price: "$1869.00",
     payment_status: "Credit",
-    image: "/images/sales/Avatar.jpg", // Replace with actual image URL
+     // Replace with actual image URL
   },
   {
     id: 4,
@@ -63,7 +63,7 @@ const tableData: Product[] = [
     date: "2023-08-01",
     price: "$1699.00",
     payment_status: "Mix Cash/Credit",
-    image: "/images/sales/Avatar.jpg", // Replace with actual image URL
+     // Replace with actual image URL
   },
   {
     id: 5,
@@ -73,7 +73,7 @@ const tableData: Product[] = [
     date: "2023-08-01",
     price: "$240.00",
     payment_status: "Cash",
-    image: "/images/sales/Avatar.jpg", // Replace with actual image URL
+     // Replace with actual image URL
   },
 ];
 
@@ -86,7 +86,7 @@ export default function RecentSale() {
     <div>
       <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
+          <h3 className="text-lg font-semibold text-[#212121] dark:text-white/90">
             Recent sales
           </h3>
         </div>
@@ -94,7 +94,7 @@ export default function RecentSale() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setInvoiceModalOpen(true)}
-            className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
+            className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-[#494949] shadow-theme-xs hover:bg-gray-50 hover:text-[#212121]  dark:bg-gray-800 dark:text-[#667085] dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
           >
             <svg
               width="20"
@@ -113,7 +113,7 @@ export default function RecentSale() {
             </svg>
             Create Invoice
           </button>
-          <button className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-gray-700 shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
+          <button className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-[#494949] shadow-theme-xs hover:bg-gray-50 hover:text-[#212121]  dark:bg-gray-800 dark:text-[#667085] dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
             <svg
               width="20"
               height="20"
@@ -140,7 +140,7 @@ export default function RecentSale() {
           </button>
           <button
             onClick={() => setModalOpen(true)}
-            className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0b78ec] hover:text-[#fff] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
+            className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0BA5EC] hover:text-[#fff]  dark:bg-gray-800 dark:text-[#667085] dark:hover:bg-white/[0.03] dark:hover:text-gray-200"
           >
             <svg
               width="20"
@@ -169,43 +169,43 @@ export default function RecentSale() {
               <TableRow className="w-full">
                 <TableCell
                   isHeader
-                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
+                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3"
                 >
                   Invoice number
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
+                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3"
                 >
                   Customer Name
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
+                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3"
                 >
                   SKU
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
+                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3"
                 >
                   Date
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
+                  className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3"
                 >
                   Price
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
+                  className="py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3"
                 >
                   Payment
                 </TableCell>
                 <TableCell
                   isHeader
-                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
+                  className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3"
                 >
                   Action
                 </TableCell>
@@ -220,7 +220,7 @@ export default function RecentSale() {
                   <TableCell className="py-3 p-3">
                     <div className="flex items-center gap-3">
                       <div>
-                        <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                        <p className="font-medium text-[#212121] text-theme-sm dark:text-white/90">
                           {product.Invoice_number}
                         </p>
                       </div>
@@ -228,15 +228,9 @@ export default function RecentSale() {
                   </TableCell>
                   <TableCell className="py-3 p-3">
                     <div className="flex items-center gap-3">
-                      <div className="h-[50px] w-[50px] overflow-hidden rounded-md">
-                        <img
-                          src={product.image || "/placeholder.svg"}
-                          className="h-[50px] w-[50px]"
-                          alt={product.image}
-                        />
-                      </div>
+                      
                       <div>
-                        <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                        <p className="font-medium text-[#212121] text-theme-sm dark:text-white/90">
                           {product.customer_name}
                         </p>
                       </div>
@@ -245,7 +239,7 @@ export default function RecentSale() {
                   <TableCell className="py-3 p-3">
                     <div className="flex items-center gap-3">
                       <div>
-                        <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                        <p className="font-medium text-[#212121] text-theme-sm dark:text-white/90">
                           {product.sku}
                         </p>
                       </div>
@@ -254,17 +248,17 @@ export default function RecentSale() {
                   <TableCell className="py-3 p-3">
                     <div className="flex items-center gap-3">
                       <div>
-                        <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                        <p className="font-medium text-[#212121] text-theme-sm dark:text-white/90">
                           {product.date}
                         </p>
                       </div>
                     </div>
                   </TableCell>
-                  <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                  <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-[#667085]">
                     {product.price}
                   </TableCell>
 
-                  <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-gray-400">
+                  <TableCell className="py-3 text-gray-500 text-theme-sm dark:text-[#667085]">
                     <Badge
                       size="sm"
                       color={
@@ -276,6 +270,7 @@ export default function RecentSale() {
                           ? "warning"
                           : "error"
                       }
+                      startIcon={true}
                     >
                       {product.payment_status}
                     </Badge>

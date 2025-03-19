@@ -41,13 +41,13 @@ const Badge: React.FC<BadgeProps> = ({
       primary:
         "bg-brand-50 text-brand-500 dark:bg-brand-500/15 dark:text-brand-400",
       success:
-        "bg-success-50 text-success-600 dark:bg-success-500/15 dark:text-success-500",
+        "bg-transparent border-[1.5px] border-[#079455] text-[#079455] dark:bg-success-500/15 dark:text-success-500",
       error:
         "bg-[#FECDCA] text-[#B42318] ",
       warning:
-        "bg-[#FEDF89] text-[#B54708] dark:bg-warning-500/15 dark:text-orange-400",
+        "bg-transparent border-[1.5px] border-[#B54708] text-[#B54708] dark:bg-warning-500/15 dark:text-orange-400",
       info: "bg-blue-light-50 text-blue-light-500 dark:bg-blue-light-500/15 dark:text-blue-light-500",
-      light: "bg-gray-100 text-gray-700 dark:bg-white/5 dark:text-white/80",
+      light: "bg-gray-100 text-[#494949] dark:bg-white/5 dark:text-white/80",
       dark: "bg-gray-500 text-white dark:bg-white/5 dark:text-white",
     },
     solid: {
@@ -67,7 +67,7 @@ const Badge: React.FC<BadgeProps> = ({
 
   return (
     <span className={`${baseStyles} ${sizeClass} ${colorStyles}`}>
-      {startIcon && <span className="mr-1">{startIcon}</span>}
+      {startIcon && <span className={`mr-1 bg-red inline-block w-[6px] h-[6px] rounded-full ${variants['solid'][color]}`}>{startIcon}</span>}
       {children}
       {endIcon && <span className="ml-1">{endIcon}</span>}
     </span>

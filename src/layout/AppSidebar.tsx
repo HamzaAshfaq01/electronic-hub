@@ -199,7 +199,7 @@ const AppSidebar: React.FC = () => {
               className={`flex items-center flex-row px-3 py-2 rounded-[6px] ${
                 openSubmenu?.type === menuType && openSubmenu?.index === index
                   ? "text-gray-900 bg-gray-100 dark:text-white dark:bg-gray-800"
-                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-[#667085] dark:hover:text-white dark:hover:bg-gray-800"
               }`}
             >
               <div className="flex items-center w-full">
@@ -214,7 +214,7 @@ const AppSidebar: React.FC = () => {
                   className={`p-2 ml-auto text-sm rounded-r-[6px] group transition-colors  ${
                     openSubmenu?.type === menuType && openSubmenu?.index === index
                       ? "text-gray-900 bg-gray-100 dark:text-white dark:bg-gray-800"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800"
+                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-[#667085] dark:hover:text-white dark:hover:bg-gray-800"
                   }`}
                 >
                   <ChevronDown
@@ -232,7 +232,7 @@ const AppSidebar: React.FC = () => {
                 className={`flex items-center px-3 py-2 text-sm rounded-md group transition-colors ${
                   nav.isActive || isActive(nav.path)
                     ? "text-gray-900 bg-gray-100 dark:text-white dark:bg-gray-800"
-                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800"
+                    : "text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-[#667085] dark:hover:text-white dark:hover:bg-gray-800"
                 }`}
               >
                 {(nav.hasIndicator || nav.isActive || isActive(nav.path)) && (
@@ -266,18 +266,18 @@ const AppSidebar: React.FC = () => {
                     className={`flex items-center px-3 py-2 text-sm rounded-md transition-colors ${
                       isActive(subItem.path)
                         ? "text-gray-900 bg-gray-100 dark:text-white dark:bg-gray-700"
-                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800"
+                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-[#667085] dark:hover:text-white dark:hover:bg-gray-800"
                     }`}
                   >
                     <span className="font-medium">{subItem.name}</span>
                     <span className="flex items-center gap-1 ml-auto">
                       {subItem.new && (
-                        <span className="px-1.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-600 rounded dark:bg-blue-900 dark:text-blue-300">
+                        <span className="px-1.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-600 rounded-[8px] dark:bg-blue-900 dark:text-blue-300">
                           new
                         </span>
                       )}
                       {subItem.pro && (
-                        <span className="px-1.5 py-0.5 text-xs font-medium bg-amber-100 text-amber-600 rounded dark:bg-amber-900 dark:text-amber-300">
+                        <span className="px-1.5 py-0.5 text-xs font-medium bg-amber-100 text-amber-600 rounded-[8px] dark:bg-amber-900 dark:text-amber-300">
                           pro
                         </span>
                       )}
@@ -314,7 +314,7 @@ const AppSidebar: React.FC = () => {
         <div className="px-4 mb-4">
           <div className="relative">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <Search className="w-5 h-5 text-gray-400" />
+              <Search className="w-5 h-5 text-[#667085]" />
             </div>
             <input
               ref={inputRef}
@@ -330,13 +330,13 @@ const AppSidebar: React.FC = () => {
 
           {renderMenuItems(othersItems, "others")}
         </div>
-        <div className="mt-2 border-t border-gray-200 dark:border-gray-700"></div>
+        <div className="mt-2 border-t border-gray-200 "></div>
         <div className="p-4 mt-auto ">
           <Link to="/signin" className="flex items-center">
             <img src="/images/user/user-03.jpg" alt="Olivia Rhye" className="w-10 h-10 rounded-full" />
             <div className="ml-3">
               <p className="text-sm font-medium text-gray-900 dark:text-white">Olivia Rhye</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">olivia@untitledui.com</p>
+              <p className="text-xs text-gray-500 dark:text-[#667085]">olivia@untitledui.com</p>
             </div>
             <button className="p-1 ml-auto text-gray-500 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
               <svg className="w-5 h-5" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

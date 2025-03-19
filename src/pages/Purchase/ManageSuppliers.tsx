@@ -31,7 +31,7 @@ const allSupplier: supplier[] = [
     total_orders: "123 Items",
     total_payments: "325,000 RS",
     credit: "Cash",
-    image: "/images/sales/Avatar.jpg",
+    
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ const allSupplier: supplier[] = [
     total_orders: "123 Items",
     total_payments: "325,000 RS",
     credit: "Credit",
-    image: "/images/sales/Avatar.jpg",
+    
     due_date: "2023-09-10",
   },
   {
@@ -52,7 +52,7 @@ const allSupplier: supplier[] = [
     total_orders: "123 Items",
     total_payments: "325,000 RS",
     credit: "Mix Cash/Credit",
-    image: "/images/sales/Avatar.jpg",
+    
   },
   {
     id: 4,
@@ -62,7 +62,7 @@ const allSupplier: supplier[] = [
     total_orders: "123 Items",
     total_payments: "325,000 RS",
     credit: "Cash",
-    image: "/images/sales/Avatar.jpg",
+    
   },
   {
     id: 5,
@@ -72,7 +72,7 @@ const allSupplier: supplier[] = [
     total_orders: "123 Items  ",
     total_payments: "325,000 RS",
     credit: "Mix Cash/Credit",
-    image: "/images/sales/Avatar.jpg",
+    
   },
 ];
 
@@ -86,24 +86,24 @@ export default function ManageSuppliers() {
               <Table>
                 <TableHeader className="border-gray-100 dark:border-gray-800 border-b">
                   <TableRow className="w-full mx-3">
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                       Dealer
                     </TableCell>
 
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                       Last Order Date
                     </TableCell>
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                       Categories
                     </TableCell>
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                       Total Orders
                     </TableCell>
 
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                       Total Payments
                     </TableCell>
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3">
                       Credits
                     </TableCell>
                   </TableRow>

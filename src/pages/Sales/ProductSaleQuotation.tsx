@@ -35,7 +35,7 @@ const allInvoices: Invoice[] = [
     date: "2023-08-01",
     price: "$500.00",
     payment_status: "Cash",
-    image: "/images/sales/Avatar.jpg",
+    
   },
   {
     id: 2,
@@ -45,7 +45,7 @@ const allInvoices: Invoice[] = [
     date: "2023-08-04",
     price: "$1000.00",
     payment_status: "Credit",
-    image: "/images/sales/Avatar.jpg",
+    
     due_date: "2023-09-10",
   },
   {
@@ -56,7 +56,7 @@ const allInvoices: Invoice[] = [
     date: "2023-08-03",
     price: "$250.00",
     payment_status: "Mix Cash/Credit",
-    image: "/images/sales/Avatar.jpg",
+    
   },
 ];
 
@@ -69,7 +69,7 @@ const walkinInvoices: Invoice[] = [
     date: "2023-08-01",
     price: "$500.00",
     payment_status: "Cash",
-    image: "/images/sales/Avatar.jpg",
+    
   },
   {
     id: 3,
@@ -79,7 +79,7 @@ const walkinInvoices: Invoice[] = [
     date: "2023-08-03",
     price: "$250.00",
     payment_status: "Mix Cash/Credit",
-    image: "/images/sales/Avatar.jpg",
+    
   },
 ];
 
@@ -92,7 +92,7 @@ const registeredInvoices: Invoice[] = [
     date: "2023-08-04",
     price: "$1000.00",
     payment_status: "Credit",
-    image: "/images/sales/Avatar.jpg",
+    
     due_date: "2023-09-10",
   },
 ];
@@ -116,7 +116,7 @@ export default function ProductSaleQuotation() {
       <div className="mb-6">
         <div className="flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between px-4">
           <div>
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white/90">
+            <h3 className="text-lg font-semibold text-[#212121] dark:text-white/90">
             Sale Quotation
             </h3>
           </div>
@@ -145,7 +145,7 @@ export default function ProductSaleQuotation() {
                   <input
                     type="text"
                     placeholder="Search"
-                    className="bg-white dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-200  py-2.5 pl-12 pr-14 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-800  dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800 xl:w-[100%]"
+                    className="bg-white dark:bg-dark-900 h-11 w-full rounded-lg border border-gray-200  py-2.5 pl-12 pr-14 text-sm text-[#212121] shadow-theme-xs placeholder:text-[#667085]  focus:outline-hidden  focus:ring-brand-500/10 dark:border-gray-800  dark:text-white/90 dark:placeholder:text-white/30  xl:w-[100%]"
                   />
                 </div>
               </form>
@@ -173,7 +173,7 @@ export default function ProductSaleQuotation() {
               </button>
             ))}
           </div>
-          <button className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0b78ec] hover:text-[#fff] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
+          <button className="inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0BA5EC] hover:text-[#fff]  dark:bg-gray-800 dark:text-[#667085] dark:hover:bg-white/[0.03] dark:hover:text-gray-200">
             <svg
               width="20"
               height="20"
@@ -199,22 +199,22 @@ export default function ProductSaleQuotation() {
               <Table>
                 <TableHeader className="border-gray-100 dark:border-gray-800 border-b">
                   <TableRow className="w-full mx-3">
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3">
                     Qutation number
                     </TableCell>
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3">
                       Customer Name
                     </TableCell>
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3">
                      Quantity
                     </TableCell>
-                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3">
+                    <TableCell className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3">
                     Date
                     </TableCell>
                   
                     <TableCell
                       isHeader
-                      className="font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 p-3"
+                      className="font-medium text-gray-500 text-start text-theme-xs dark:text-[#667085] p-3"
                     >
                       Action
                     </TableCell>
@@ -224,19 +224,12 @@ export default function ProductSaleQuotation() {
                   {getFilteredData().map((invoice) => (
                     <TableRow key={invoice.id}>
                       <TableCell className="py-3 p-3 ">
-                        <p className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
+                        <p className="font-medium text-[#212121] text-theme-sm dark:text-white/90">
                           {invoice.qutation_number}
                         </p>
                       </TableCell>
                       <TableCell className="py-3 p-3">
                         <div className="flex items-center gap-3 ">
-                          <div className="h-[50px] w-[50px] overflow-hidden rounded-md">
-                            <img
-                              src={invoice.image}
-                              className="h-[50px] w-[50px]"
-                              alt={invoice.image}
-                            />
-                          </div>
                           {invoice.customer_name}
                         </div>
                       </TableCell>

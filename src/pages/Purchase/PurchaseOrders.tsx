@@ -77,14 +77,14 @@ export default function PurchaseOrders() {
      
      <div>
      <div className=""> 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6 bg-[#FFFFFF] p-[20px] rounded-[8px]  border-white border-2">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6 bg-[#FFFFFF] p-[20px] rounded-[8px]   border-white border-2">
         <div>
           <label htmlFor="search" className="block text-[14px] font-medium text-[#344054] mb-[6px] leading-[20px]">
             Search for order
           </label>
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-5 w-5 text-gray-400" />
+              <Search className="h-5 w-5 text-[#667085]" />
             </div>
             <input
               type="text"
@@ -114,7 +114,7 @@ export default function PurchaseOrders() {
                 <option value="failed">Failed</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                <ChevronDown className="h-4 w-4 text-gray-400" />
+                <ChevronDown className="h-4 w-4 text-[#667085]" />
               </div>
             </div>
           </div>
@@ -136,7 +136,7 @@ export default function PurchaseOrders() {
               <option value="dealer3">Dealer 3</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-              <ChevronDown className="h-4 w-4 text-gray-400" />
+              <ChevronDown className="h-4 w-4 text-[#667085]" />
             </div>
           </div>
         </div>
@@ -157,15 +157,15 @@ export default function PurchaseOrders() {
               <option value="sub3">Sub Account 3</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-              <ChevronDown className="h-4 w-4 text-gray-400" />
+              <ChevronDown className="h-4 w-4 text-[#667085]" />
             </div>
           </div>
         </div>
       </div>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200 rounded-[8px] bg-white border-white border-2 ">
-          <thead className="bg-white rounded">
+        <table className="min-w-full divide-y divide-gray-200 rounded-[8px]  bg-white border-white border-2 ">
+          <thead className="bg-white rounded-[8px]">
             <tr>
               <th
                 scope="col"
@@ -175,7 +175,7 @@ export default function PurchaseOrders() {
                   <input
                     type="checkbox"
                     id="select-all"
-                    className="h-4 w-4 text-[#09a5ec] border-[#D0D5DD] rounded focus:ring-[#09a5ec]"
+                    className="h-4 w-4 text-[#09a5ec] border-[#D0D5DD] rounded-[8px] focus:ring-[#09a5ec]"
                   />
                   <label htmlFor="select-all" className="ml-2">
                     Invoice
@@ -229,7 +229,7 @@ export default function PurchaseOrders() {
                     <input
                       type="checkbox"
                       id={`order-${order.id}`}
-                      className="h-4 w-4 text-[#09a5ec] border-[#D0D5DD] rounded focus:ring-[#09a5ec]"
+                      className="h-4 w-4 text-[#09a5ec] border-[#D0D5DD] rounded-[8px] focus:ring-[#09a5ec]"
                     />
                     <label htmlFor={`order-${order.id}`} className="ml-2 text-sm text-gray-900">
                       {order.id}
