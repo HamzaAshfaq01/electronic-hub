@@ -1,14 +1,48 @@
 import { useState } from 'react'
-import { EyeCloseIcon, EyeIcon } from '../../icons'
 import Label from '../form/Label'
 import Input from '../form/input/InputField'
 import Checkbox from '../form/input/Checkbox'
 import Button from '../ui/button/Button'
 import ForgotModal from '../modal/auth/ForgotPassword'
+import { signIn } from 'aws-amplify/auth'
+import { toast } from 'react-toastify'
+
 export default function SignInForm() {
-	const [showPassword, setShowPassword] = useState(false)
 	const [isChecked, setIsChecked] = useState(false)
 	const [modalOpen, setModalOpen] = useState(false)
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+	const [emailError, setEmailError] = useState('')
+	const [passwordError, setPasswordError] = useState('')
+	const [generalError, setGeneralError] = useState('')
+	const [loading, setLoading] = useState(false)
+
+	const handleSubmit = async (e) => {
+		e.preventDefault()
+		setEmailError('')
+		setPasswordError('')
+		setGeneralError('')
+		if (!email) {
+			setEmailError('Email is required')
+		} else if (!/\S+@\S+\.\S+/.test(email)) {
+			setEmailError('Please enter a valid email')
+		}
+		if (!password) {
+			setPasswordError('Password is required')
+		}
+		if (emailError || passwordError) return
+		try {
+			setLoading(true)
+			const user = await signIn(email, password)
+			toast.success('Loggedin Successfully')
+		} catch (error) {
+			toast.error('Incorrect email or password')
+			console.error('Error signing in', error)
+		} finally {
+			setLoading(false)
+		}
+	}
+
 	return (
 		<div className='flex flex-col flex-1'>
 			<div className='flex flex-col justify-center flex-1 w-full max-w-md mx-auto'>
@@ -20,25 +54,28 @@ export default function SignInForm() {
 						<p className='text-sm text-gray-500 dark:text-[#667085]'>Welcome back! Please enter your details.</p>
 					</div>
 					<div>
-						<form>
+						<form onSubmit={handleSubmit}>
 							<div className='space-y-6'>
 								<div>
 									<Label>Email</Label>
-									<Input placeholder='Enter your email' />
+									<Input
+										type='email'
+										value={email}
+										onChange={(e) => setEmail(e.target.value)}
+										placeholder='Enter your email'
+										error={emailError}
+									/>
 								</div>
 								<div>
 									<Label>Password</Label>
 									<div className='relative'>
-										<Input type={showPassword ? 'text' : 'password'} placeholder='Enter your password' />
-										<span
-											onClick={() => setShowPassword(!showPassword)}
-											className='absolute z-30 -translate-y-1/2 cursor-pointer right-4 top-1/2'>
-											{showPassword ? (
-												<EyeIcon className='fill-gray-500 dark:fill-gray-400 size-5' />
-											) : (
-												<EyeCloseIcon className='fill-gray-500 dark:fill-gray-400 size-5' />
-											)}
-										</span>
+										<Input
+											type='password'
+											value={password}
+											onChange={(e) => setPassword(e.target.value)}
+											placeholder='Enter your password'
+											error={passwordError}
+										/>
 									</div>
 								</div>
 								<div className='flex items-center justify-between'>
@@ -55,24 +92,12 @@ export default function SignInForm() {
 									</div>
 								</div>
 								<div>
-									<Button className='w-full !bg-[#0BA5EC]' size='sm'>
-										Sign in
+									<Button className='w-full !bg-[#0BA5EC]' size='sm' disabled={loading}>
+										{loading ? 'Signing in...' : 'Sign in'}
 									</Button>
 								</div>
 							</div>
 						</form>
-
-						{/* <div className="mt-5">
-              <p className="text-sm font-normal text-center text-[#494949] dark:text-[#667085] sm:text-start">
-                Don&apos;t have an account? {""}
-                <Link
-                  to="/signup"
-                  className="text-brand-500 hover:text-brand-600 dark:text-brand-400"
-                >
-                  Sign Up
-                </Link>
-              </p>
-            </div> */}
 					</div>
 				</div>
 			</div>

@@ -1,3 +1,6 @@
+import React, { useState } from 'react'
+import { EyeCloseIcon, EyeIcon } from '../../../icons'
+
 const Input = ({
 	type = 'text',
 	id,
@@ -14,6 +17,7 @@ const Input = ({
 	error = false,
 	hint,
 }) => {
+	const [showPassword, setShowPassword] = useState(false)
 	let inputClasses = ` h-11 w-full rounded-lg border px-4 py-2.5 text-sm shadow-theme-xs placeholder:text-[#667085] focus:outline-hidden  dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 ${className}`
 
 	if (disabled) {
@@ -27,27 +31,40 @@ const Input = ({
 	}
 
 	return (
-		<div className='relative'>
-			<input
-				type={type}
-				id={id}
-				name={name}
-				placeholder={placeholder}
-				value={value}
-				onChange={onChange}
-				min={min}
-				max={max}
-				step={step}
-				disabled={disabled}
-				className={inputClasses}
-			/>
+		<React.Fragment>
+			<div className='relative'>
+				<input
+					type={setShowPassword ? 'text' : type}
+					id={id}
+					name={name}
+					placeholder={placeholder}
+					value={value}
+					onChange={onChange}
+					min={min}
+					max={max}
+					step={step}
+					disabled={disabled}
+					className={inputClasses}
+				/>
+				{type == 'password' && (
+					<span
+						onClick={() => setShowPassword(!showPassword)}
+						className='absolute z-30 -translate-y-1/2 cursor-pointer right-4 top-1/2'>
+						{showPassword ? (
+							<EyeIcon className='fill-gray-500 dark:fill-gray-400 size-5' />
+						) : (
+							<EyeCloseIcon className='fill-gray-500 dark:fill-gray-400 size-5' />
+						)}
+					</span>
+				)}
+			</div>
 
-			{hint && (
+			{error && (
 				<p className={`mt-1.5 text-xs ${error ? 'text-error-500' : success ? 'text-success-500' : 'text-gray-500'}`}>
-					{hint}
+					{error}
 				</p>
 			)}
-		</div>
+		</React.Fragment>
 	)
 }
 

@@ -10,6 +10,11 @@
       "StackName": "amplify-electronichub-dev-154737",
       "StackId": "arn:aws:cloudformation:ap-south-1:084828585029:stack/amplify-electronichub-dev-154737/6cea4820-03e6-11f0-882c-0a558ff6e3d7",
       "AmplifyAppId": "dvj2ras9dpfq8"
+    },
+    "categories": {
+      "auth": {
+        "electronichube904f985": {}
+      }
     }
   }
 }
