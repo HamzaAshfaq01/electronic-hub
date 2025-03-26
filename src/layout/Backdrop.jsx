@@ -1,0 +1,11 @@
+import { useSidebar } from '../context/SidebarContext'
+
+const Backdrop = () => {
+	const { isMobileOpen, toggleMobileSidebar } = useSidebar()
+
+	if (!isMobileOpen) return null
+
+	return <div className='fixed inset-0 z-1 bg-opacity-50/50 lg:hidden' onClick={toggleMobileSidebar} />
+}
+
+export default Backdrop
