@@ -1,0 +1,19 @@
+type User
+	@model
+	@auth(
+		rules: [
+			{ allow: groups, operations: [create, read, update, delete], groups: ["admin"], provider: userPools }
+			{ allow: owner, operations: [create, read, update, delete], ownerField: "id", provider: userPools }
+			{ allow: private, operations: [read], provider: userPools }
+		]
+	) {
+	id: ID! @primaryKey
+	name: String!
+	email: AWSEmail!
+	phoneNo: String!
+	cnic: String!
+	address: String!
+	city: String!
+	createdAt: AWSDateTime!
+	updatedAt: AWSDateTime
+}

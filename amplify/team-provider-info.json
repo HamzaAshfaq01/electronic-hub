@@ -14,6 +14,9 @@
     "categories": {
       "auth": {
         "electronichube904f985": {}
+      },
+      "api": {
+        "electronichub": {}
       }
     }
   }

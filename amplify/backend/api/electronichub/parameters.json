@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "electronichub",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authelectronichube904f985",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
