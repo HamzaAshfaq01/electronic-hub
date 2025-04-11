@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import Label from '../form/Label'
-import Input from '../form/Input/InputField'
+import { useState } from 'react';
+import Label from '../form/Label';
+import Input from '../form/Input/InputField';
 
 const AddCustomerModal = ({ isOpen, onClose }) => {
-	if (!isOpen) return null
-	const [enabled, setEnabled] = useState(false)
+	if (!isOpen) return null;
+	const [enabled, setEnabled] = useState(false);
 	return (
 		<div className='fixed inset-0  right-0 bg-[#10182885]  flex justify-end items-center h-full z-50'>
 			<div className='bg-white p-6  w-full max-w-[588px] shadow-lg h-full relative'>
@@ -46,7 +46,7 @@ const AddCustomerModal = ({ isOpen, onClose }) => {
 				</div>
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default AddCustomerModal
+export default AddCustomerModal;

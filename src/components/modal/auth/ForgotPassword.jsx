@@ -1,162 +1,68 @@
-import { useState } from 'react'
-import Label from '../../form/Label'
-import Input from '../../form/input/InputField'
-import { Link } from 'react-router'
+import { useState } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import Label from '../../form/Label';
+import * as Yup from 'yup';
+import { resetPassword } from 'aws-amplify/auth';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const ForgotPasswordModal = ({ isOpen, onClose }) => {
-	const [email, setEmail] = useState('')
-	const [isOtpSent, setIsOtpSent] = useState(false)
-	const [otp, setOtp] = useState(['', '', '', '', '', ''])
-	const [isOtpVerified, setIsOtpVerified] = useState(false)
-	const [newPassword, setNewPassword] = useState('')
-	const [confirmPassword, setConfirmPassword] = useState('')
+const emailValidationSchema = Yup.object({
+	email: Yup.string().email('Invalid email address').required('Email is required'),
+});
 
-	if (!isOpen) return null
+const ForgotPasswordModal = ({ isOpen, resetPasswordOpen, onClose, setForgotEmail }) => {
+	if (!isOpen) return null;
 
-	const handleSendOtp = () => {
-		if (email) {
-			setIsOtpSent(true)
+	const handleSendOtp = async (values) => {
+		try {
+			await resetPassword({ username: values.email });
+			setForgotEmail(values.email);
+			resetPasswordOpen();
+			toast.success('OTP sent to your email');
+		} catch (err) {
+			toast.error(err.message || 'Failed to send OTP');
 		}
-	}
-
-	const handleOtpChange = (index, value) => {
-		if (/^\d?$/.test(value)) {
-			const newOtp = [...otp]
-			newOtp[index] = value
-			setOtp(newOtp)
-		}
-	}
-
-	const handleVerifyOtp = () => {
-		if (otp.join('')) {
-			setIsOtpVerified(true)
-		}
-	}
+	};
 
 	return (
 		<div className='fixed inset-0 right-0 backdrop-bg bg-opacity-50 flex justify-center items-center z-50'>
 			<div className='bg-white p-6 rounded-lg w-full max-w-[546px] shadow-lg relative'>
-				{!isOtpSent ? (
-					<>
-						<div className='flex flex-col mb-[24px]'>
-							<h4 className='text-[20px] font-medium text-[#344054]'>Send mail</h4>
-							<p className='text-[14px] font-medium text-[#475467]'>Type your current email address and wait for OTP</p>
-						</div>
-						<div className='space-y-4'>
-							<div>
-								<Label>Type Email address</Label>
-								<Input placeholder='Enter your email' value={email} onChange={(e) => setEmail(e.target.value)} />
-							</div>
-							<div className='flex justify-end gap-2'>
-								<button
-									onClick={onClose}
-									className='w-[67px] bg-transparent p-2 rounded-[8px] border border-gray-300 text-[#344054]'>
-									Cancel
-								</button>
-								<button onClick={handleSendOtp} className='w-[99px] bg-[#0BA5EC] text-white p-2 rounded-[8px]'>
-									Send OTP
+				<Formik initialValues={{ email: '' }} validationSchema={emailValidationSchema} onSubmit={handleSendOtp}>
+					{({ isSubmitting }) => (
+						<Form>
+							<div className='flex justify-between items-center mb-[15px]'>
+								<h4 className='text-[20px] font-medium text-[#344054]'>Forgot Password</h4>
+								<button type='button' onClick={onClose} className='text-gray-500 text-[30px]'>
+									&times;
 								</button>
 							</div>
-						</div>
-					</>
-				) : !isOtpVerified ? (
-					<>
-						<div className='flex flex-col mb-6'>
-							<h4 className='text-[20px] font-medium text-[#344054]'>OTP</h4>
-							<p className='text-[14px] font-medium text-[#475467]'>Your OTP has been sent to your email</p>
-						</div>
-						<div className='flex flex-col gap-[24px]'>
-							<div className='flex flex-col gap-[16px]'>
-								<div className='flex justify-center gap-[30px]'>
-									{otp.map((digit, index) => (
-										<input
-											key={index}
-											type='text'
-											maxLength={1}
-											className='w-full max-w-[58px] h-[57px] text-center border rounded-[8px]  text-lg outline-none'
-											value={digit}
-											onChange={(e) => handleOtpChange(index, e.target.value)}
-										/>
-									))}
-								</div>
-								<Link to='/' className='text-[#0BA5EC] text-sm underline inline-block'>
-									Didn’t Receive?
-								</Link>
-							</div>
-
 							<div className='space-y-4'>
 								<div>
-									<Label>New Password</Label>
-									<Input
-										type='password'
-										placeholder='Enter new password'
-										value={newPassword}
-										onChange={(e) => setNewPassword(e.target.value)}
-									/>
+									<Label htmlFor='email'>Email</Label>
+									<Field id='email' name='email' placeholder='Enter your email' className='w-full border rounded p-2' />
+									<ErrorMessage name='email' component='div' className='text-red-500 text-sm' />
 								</div>
-								<div>
-									<Label>Retype Password</Label>
-									<Input
-										type='password'
-										placeholder='Retype new password'
-										value={confirmPassword}
-										onChange={(e) => setConfirmPassword(e.target.value)}
-									/>
-								</div>
-							</div>
-							<div className='flex justify-end mt-4 border-t border-[#EAECF0] py-[16px]'>
-								<div className='flex gap-2'>
+								<div className='flex justify-end gap-2'>
 									<button
+										type='button'
 										onClick={onClose}
 										className='w-[67px] bg-transparent p-2 rounded-[8px] border border-gray-300 text-[#344054]'>
 										Cancel
 									</button>
-									<button onClick={handleVerifyOtp} className='w-[99px] bg-[#0BA5EC] text-white p-2 rounded-[8px]'>
-										Submit
+									<button
+										type='submit'
+										className={`w-[99px] bg-[#0BA5EC] text-white p-2 rounded-[8px] ${isSubmitting ? 'opacity-50' : ''}`}
+										disabled={isSubmitting}>
+										{isSubmitting ? 'Sending...' : 'Send OTP'}
 									</button>
 								</div>
 							</div>
-						</div>
-					</>
-				) : (
-					<>
-						<div className='flex flex-col mb-6'>
-							<h4 className='text-[20px] font-medium text-[#344054]'>Change Password</h4>
-							<p className='text-[14px] font-medium text-[#475467]'>Type your new password and save</p>
-						</div>
-						<div className='space-y-4'>
-							<div>
-								<Label>New Password</Label>
-								<Input
-									type='password'
-									placeholder='Enter new password'
-									value={newPassword}
-									onChange={(e) => setNewPassword(e.target.value)}
-								/>
-							</div>
-							<div>
-								<Label>Retype Password</Label>
-								<Input
-									type='password'
-									placeholder='Retype new password'
-									value={confirmPassword}
-									onChange={(e) => setConfirmPassword(e.target.value)}
-								/>
-							</div>
-							<div className='flex justify-end gap-2'>
-								<button
-									onClick={onClose}
-									className='w-[67px] bg-transparent p-2 rounded-[8px] border border-gray-300 text-[#344054]'>
-									Cancel
-								</button>
-								<button className='w-[99px] bg-[#0BA5EC] text-white p-2 rounded-[8px]'>Save</button>
-							</div>
-						</div>
-					</>
-				)}
+						</Form>
+					)}
+				</Formik>
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default ForgotPasswordModal
+export default ForgotPasswordModal;

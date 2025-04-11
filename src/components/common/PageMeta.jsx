@@ -22,7 +22,6 @@ export const AppWrapper = ({ children }) => (
 			draggable
 			pauseOnHover
 			theme='dark'
-			transition='Bounce'
 		/>
 	</HelmetProvider>
 )

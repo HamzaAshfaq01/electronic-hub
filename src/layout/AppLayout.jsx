@@ -1,11 +1,15 @@
 import { SidebarProvider, useSidebar } from '../context/SidebarContext'
-import { Outlet } from 'react-router'
+import { Outlet, Navigate } from 'react-router'
 import AppHeader from './AppHeader'
 import Backdrop from './Backdrop'
 import AppSidebar from './AppSidebar'
 
 const LayoutContent = () => {
-	const { isExpanded, isHovered, isMobileOpen } = useSidebar()
+	const { isExpanded, isHovered, isMobileOpen, user } = useSidebar()
+
+	if (!user) {
+		return <Navigate to="/signin" />
+	}
 
 	return (
 		<div className='min-h-screen xl:flex'>

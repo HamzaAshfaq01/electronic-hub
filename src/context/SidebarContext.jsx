@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react'
-
+import { getCurrentUser } from 'aws-amplify/auth';
 const SidebarContext = createContext(undefined)
 
 export const useSidebar = () => {
@@ -17,6 +17,7 @@ export const SidebarProvider = ({ children }) => {
 	const [isHovered, setIsHovered] = useState(false)
 	const [activeItem, setActiveItem] = useState(null)
 	const [openSubmenu, setOpenSubmenu] = useState(null)
+	const [user, setUser] = useState(null)
 
 	useEffect(() => {
 		const handleResize = () => {
@@ -26,7 +27,7 @@ export const SidebarProvider = ({ children }) => {
 				setIsMobileOpen(false)
 			}
 		}
-
+		currentAuthenticatedUser()
 		handleResize()
 		window.addEventListener('resize', handleResize)
 
@@ -34,6 +35,15 @@ export const SidebarProvider = ({ children }) => {
 			window.removeEventListener('resize', handleResize)
 		}
 	}, [])
+
+	async function currentAuthenticatedUser() {
+		try {
+			const { username, userId, signInDetails } = await getCurrentUser();
+			setUser({ username, userId, signInDetails });
+		} catch (err) {
+			setUser(null);
+		}
+	}
 
 	const toggleSidebar = () => {
 		setIsExpanded((prev) => !prev)
@@ -60,6 +70,7 @@ export const SidebarProvider = ({ children }) => {
 				setIsHovered,
 				setActiveItem,
 				toggleSubmenu,
+				user,
 			}}>
 			{children}
 		</SidebarContext.Provider>
