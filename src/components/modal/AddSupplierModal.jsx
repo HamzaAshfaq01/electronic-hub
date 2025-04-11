@@ -83,7 +83,9 @@ const AddSupplierModal = ({ isOpen, onClose }) => {
 					</div>
 
 					<div className='flex justify-end border-t border-[] absolute bottom-0 w-full right-0 p-5'>
-						<button className='w-[67px] bg-[#0BA5EC] text-white p-2 rounded-[8px] hover:bg-[#0BA5EC]'>Save</button>
+						<button className='bg-[#0BA5EC] text-white px-[30px] py-[10px] rounded-[8px] hover:bg-[#0BA5EC]'>
+							Save
+						</button>
 					</div>
 				</div>
 			</div>
