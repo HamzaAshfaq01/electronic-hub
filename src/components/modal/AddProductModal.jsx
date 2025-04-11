@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { Search } from 'lucide-react'
-import Label from '../form/Label'
-import Input from '../form/Input/InputField'
-import Select from '../form/Select'
+import { useState } from 'react';
+import { Search } from 'lucide-react';
+import Label from '../form/Label';
+import Input from '../form/input/InputField';
+import Select from '../form/Select';
 
 const AddInvoiceModal = ({ isOpen, onClose }) => {
-	if (!isOpen) return null
-	const [enabled, setEnabled] = useState(false)
+	if (!isOpen) return null;
+	const [enabled, setEnabled] = useState(false);
 
 	return (
 		<div className='fixed inset-0 bg-[#10182885] flex justify-end items-center h-full z-50'>
@@ -112,7 +112,7 @@ const AddInvoiceModal = ({ isOpen, onClose }) => {
 				</div>
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default AddInvoiceModal
+export default AddInvoiceModal;

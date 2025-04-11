@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Label from '../form/Label';
-import Input from '../form/Input/InputField';
+import Input from '../form/input/InputField';
 
 const AddCustomerModal = ({ isOpen, onClose }) => {
 	if (!isOpen) return null;

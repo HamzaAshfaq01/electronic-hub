@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Search } from 'lucide-react'
 import Label from '../form/Label'
-import Input from '../form/Input/InputField'
+import Input from '../form/input/InputField'
 import Select from '../form/Select'
 
 const AddInvoiceModal = ({ isOpen, onClose }) => {
