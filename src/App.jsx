@@ -1,26 +1,26 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router'
-import SignIn from './pages/AuthPages/SignIn'
-import SignUp from './pages/AuthPages/SignUp'
-import NotFound from './pages/OtherPage/NotFound'
-import UserProfiles from './pages/UserProfiles'
-import Calendar from './pages/Calendar'
-import Overview from './pages/Sales/Overview'
-import ManageInvoices from './pages/Sales/ManageInvoices'
-import ProductSaleQuotation from './pages/Sales/ProductSaleQuotation'
-import Refunds from './pages/Sales/Refunds'
-import SalesSummary from './pages/Sales/SalesSummary'
-import PurchaseOrders from './pages/Purchase/PurchaseOrders'
-import ManageSuppliers from './pages/Purchase/ManageSuppliers'
-import SupplierProducts from './pages/Purchase/SupplierProducts'
-import AllWareHouse from './pages/warehouse/AllWarehouse'
-import WareHouse from './pages/warehouse/WareHouse'
-import Blank from './pages/Blank'
-import AppLayout from './layout/AppLayout'
-import { ScrollToTop } from './components/common/ScrollToTop'
-import Home from './pages/Dashboard/Home'
-import AllInstallments from './pages/Installments/AllInstallments'
-import Expenses from './pages/Accounting/Expenses'
-import AllClient from './pages/Client/AllClient'
+import { BrowserRouter as Router, Routes, Route } from 'react-router';
+import SignIn from './pages/AuthPages/SignIn';
+import SignUp from './pages/AuthPages/SignUp';
+import NotFound from './pages/OtherPage/NotFound';
+import UserProfiles from './pages/UserProfiles';
+import Calendar from './pages/Calendar';
+import Overview from './pages/Sales/Overview';
+import ManageInvoices from './pages/Sales/ManageInvoices';
+import ProductSaleQuotation from './pages/Sales/ProductSaleQuotation';
+import Refunds from './pages/Sales/Refunds';
+import SalesSummary from './pages/Sales/SalesSummary';
+import PurchaseOrders from './pages/Purchase/PurchaseOrders';
+import ManageSuppliers from './pages/Purchase/ManageSuppliers';
+import SupplierProducts from './pages/Purchase/SupplierProducts';
+import AllWareHouse from './pages/warehouse/AllWarehouse';
+import WareHouse from './pages/warehouse/WareHouse';
+import Blank from './pages/Blank';
+import AppLayout from './layout/AppLayout';
+import { ScrollToTop } from './components/common/ScrollToTop';
+import Home from './pages/Dashboard/Home';
+import AllInstallments from './pages/Installments/AllInstallments';
+import Expenses from './pages/Accounting/Expenses';
+import AllClient from './pages/Client/AllClient';
 
 export default function App() {
 	return (
@@ -65,5 +65,5 @@ export default function App() {
 				</Routes>
 			</Router>
 		</>
-	)
+	);
 }

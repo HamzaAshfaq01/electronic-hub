@@ -7,9 +7,11 @@ import Button from '../ui/button/Button';
 import ForgotModal from '../modal/auth/ForgotPassword';
 import ResetPasswordModal from '../modal/auth/ResetPassword';
 import ChangePassword from '../modal/auth/ChangePassword';
-import { signIn } from 'aws-amplify/auth';
+import { signIn, getCurrentUser } from 'aws-amplify/auth';
 import { toast } from 'react-toastify';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'; // Import eye icons
+import { useSidebar } from '../../context/SidebarContext';
+import { useNavigate } from 'react-router';
 
 const validationSchema = Yup.object({
 	email: Yup.string().email('Invalid email address').required('Email is required'),
@@ -17,6 +19,8 @@ const validationSchema = Yup.object({
 });
 
 export default function SignInForm() {
+	const navigate = useNavigate();
+	const { setUser } = useSidebar();
 	const [isChecked, setIsChecked] = useState(false);
 	const [forgortEmail, setForgotEmail] = useState('');
 	const [changePasswordModalOpen, setChangePasswordModalOpen] = useState(false);
@@ -35,6 +39,9 @@ export default function SignInForm() {
 				setChangePasswordModalOpen(true);
 				return;
 			}
+			const { username, userId, signInDetails } = await getCurrentUser();
+			setUser({ username, userId, signInDetails });
+			navigate('/');
 			toast.success('Logged in successfully');
 		} catch (error) {
 			const errorMessage = error.message || 'Incorrect email or password';
