@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { generateClient } from 'aws-amplify/api';
-import { createUser } from '../../graphql/mutations';
+import { updateUser } from '../../graphql/mutations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
@@ -15,29 +15,35 @@ const validationSchema = Yup.object({
 });
 const client = generateClient();
 
-const AddCustomerModal = ({ isOpen, onClose, setCustomers }) => {
-	if (!isOpen) return null;
+const AddCustomerModal = ({ customerToEdit, onClose, setCustomers }) => {
+	if (!customerToEdit) return null;
 
 	const handleSubmit = async (values, { setSubmitting, resetForm }) => {
 		try {
 			await client.graphql({
-				query: createUser,
+				query: updateUser,
 				variables: { input: values },
+				authMode: 'userPool',
 			});
-			toast.success('Customer added successfully!');
+			toast.success('Customer edited successfully!');
 			resetForm();
 			onClose();
 			setCustomers((prevCustomers) => {
-				return [values, ...prevCustomers];
+				return prevCustomers.map((customer) => {
+					if (customer.id === values.id) {
+						return values;
+					}
+					return customer;
+				});
 			});
 		} catch (error) {
 			if (error?.errors?.length > 0) {
 				const errorMessage = error.errors[0]?.message || 'An unknown error occurred.';
-				toast.error(`Failed to add customer: ${errorMessage}`);
+				toast.error(`Failed to edit customer: ${errorMessage}`);
 			} else if (error?.message) {
-				toast.error(`Failed to add customer: ${error.message}`);
+				toast.error(`Failed to edit customer: ${error.message}`);
 			} else {
-				toast.error('Failed to add customer. Please try again later.');
+				toast.error('Failed to edit customer. Please try again later.');
 			}
 		} finally {
 			setSubmitting(false);
@@ -48,7 +54,7 @@ const AddCustomerModal = ({ isOpen, onClose, setCustomers }) => {
 		<div className='fixed inset-0 right-0 bg-[#10182885] flex justify-end items-center h-full z-50'>
 			<div className='bg-white p-6 w-full max-w-[588px] shadow-lg h-full relative'>
 				<div className='flex justify-between items-center pb-[16px] border-b border-gray-200'>
-					<h2 className='text-[20px] font-medium text-[#1B1F29]'>Add Customers</h2>
+					<h2 className='text-[20px] font-medium text-[#1B1F29]'>Edit Customers</h2>
 					<button onClick={onClose} className='text-gray-500 text-[30px]'>
 						&times;
 					</button>
@@ -56,12 +62,13 @@ const AddCustomerModal = ({ isOpen, onClose, setCustomers }) => {
 
 				<Formik
 					initialValues={{
-						name: '',
-						email: '',
-						phoneNo: '',
-						cnic: '',
-						address: '',
-						city: '',
+						id: customerToEdit.id,
+						name: customerToEdit.name || '',
+						email: customerToEdit.email || '',
+						phoneNo: customerToEdit.phoneNo || '',
+						cnic: customerToEdit.cnic || '',
+						address: customerToEdit.address || '',
+						city: customerToEdit.city || '',
 					}}
 					validationSchema={validationSchema}
 					onSubmit={handleSubmit}>

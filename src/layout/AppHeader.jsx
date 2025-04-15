@@ -1,41 +1,41 @@
-import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router'
-import { useSidebar } from '../context/SidebarContext'
-import DownloadReportModal from '../components/modal/DownloadReportModal'
+import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router';
+import { useSidebar } from '../context/SidebarContext';
+import DownloadReportModal from '../components/modal/DownloadReportModal';
 
 const AppHeader = () => {
-	const [isApplicationMenuOpen, setApplicationMenuOpen] = useState(false)
-	const [modalOpen, setModalOpen] = useState(false)
-	const { isMobileOpen, toggleSidebar, toggleMobileSidebar } = useSidebar()
+	const [isApplicationMenuOpen, setApplicationMenuOpen] = useState(false);
+	const [modalOpen, setModalOpen] = useState(false);
+	const { isMobileOpen, toggleSidebar, toggleMobileSidebar } = useSidebar();
 
 	const handleToggle = () => {
 		if (window.innerWidth >= 991) {
-			toggleSidebar()
+			toggleSidebar();
 		} else {
-			toggleMobileSidebar()
+			toggleMobileSidebar();
 		}
-	}
+	};
 
 	const toggleApplicationMenu = () => {
-		setApplicationMenuOpen(!isApplicationMenuOpen)
-	}
+		setApplicationMenuOpen(!isApplicationMenuOpen);
+	};
 
-	const inputRef = useRef < HTMLInputElement > null
+	const inputRef = useRef < HTMLInputElement > null;
 
 	useEffect(() => {
 		const handleKeyDown = (event) => {
 			if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
-				event.preventDefault()
-				inputRef.current?.focus()
+				event.preventDefault();
+				inputRef.current?.focus();
 			}
-		}
+		};
 
-		document.addEventListener('keydown', handleKeyDown)
+		document.addEventListener('keydown', handleKeyDown);
 
 		return () => {
-			document.removeEventListener('keydown', handleKeyDown)
-		}
-	}, [])
+			document.removeEventListener('keydown', handleKeyDown);
+		};
+	}, []);
 
 	return (
 		<header className='w-full'>
@@ -46,34 +46,6 @@ const AppHeader = () => {
 						<p className='text-[#475467] text-[16px]  font-[400]'>
 							Measure your advertising ROI and track and report website traffic.
 						</p>
-					</div>
-					<div className='flex items-center gap-3'>
-						<button className='inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-theme-sm font-medium text-[#494949] shadow-theme-xs hover:bg-gray-50 hover:text-[#212121]  dark:bg-gray-800 dark:text-[#667085] dark:hover:bg-white/[0.03] dark:hover:text-gray-200'>
-							<svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
-								<path
-									d='M5 10H15M2.5 5H17.5M7.5 15H12.5'
-									stroke='#344054'
-									strokeWidth='1.66667'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								/>
-							</svg>
-							Filter
-						</button>
-						<button
-							onClick={() => setModalOpen(true)}
-							className='inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0BA5EC] hover:text-[#fff]  dark:bg-gray-800 dark:text-[#667085] dark:hover:bg-white/[0.03] dark:hover:text-gray-200'>
-							<svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
-								<path
-									d='M6.66675 14.1667L10.0001 17.5M10.0001 17.5L13.3334 14.1667M10.0001 17.5V10M16.6667 13.9524C17.6847 13.1117 18.3334 11.8399 18.3334 10.4167C18.3334 7.88536 16.2814 5.83333 13.7501 5.83333C13.568 5.83333 13.3976 5.73833 13.3052 5.58145C12.2185 3.73736 10.2121 2.5 7.91675 2.5C4.46497 2.5 1.66675 5.29822 1.66675 8.75C1.66675 10.4718 2.36295 12.0309 3.48921 13.1613'
-									stroke='white'
-									strokeWidth='1.66667'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								/>
-							</svg>
-							Download Report
-						</button>
 					</div>
 				</div>
 
@@ -167,7 +139,7 @@ const AppHeader = () => {
         </div> */}
 			<DownloadReportModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
 		</header>
-	)
-}
+	);
+};
 
-export default AppHeader
+export default AppHeader;
