@@ -1,0 +1,23 @@
+type Sale
+	@model
+	@auth(
+		rules: [
+			{ allow: groups, operations: [create, read, update, delete], groups: ["admin"], provider: userPools }
+			{ allow: owner, operations: [create, read, update, delete], ownerField: "id", provider: userPools }
+			{ allow: private, operations: [read], provider: userPools }
+		]
+	) {
+	id: ID! @primaryKey
+	customerID: ID! @index(name: "byCustomer")
+	customer: User @belongsTo(fields: ["customerID"])
+	saleDate: AWSDateTime!
+	totalAmount: Float!
+	paymentType: PaymentType! # FULL / INSTALLMENT
+	saleProducts: [SaleProduct] @hasMany(indexName: "bySale", fields: ["id"])
+	installments: [Installment] @hasMany(indexName: "bySale", fields: ["id"])
+	refunds: [Refund] @hasMany(indexName: "bySale", fields: ["id"])
+	payment: Payment @hasOne(fields: ["id"])
+	invoice: Invoice @hasOne(fields: ["id"])
+	createdAt: AWSDateTime!
+	updatedAt: AWSDateTime
+}

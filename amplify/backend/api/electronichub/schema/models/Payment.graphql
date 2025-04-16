@@ -1,4 +1,4 @@
-type User
+type Payment
 	@model
 	@auth(
 		rules: [
@@ -8,13 +8,11 @@ type User
 		]
 	) {
 	id: ID! @primaryKey
-	name: String!
-	email: AWSEmail!
-	phoneNo: String!
-	cnic: String!
-	address: String!
-	city: String!
-	sales: [Sale] @hasMany(indexName: "byCustomer", fields: ["id"])
+	saleID: ID!
+	amount: Float!
+	paymentDate: AWSDateTime!
+	paymentMethod: String!
+	sale: Sale @belongsTo(fields: ["saleID"])
 	createdAt: AWSDateTime!
 	updatedAt: AWSDateTime
 }

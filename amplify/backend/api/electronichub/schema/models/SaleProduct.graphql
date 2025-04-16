@@ -1,4 +1,4 @@
-type User
+type SaleProduct
 	@model
 	@auth(
 		rules: [
@@ -8,13 +8,13 @@ type User
 		]
 	) {
 	id: ID! @primaryKey
-	name: String!
-	email: AWSEmail!
-	phoneNo: String!
-	cnic: String!
-	address: String!
-	city: String!
-	sales: [Sale] @hasMany(indexName: "byCustomer", fields: ["id"])
+	saleID: ID! @index(name: "bySale")
+	productID: ID! @index(name: "byProduct")
+	quantity: Int!
+	unitPrice: Float!
+	total: Float!
+	sale: Sale @belongsTo(fields: ["saleID"])
+	product: Product @belongsTo(fields: ["productID"])
 	createdAt: AWSDateTime!
 	updatedAt: AWSDateTime
 }

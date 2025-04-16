@@ -1,4 +1,4 @@
-type User
+type Purchase
 	@model
 	@auth(
 		rules: [
@@ -8,13 +8,12 @@ type User
 		]
 	) {
 	id: ID! @primaryKey
-	name: String!
-	email: AWSEmail!
-	phoneNo: String!
-	cnic: String!
-	address: String!
-	city: String!
-	sales: [Sale] @hasMany(indexName: "byCustomer", fields: ["id"])
+	supplierName: String!
+	productName: String!
+	quantity: Int!
+	unitPrice: Float!
+	totalCost: Float!
+	purchaseDate: AWSDateTime!
 	createdAt: AWSDateTime!
 	updatedAt: AWSDateTime
 }

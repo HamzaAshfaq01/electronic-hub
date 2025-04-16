@@ -1,4 +1,4 @@
-type User
+type Warehouse
 	@model
 	@auth(
 		rules: [
@@ -9,12 +9,8 @@ type User
 	) {
 	id: ID! @primaryKey
 	name: String!
-	email: AWSEmail!
-	phoneNo: String!
-	cnic: String!
-	address: String!
-	city: String!
-	sales: [Sale] @hasMany(indexName: "byCustomer", fields: ["id"])
+	location: String!
+	products: [Product] @hasMany(indexName: "byWarehouse", fields: ["id"])
 	createdAt: AWSDateTime!
 	updatedAt: AWSDateTime
 }
