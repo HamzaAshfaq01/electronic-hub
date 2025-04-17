@@ -5,3 +5,11 @@ export function getCurrentFormattedDate(date = new Date()) {
 
 	return `${year}-${month}-${day}`;
 }
+
+export function getCurrentMonthRange() {
+	const now = new Date();
+	const start = new Date(now.getFullYear(), now.getMonth(), 1); // first day
+	const end = new Date(now.getFullYear(), now.getMonth() + 1, 0); // last day
+
+	return { start, end };
+}

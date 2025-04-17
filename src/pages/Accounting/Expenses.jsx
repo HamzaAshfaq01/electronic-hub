@@ -11,11 +11,12 @@ import { generateClient } from 'aws-amplify/api';
 import { toast } from 'react-toastify';
 import { listExpenses, expensesByExpenseType } from '../../graphql/queries';
 import { deleteExpense } from '../../graphql/mutations';
-import { getCurrentFormattedDate } from '../../utils/dateUtils';
+import { getCurrentFormattedDate, getCurrentMonthRange } from '../../utils/dateUtils';
 
 const client = generateClient();
 
 export default function Managewarehouses() {
+	const { start, end } = getCurrentMonthRange();
 	const [modalOpen, setModalOpen] = useState(false);
 	const [itemToDelete, setItemToDelete] = useState(null);
 	const [expenseToEdit, setExpenseToEdit] = useState(null);
@@ -26,13 +27,12 @@ export default function Managewarehouses() {
 	const [isDeleting, setIsDeleting] = useState(false);
 
 	const [selectedExpenseType, setSelectedExpenseType] = useState('');
-	const [startDate, setStartDate] = useState(new Date());
-	const [endDate, setEndDate] = useState(new Date());
+	const [startDate, setStartDate] = useState(start);
+	const [endDate, setEndDate] = useState(end);
 
 	const fetchExpenses = async (token = null, filter) => {
 		setLoading(true);
 		try {
-			console.log(filter, 'filter');
 			let data;
 			if (selectedExpenseType) {
 				const response = await client.graphql({
