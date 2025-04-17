@@ -10,7 +10,7 @@ type Sale
 	id: ID! @primaryKey
 	customerID: ID! @index(name: "byCustomer")
 	customer: User @belongsTo(fields: ["customerID"])
-	saleDate: AWSDateTime!
+	saleDate: String!
 	totalAmount: Float!
 	paymentType: PaymentType! # FULL / INSTALLMENT
 	saleProducts: [SaleProduct] @hasMany(indexName: "bySale", fields: ["id"])
@@ -18,6 +18,6 @@ type Sale
 	refunds: [Refund] @hasMany(indexName: "bySale", fields: ["id"])
 	payment: Payment @hasOne(fields: ["id"])
 	invoice: Invoice @hasOne(fields: ["id"])
-	createdAt: AWSDateTime!
-	updatedAt: AWSDateTime
+	createdAt: String!
+	updatedAt: String
 }

@@ -17,6 +17,6 @@ type Product
 	warehouseID: ID! @index(name: "byWarehouse")
 	warehouse: Warehouse @belongsTo(fields: ["warehouseID"])
 	sales: [SaleProduct] @hasMany(indexName: "byProduct", fields: ["id"])
-	createdAt: AWSDateTime!
-	updatedAt: AWSDateTime
+	createdAt: String!
+	updatedAt: String
 }

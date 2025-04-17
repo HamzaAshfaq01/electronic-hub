@@ -11,7 +11,7 @@ type Expense
 	title: String!
 	description: String
 	amount: Float!
-	expenseType: ExpenseType!
-	createdAt: AWSDateTime!
-	updatedAt: AWSDateTime
+	expenseType: ExpenseType! @index(name: "byExpenseType", queryField: "expensesByExpenseType")
+	createdAt: String!
+	updatedAt: String
 }

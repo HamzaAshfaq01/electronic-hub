@@ -4,6 +4,7 @@ import { createUser } from '../../graphql/mutations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
+import { getCurrentFormattedDate } from '../../utils/dateUtils';
 
 const validationSchema = Yup.object({
 	name: Yup.string().required('Name is required'),
@@ -20,6 +21,7 @@ const AddCustomerModal = ({ isOpen, onClose, setCustomers }) => {
 
 	const handleSubmit = async (values, { setSubmitting, resetForm }) => {
 		try {
+			values.createdAt = getCurrentFormattedDate();
 			await client.graphql({
 				query: createUser,
 				variables: { input: values },

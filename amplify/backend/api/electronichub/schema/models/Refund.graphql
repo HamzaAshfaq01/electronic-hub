@@ -10,9 +10,9 @@ type Refund
 	id: ID! @primaryKey
 	saleID: ID! @index(name: "bySale")
 	refundAmount: Float!
-	refundDate: AWSDateTime!
+	refundDate: String!
 	reason: String
 	sale: Sale @belongsTo(fields: ["saleID"])
-	createdAt: AWSDateTime!
-	updatedAt: AWSDateTime
+	createdAt: String!
+	updatedAt: String
 }

@@ -9,11 +9,11 @@ type Invoice
 	) {
 	id: ID! @primaryKey
 	saleID: ID!
-	invoiceDate: AWSDateTime!
+	invoiceDate: String!
 	totalAmount: Float!
 	paidAmount: Float!
 	dueAmount: Float!
 	sale: Sale @belongsTo(fields: ["saleID"])
-	createdAt: AWSDateTime!
-	updatedAt: AWSDateTime
+	createdAt: String!
+	updatedAt: String
 }

@@ -3,6 +3,7 @@ import { createExpense } from '../../graphql/mutations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
+import { getCurrentFormattedDate } from '../../utils/dateUtils';
 
 const validationSchema = Yup.object({
 	title: Yup.string().required('Title is required'),
@@ -18,6 +19,7 @@ const AddExpenseModal = ({ isOpen, onClose, setExpenses }) => {
 
 	const handleSubmit = async (values, { setSubmitting, resetForm }) => {
 		try {
+			values.createdAt = getCurrentFormattedDate();
 			const response = await client.graphql({
 				query: createExpense,
 				variables: { input: values },

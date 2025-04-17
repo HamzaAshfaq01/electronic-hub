@@ -10,9 +10,9 @@ type Payment
 	id: ID! @primaryKey
 	saleID: ID!
 	amount: Float!
-	paymentDate: AWSDateTime!
+	paymentDate: String!
 	paymentMethod: String!
 	sale: Sale @belongsTo(fields: ["saleID"])
-	createdAt: AWSDateTime!
-	updatedAt: AWSDateTime
+	createdAt: String!
+	updatedAt: String
 }

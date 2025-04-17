@@ -11,10 +11,10 @@ type Installment
 	saleID: ID! @index(name: "bySale")
 	installmentNumber: Int!
 	amount: Float!
-	dueDate: AWSDateTime!
-	paidDate: AWSDateTime
+	dueDate: String!
+	paidDate: String
 	status: InstallmentStatus!
 	sale: Sale @belongsTo(fields: ["saleID"])
-	createdAt: AWSDateTime!
-	updatedAt: AWSDateTime
+	createdAt: String!
+	updatedAt: String
 }

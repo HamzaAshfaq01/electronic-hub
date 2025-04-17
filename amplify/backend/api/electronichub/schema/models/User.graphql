@@ -15,6 +15,6 @@ type User
 	address: String!
 	city: String!
 	sales: [Sale] @hasMany(indexName: "byCustomer", fields: ["id"])
-	createdAt: AWSDateTime!
-	updatedAt: AWSDateTime
+	createdAt: String!
+	updatedAt: String
 }

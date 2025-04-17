@@ -2,13 +2,16 @@
 import { useState, useEffect } from 'react';
 import { Eye, Pencil, Trash2 } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/ui/table';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import AddExpenseModal from '../../components/modal/AddExpenseModal';
 import EditExpenseModal from '../../components/modal/EditExpenseModal';
 import ConfirmDeleteModal from '../../components/modal/DeleteConfirmationModal';
 import { generateClient } from 'aws-amplify/api';
 import { toast } from 'react-toastify';
-import { listExpenses } from '../../graphql/queries';
+import { listExpenses, expensesByExpenseType } from '../../graphql/queries';
 import { deleteExpense } from '../../graphql/mutations';
+import { getCurrentFormattedDate } from '../../utils/dateUtils';
 
 const client = generateClient();
 
@@ -22,17 +25,37 @@ export default function Managewarehouses() {
 	const [loading, setLoading] = useState(false);
 	const [isDeleting, setIsDeleting] = useState(false);
 
-	const fetchExpenses = async (token = null) => {
+	const [selectedExpenseType, setSelectedExpenseType] = useState('');
+	const [startDate, setStartDate] = useState(new Date());
+	const [endDate, setEndDate] = useState(new Date());
+
+	const fetchExpenses = async (token = null, filter) => {
 		setLoading(true);
 		try {
-			const response = await client.graphql({
-				query: listExpenses,
-				variables: {
-					nextToken: token,
-					limit: 10,
-				},
-			});
-			const data = response.data.listExpenses;
+			console.log(filter, 'filter');
+			let data;
+			if (selectedExpenseType) {
+				const response = await client.graphql({
+					query: expensesByExpenseType,
+					variables: {
+						nextToken: token,
+						filter: filter,
+						limit: 10,
+						expenseType: selectedExpenseType,
+					},
+				});
+				data = response.data.expensesByExpenseType;
+			} else {
+				const response = await client.graphql({
+					query: listExpenses,
+					variables: {
+						nextToken: token,
+						filter: filter,
+						limit: 10,
+					},
+				});
+				data = response.data.listExpenses;
+			}
 			setExpenses(data.items);
 			setNextToken(data.nextToken || null);
 			if (token && !prevTokens.includes(token)) {
@@ -49,7 +72,7 @@ export default function Managewarehouses() {
 
 	useEffect(() => {
 		fetchExpenses();
-	}, []);
+	}, [selectedExpenseType]);
 
 	const handlePrev = () => {
 		if (prevTokens.length >= 1) {
@@ -99,6 +122,15 @@ export default function Managewarehouses() {
 		}
 	};
 
+	const applyFilters = () => {
+		const filters = {
+			createdAt: {
+				between: [getCurrentFormattedDate(startDate), getCurrentFormattedDate(endDate)],
+			},
+		};
+		fetchExpenses(null, filters);
+	};
+
 	return (
 		<div>
 			<div className='mb-6'>
@@ -122,6 +154,24 @@ export default function Managewarehouses() {
 									Add new expense
 								</button>
 							</div>
+						</div>
+						<div className='flex gap-4 mb-4'>
+							<select
+								value={selectedExpenseType}
+								onChange={(e) => setSelectedExpenseType(e.target.value)}
+								className='p-2 border rounded'>
+								<option value=''>All Types</option>
+								<option value='SALARY'>Salary</option>
+								<option value='ELECTRICITY'>Electricity</option>
+								<option value='RENT'>Rent</option>
+								<option value='MAINTENANCE'>Maintenance</option>
+								<option value='MISC'>Miscellaneous</option>
+							</select>
+							<DatePicker className='p-2 border rounded' selected={startDate} onChange={(date) => setStartDate(date)} />
+							<DatePicker className='p-2 border rounded' selected={endDate} onChange={(date) => setEndDate(date)} />
+							<button onClick={applyFilters} className='p-2 bg-blue-500 text-white rounded'>
+								Apply Filters
+							</button>
 						</div>
 						<div className='overflow-hidden rounded-2xl border border-b border-gray-200 bg-white  pb-1 dark:border-gray-800 dark:bg-white/[0.03]'>
 							<Table>

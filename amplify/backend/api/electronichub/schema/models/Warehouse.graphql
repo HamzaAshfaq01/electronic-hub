@@ -11,6 +11,6 @@ type Warehouse
 	name: String!
 	location: String!
 	products: [Product] @hasMany(indexName: "byWarehouse", fields: ["id"])
-	createdAt: AWSDateTime!
-	updatedAt: AWSDateTime
+	createdAt: String!
+	updatedAt: String
 }

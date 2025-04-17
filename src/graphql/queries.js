@@ -631,6 +631,36 @@ export const listWarehouses = /* GraphQL */ `
     }
   }
 `;
+export const expensesByExpenseType = /* GraphQL */ `
+  query ExpensesByExpenseType(
+    $expenseType: ExpenseType!
+    $sortDirection: ModelSortDirection
+    $filter: ModelExpenseFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    expensesByExpenseType(
+      expenseType: $expenseType
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        title
+        description
+        amount
+        expenseType
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
 export const installmentsBySaleID = /* GraphQL */ `
   query InstallmentsBySaleID(
     $saleID: ID!

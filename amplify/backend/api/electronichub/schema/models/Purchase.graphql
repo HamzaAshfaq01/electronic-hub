@@ -13,7 +13,7 @@ type Purchase
 	quantity: Int!
 	unitPrice: Float!
 	totalCost: Float!
-	purchaseDate: AWSDateTime!
-	createdAt: AWSDateTime!
-	updatedAt: AWSDateTime
+	purchaseDate: String!
+	createdAt: String!
+	updatedAt: String
 }

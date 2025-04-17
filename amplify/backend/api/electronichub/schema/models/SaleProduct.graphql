@@ -15,6 +15,6 @@ type SaleProduct
 	total: Float!
 	sale: Sale @belongsTo(fields: ["saleID"])
 	product: Product @belongsTo(fields: ["productID"])
-	createdAt: AWSDateTime!
-	updatedAt: AWSDateTime
+	createdAt: String!
+	updatedAt: String
 }
