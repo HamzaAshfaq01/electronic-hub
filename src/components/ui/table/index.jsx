@@ -1,22 +1,26 @@
 const Table = ({ children, className }) => {
-	return <table className={`min-w-full  ${className}`}>{children}</table>
-}
+	return <table className={`min-w-full  ${className}`}>{children}</table>;
+};
 
 const TableHeader = ({ children, className }) => {
-	return <thead className={className}>{children}</thead>
-}
+	return <thead className={className}>{children}</thead>;
+};
 
 const TableBody = ({ children, className }) => {
-	return <tbody className={className}>{children}</tbody>
-}
+	return <tbody className={className}>{children}</tbody>;
+};
 
 const TableRow = ({ children, className, onClick }) => {
-	return <tr className={className} onClick={onClick}>{children}</tr>
-}
+	return (
+		<tr className={className} onClick={onClick}>
+			{children}
+		</tr>
+	);
+};
 
 const TableCell = ({ children, isHeader = false, className }) => {
-	const CellTag = isHeader ? 'th' : 'td'
-	return <CellTag className={` ${className}`}>{children}</CellTag>
-}
+	const CellTag = isHeader ? 'th' : 'td';
+	return <CellTag className={` ${className}`}>{children}</CellTag>;
+};
 
-export { Table, TableHeader, TableBody, TableRow, TableCell }
+export { Table, TableHeader, TableBody, TableRow, TableCell };
