@@ -83,6 +83,7 @@ const AddExpenseModal = ({ isOpen, onClose, setExpenses }) => {
 								</label>
 								<Field
 									id='description'
+									as='textarea'
 									name='description'
 									type='text'
 									placeholder='Enter description'

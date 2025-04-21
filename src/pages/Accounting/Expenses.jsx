@@ -169,30 +169,30 @@ export default function Managewarehouses() {
 							</select>
 							<DatePicker className='p-2 border rounded' selected={startDate} onChange={(date) => setStartDate(date)} />
 							<DatePicker className='p-2 border rounded' selected={endDate} onChange={(date) => setEndDate(date)} />
-							<button onClick={applyFilters} className='p-2 bg-blue-500 text-white rounded'>
+							<button onClick={applyFilters} className='p-2 bg-[#0BA5EC] text-white rounded'>
 								Apply Filters
 							</button>
 						</div>
-						<div className='overflow-hidden rounded-2xl border border-b border-gray-200 bg-white  pb-1 dark:border-gray-800 dark:bg-white/[0.03]'>
-							<Table>
+						<div className='overflow-x-auto rounded-2xl border border-b border-gray-200 bg-white  pb-1 dark:border-gray-800 dark:bg-white/[0.03]'>
+							<Table className='table-fixed w-full'>
 								<TableHeader className='border-gray-100 dark:border-gray-800 border-b'>
 									<TableRow className='w-full mx-3 col-span-12'>
-										<TableCell className='font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+										<TableCell className='w-[350px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 											ID
 										</TableCell>
-										<TableCell className='font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+										<TableCell className='w-[250px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 											Title
 										</TableCell>
-										<TableCell className='font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+										<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 											Amount
 										</TableCell>
-										<TableCell className='font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+										<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 											Type
 										</TableCell>
-										<TableCell className='font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+										<TableCell className='w-[450px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 											Description
 										</TableCell>
-										<TableCell className='font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+										<TableCell className='w-[100px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 											Action
 										</TableCell>
 									</TableRow>

@@ -1,6 +1,6 @@
-'use client'
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { Link, useLocation } from 'react-router'
+'use client';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router';
 import {
 	BarChart3,
 	Calendar,
@@ -20,8 +20,77 @@ import {
 	UsersRound,
 	Landmark,
 	SquareUser,
-} from 'lucide-react'
-import { useSidebar } from '../context/SidebarContext'
+	FileText,
+	Undo2,
+} from 'lucide-react';
+import { useSidebar } from '../context/SidebarContext';
+
+// const navItems = [
+// 	{
+// 		icon: <LayoutDashboard className='w-5 h-5' />,
+// 		name: 'Dashboard',
+// 		path: '/',
+// 	},
+// 	{
+// 		name: 'Sales',
+// 		icon: <CirclePercent className='w-5 h-5' />,
+
+// 		subItems: [
+// 			{ name: 'Overview', path: '/overview', pro: false },
+// 			{ name: 'Manage Invoices', path: '/manage-invoices', pro: false },
+// 			{ name: 'Refunds', path: '/refunds', pro: false },
+// 			{ name: 'Sales Summary', path: '/sales-summary', pro: false },
+// 			{ name: 'Product Sale Quotation', path: '/product-sale-quotation', pro: false },
+// 		],
+// 	},
+// 	{
+// 		name: 'Purchases',
+// 		icon: <ShoppingCart className='w-5 h-5' />,
+// 		subItems: [
+// 			{ name: 'Purchase Orders', path: '/purchase-orders', pro: false },
+// 			{ name: 'Manage Suppliers', path: '/manage-suppliers', pro: false },
+// 		],
+// 	},
+// 	{
+// 		name: 'Warehouse',
+// 		icon: <ChartPie className='w-5 h-5' />,
+// 		subItems: [
+// 			{ name: 'All Ware house', path: '/all-warehouse', pro: false },
+// 			{ name: 'Ware house 1', path: '/warehouse', pro: false },
+// 		],
+// 	},
+// 	{
+// 		icon: <UsersRound className='w-5 h-5' />,
+// 		name: 'Clients',
+// 		subItems: [{ name: 'All Client', path: '/all-client', pro: false }],
+// 	},
+// 	{
+// 		icon: <Calendar className='w-5 h-5' />,
+// 		name: 'Installments',
+// 		subItems: [
+// 			{ name: 'All Installments', path: '/all-installments', pro: false },
+// 			// { name: "Installment Schedule", path: "/installment-schedule", pro: false },
+// 		],
+// 	},
+
+// 	{
+// 		icon: <Landmark className='w-5 h-5' />,
+// 		name: 'Accounting',
+// 		subItems: [
+// 			{ name: 'Expenses', path: '/expenses', pro: false },
+// 			{ name: 'Income', path: '/income', pro: false },
+// 			{ name: 'Reports', path: '/reports', pro: false },
+// 		],
+// 	},
+// 	{
+// 		icon: <SquareUser className='w-5 h-5' />,
+// 		name: 'Employee',
+// 		subItems: [
+// 			{ name: 'Employee List', path: '/employee-list', pro: false },
+// 			{ name: 'Add Employee', path: '/add-employee', pro: false },
+// 		],
+// 	},
+// ]
 
 const navItems = [
 	{
@@ -30,65 +99,46 @@ const navItems = [
 		path: '/',
 	},
 	{
-		name: 'Sales',
-		icon: <CirclePercent className='w-5 h-5' />,
-
-		subItems: [
-			{ name: 'Overview', path: '/overview', pro: false },
-			{ name: 'Manage Invoices', path: '/manage-invoices', pro: false },
-			{ name: 'Refunds', path: '/refunds', pro: false },
-			{ name: 'Sales Summary', path: '/sales-summary', pro: false },
-			{ name: 'Product Sale Quotation', path: '/product-sale-quotation', pro: false },
-		],
+		icon: <BarChart3 className='w-5 h-5' />,
+		name: 'Sales Management',
+		path: '/sales-summary',
 	},
 	{
-		name: 'Purchases',
-		icon: <ShoppingCart className='w-5 h-5' />,
-		subItems: [
-			{ name: 'Purchase Orders', path: '/purchase-orders', pro: false },
-			{ name: 'Manage Suppliers', path: '/manage-suppliers', pro: false },
-		],
+		icon: <FileText className='w-5 h-5' />,
+		name: 'Invoices Management',
+		path: '/manage-invoices',
 	},
 	{
-		name: 'Warehouse',
-		icon: <ChartPie className='w-5 h-5' />,
-		subItems: [
-			{ name: 'All Ware house', path: '/all-warehouse', pro: false },
-			{ name: 'Ware house 1', path: '/warehouse', pro: false },
-		],
+		icon: <Package className='w-5 h-5' />,
+		name: 'Product Sale Quotation',
+		path: '/product-sale-quotation',
+	},
+	{
+		icon: <Undo2 className='w-5 h-5' />,
+		name: 'Refunds Management',
+		path: '/refunds',
+	},
+	{
+		icon: <Package className='w-5 h-5' />,
+		name: 'Warehouse Management',
+		path: '/all-warehouse',
 	},
 	{
 		icon: <UsersRound className='w-5 h-5' />,
-		name: 'Clients',
-		subItems: [{ name: 'All Client', path: '/all-client', pro: false }],
+		name: 'Customer Management',
+		path: '/all-client',
 	},
 	{
 		icon: <Calendar className='w-5 h-5' />,
-		name: 'Installments',
-		subItems: [
-			{ name: 'All Installments', path: '/all-installments', pro: false },
-			// { name: "Installment Schedule", path: "/installment-schedule", pro: false },
-		],
-	},
-
-	{
-		icon: <Landmark className='w-5 h-5' />,
-		name: 'Accounting',
-		subItems: [
-			{ name: 'Expenses', path: '/expenses', pro: false },
-			{ name: 'Income', path: '/income', pro: false },
-			{ name: 'Reports', path: '/reports', pro: false },
-		],
+		name: 'Installment Management',
+		path: '/all-installments',
 	},
 	{
-		icon: <SquareUser className='w-5 h-5' />,
-		name: 'Employee',
-		subItems: [
-			{ name: 'Employee List', path: '/employee-list', pro: false },
-			{ name: 'Add Employee', path: '/add-employee', pro: false },
-		],
+		icon: <CreditCard className='w-5 h-5' />,
+		name: 'Expense Management',
+		path: '/expenses',
 	},
-]
+];
 
 const othersItems = [
 	{
@@ -97,22 +147,22 @@ const othersItems = [
 		path: '/profile',
 		isActive: false,
 	},
-]
+];
 
 const AppSidebar = () => {
-	const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar()
-	const location = useLocation()
+	const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
+	const location = useLocation();
 
-	const [openSubmenu, setOpenSubmenu] = useState(null)
-	const [subMenuHeight, setSubMenuHeight] = useState({})
-	const subMenuRefs = useRef({})
+	const [openSubmenu, setOpenSubmenu] = useState(null);
+	const [subMenuHeight, setSubMenuHeight] = useState({});
+	const subMenuRefs = useRef({});
 
-	const isActive = useCallback((path) => location.pathname === path, [location.pathname])
+	const isActive = useCallback((path) => location.pathname === path, [location.pathname]);
 
 	useEffect(() => {
-		let submenuMatched = false
-		;[('main', 'others')].forEach((menuType) => {
-			const items = menuType === 'main' ? navItems : othersItems
+		let submenuMatched = false;
+		[('main', 'others')].forEach((menuType) => {
+			const items = menuType === 'main' ? navItems : othersItems;
 			items.forEach((nav, index) => {
 				if (nav.subItems) {
 					nav.subItems.forEach((subItem) => {
@@ -120,56 +170,56 @@ const AppSidebar = () => {
 							setOpenSubmenu({
 								type: menuType,
 								index,
-							})
-							submenuMatched = true
+							});
+							submenuMatched = true;
 						}
-					})
+					});
 				}
-			})
-		})
+			});
+		});
 
 		if (!submenuMatched) {
-			setOpenSubmenu(null)
+			setOpenSubmenu(null);
 		}
-	}, [location, isActive])
+	}, [location, isActive]);
 
-	const inputRef = useRef(null)
+	const inputRef = useRef(null);
 
 	useEffect(() => {
 		const handleKeyDown = (event) => {
 			if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
-				event.preventDefault()
-				inputRef.current?.focus()
+				event.preventDefault();
+				inputRef.current?.focus();
 			}
-		}
+		};
 
-		document.addEventListener('keydown', handleKeyDown)
+		document.addEventListener('keydown', handleKeyDown);
 
 		return () => {
-			document.removeEventListener('keydown', handleKeyDown)
-		}
-	}, [])
+			document.removeEventListener('keydown', handleKeyDown);
+		};
+	}, []);
 
 	useEffect(() => {
 		if (openSubmenu !== null) {
-			const key = `${openSubmenu.type}-${openSubmenu.index}`
+			const key = `${openSubmenu.type}-${openSubmenu.index}`;
 			if (subMenuRefs.current[key]) {
 				setSubMenuHeight((prevHeights) => ({
 					...prevHeights,
 					[key]: subMenuRefs.current[key]?.scrollHeight || 0,
-				}))
+				}));
 			}
 		}
-	}, [openSubmenu])
+	}, [openSubmenu]);
 
 	const handleSubmenuToggle = (index, menuType) => {
 		setOpenSubmenu((prevOpenSubmenu) => {
 			if (prevOpenSubmenu && prevOpenSubmenu.type === menuType && prevOpenSubmenu.index === index) {
-				return null
+				return null;
 			}
-			return { type: menuType, index }
-		})
-	}
+			return { type: menuType, index };
+		});
+	};
 
 	const renderMenuItems = (items, menuType) => (
 		<div className='space-y-1 '>
@@ -208,7 +258,7 @@ const AppSidebar = () => {
 						nav.path && (
 							<Link
 								to={nav.path}
-								className={`flex items-center px-3 py-2 text-sm rounded-md group transition-colors ${
+								className={`flex items-center px-3 py-2 text-[16px] font-[600] rounded-md group transition-colors ${
 									nav.isActive || isActive(nav.path)
 										? 'text-gray-900 bg-gray-100 dark:text-white dark:bg-gray-800'
 										: 'text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-[#667085] dark:hover:text-white dark:hover:bg-gray-800'
@@ -226,7 +276,7 @@ const AppSidebar = () => {
 					{nav.subItems && (
 						<div
 							ref={(el) => {
-								subMenuRefs.current[`${menuType}-${index}`] = el
+								subMenuRefs.current[`${menuType}-${index}`] = el;
 							}}
 							className='overflow-hidden transition-all duration-300'
 							style={{
@@ -266,7 +316,7 @@ const AppSidebar = () => {
 				</div>
 			))}
 		</div>
-	)
+	);
 
 	return (
 		<aside
@@ -328,7 +378,7 @@ const AppSidebar = () => {
 				</div>
 			</div>
 		</aside>
-	)
-}
+	);
+};
 
-export default AppSidebar
+export default AppSidebar;
