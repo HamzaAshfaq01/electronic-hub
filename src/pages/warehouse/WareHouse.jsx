@@ -174,9 +174,9 @@ export default function WareHouse() {
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.description}</TableCell>
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>
 											<div className='flex items-center gap-3'>
-												<Link to={`/warehouse/${product.id}`}>
+												{/* <Link to={`/warehouse/${product.id}`}>
 													<Eye className='w-6 h-6 text-slate-600' />
-												</Link>
+												</Link> */}
 												<button onClick={() => setProductToEdit(product)}>
 													<Pencil className='w-6 h-6 text-slate-600' />
 												</button>
