@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { generateClient } from 'aws-amplify/api';
-import { createProduct } from '../../graphql/mutations';
+import { updateProduct } from '../../graphql/mutations';
 import { listWarehouses } from '../../graphql/queries';
 import { toast } from 'react-toastify';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -10,6 +10,7 @@ import Input from '../form/input/InputField';
 import Select from '../form/Select';
 
 const client = generateClient();
+
 const validationSchema = Yup.object({
 	name: Yup.string().required('Product name is required'),
 	description: Yup.string().required('Description is required'),
@@ -20,8 +21,8 @@ const validationSchema = Yup.object({
 	warehouse: Yup.string().required('Warehouse is required'),
 });
 
-const AddProductModal = ({ isOpen, onClose, warehouseId, setProducts }) => {
-	if (!isOpen) return null;
+const EditProductModal = ({ onClose, productToEdit, setProducts }) => {
+	if (!productToEdit) return null;
 
 	const [warehouses, setWarehouses] = useState([]);
 	const [loading, setLoading] = useState(false);
@@ -44,14 +45,14 @@ const AddProductModal = ({ isOpen, onClose, warehouseId, setProducts }) => {
 		fetchWarehouses();
 	}, []);
 
-	const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+	const handleSubmit = async (values, { setSubmitting }) => {
 		setLoading(true);
 		try {
-			console.log(values, 'values');
-			const response = await generateClient().graphql({
-				query: createProduct,
+			const response = await client.graphql({
+				query: updateProduct,
 				variables: {
 					input: {
+						id: productToEdit.id,
 						name: values.name,
 						description: values.description,
 						price: parseFloat(values.price),
@@ -62,12 +63,13 @@ const AddProductModal = ({ isOpen, onClose, warehouseId, setProducts }) => {
 					},
 				},
 			});
-			toast.success('Product added successfully!');
-			setProducts((prevProducts) => [response.data.createProduct, ...prevProducts]);
-			resetForm();
+			toast.success('Product updated successfully!');
+			setProducts((prevProducts) =>
+				prevProducts.map((product) => (product.id === productToEdit.id ? response.data.updateProduct : product))
+			);
 			onClose();
 		} catch (error) {
-			toast.error('Failed to add product. Please try again later.');
+			toast.error('Failed to update product. Please try again later.');
 		} finally {
 			setLoading(false);
 			setSubmitting(false);
@@ -78,20 +80,20 @@ const AddProductModal = ({ isOpen, onClose, warehouseId, setProducts }) => {
 		<div className='fixed inset-0 bg-[#10182885] flex justify-end items-center h-full z-50'>
 			<div className='bg-white px-6 pt-[16px] pb-[40px] w-full max-w-[588px] shadow-lg h-full relative'>
 				<div className='flex justify-between items-center pb-[16px] border-b border-gray-200'>
-					<h2 className='text-[20px] font-[500] text-[#1B1F29]'>Add Product</h2>
+					<h2 className='text-[20px] font-[500] text-[#1B1F29]'>Edit Product</h2>
 					<button onClick={onClose} className='text-gray-500 text-[30px]'>
 						&times;
 					</button>
 				</div>
 				<Formik
 					initialValues={{
-						name: '',
-						description: '',
-						price: '',
-						stock: '',
-						brand: '',
-						model: '',
-						warehouse: warehouseId || '',
+						name: productToEdit.name || '',
+						description: productToEdit.description || '',
+						price: productToEdit.price || '',
+						stock: productToEdit.stock || '',
+						brand: productToEdit.brand || '',
+						model: productToEdit.model || '',
+						warehouse: productToEdit.warehouseID,
 					}}
 					enableReinitialize
 					validationSchema={validationSchema}
@@ -174,9 +176,7 @@ const AddProductModal = ({ isOpen, onClose, warehouseId, setProducts }) => {
 									options={warehouses}
 									value={values.warehouse}
 									defaultValue={values.warehouse}
-									onChange={(option) => {
-										setFieldValue('warehouse', option);
-									}}
+									onChange={(option) => setFieldValue('warehouse', option)}
 									placeholder='Select a warehouse'
 									className='w-full border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
 								/>
@@ -199,4 +199,4 @@ const AddProductModal = ({ isOpen, onClose, warehouseId, setProducts }) => {
 	);
 };
 
-export default AddProductModal;
+export default EditProductModal;

@@ -43,7 +43,8 @@ export default function App() {
 						<Route path='/manage-suppliers/:supplier' element={<SupplierProducts />} />
 						{/* Purchase Page */}
 						<Route path='/all-warehouse' element={<AllWareHouse />} />
-						<Route path='/warehouse' element={<WareHouse />} />
+						<Route path='/warehouse' element={<AllWareHouse />} />
+						<Route path='/warehouse/:warehouseId' element={<WareHouse />} />
 						{/* Installments Page */}
 						<Route path='/all-installments' element={<AllInstallments />} />
 						{/* Accounting Page */}

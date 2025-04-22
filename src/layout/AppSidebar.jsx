@@ -121,7 +121,7 @@ const navItems = [
 	{
 		icon: <Package className='w-5 h-5' />,
 		name: 'Warehouse Management',
-		path: '/all-warehouse',
+		path: '/warehouse',
 	},
 	{
 		icon: <UsersRound className='w-5 h-5' />,
