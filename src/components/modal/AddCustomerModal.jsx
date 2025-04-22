@@ -30,7 +30,7 @@ const AddCustomerModal = ({ isOpen, onClose, setCustomers }) => {
 			resetForm();
 			onClose();
 			setCustomers((prevCustomers) => {
-				return [values, ...prevCustomers];
+				return [...prevCustomers, values];
 			});
 		} catch (error) {
 			if (error?.errors?.length > 0) {

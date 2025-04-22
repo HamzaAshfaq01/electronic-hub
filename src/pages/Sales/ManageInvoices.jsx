@@ -1,7 +1,7 @@
-'use client'
-import { useState } from 'react'
-import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/ui/table'
-import CreateInvoiceModal from '../../components/modal/CreateInvoice'
+'use client';
+import { useState } from 'react';
+import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/ui/table';
+import CreateInvoiceModal from '../../components/modal/CreateInvoice';
 
 const allInvoices = [
 	{
@@ -33,7 +33,7 @@ const allInvoices = [
 		price: '$250.00',
 		payment_status: 'Mix Cash/Credit',
 	},
-]
+];
 
 const walkinInvoices = [
 	{
@@ -54,7 +54,7 @@ const walkinInvoices = [
 		price: '$250.00',
 		payment_status: 'Mix Cash/Credit',
 	},
-]
+];
 
 const registeredInvoices = [
 	{
@@ -68,22 +68,22 @@ const registeredInvoices = [
 
 		due_date: '2023-09-10',
 	},
-]
+];
 
 export default function ManageInvoices() {
-	const [activeFilter, setActiveFilter] = useState('all')
-	const [invoiceModalOpen, setInvoiceModalOpen] = useState(false)
+	const [activeFilter, setActiveFilter] = useState('all');
+	const [invoiceModalOpen, setInvoiceModalOpen] = useState(false);
 
 	const getFilteredData = () => {
 		switch (activeFilter) {
 			case 'walkin':
-				return walkinInvoices
+				return walkinInvoices;
 			case 'registered':
-				return registeredInvoices
+				return registeredInvoices;
 			default:
-				return allInvoices
+				return allInvoices;
 		}
-	}
+	};
 
 	return (
 		<div>
@@ -289,5 +289,5 @@ export default function ManageInvoices() {
 			</div>
 			<CreateInvoiceModal isOpen={invoiceModalOpen} onClose={() => setInvoiceModalOpen(false)} />
 		</div>
-	)
+	);
 }

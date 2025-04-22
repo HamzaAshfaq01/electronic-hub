@@ -63,7 +63,7 @@ const AddProductModal = ({ isOpen, onClose, warehouseId, setProducts }) => {
 				},
 			});
 			toast.success('Product added successfully!');
-			setProducts((prevProducts) => [response.data.createProduct, ...prevProducts]);
+			setProducts((prevProducts) => [...prevProducts, response.data.createProduct]);
 			resetForm();
 			onClose();
 		} catch (error) {

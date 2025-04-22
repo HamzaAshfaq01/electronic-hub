@@ -44,7 +44,7 @@ export default function WareHouse() {
 		try {
 			const response = await client.graphql({
 				query: productsByWarehouseID,
-				variables: { warehouseID: warehouseId, nextToken: token },
+				variables: { warehouseID: warehouseId, nextToken: token, limit: 10 },
 			});
 			setProducts(response.data.productsByWarehouseID.items || []);
 			setNextToken(response.data.productsByWarehouseID.nextToken || null);
@@ -171,7 +171,9 @@ export default function WareHouse() {
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.stock}</TableCell>
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.brand}</TableCell>
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.model}</TableCell>
-										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.description}</TableCell>
+										<TableCell className='py-[26px] p-3 text-[#475467] font-normal text-wrap'>
+											{product.description}
+										</TableCell>
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>
 											<div className='flex items-center gap-3'>
 												{/* <Link to={`/warehouse/${product.id}`}>

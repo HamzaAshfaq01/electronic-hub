@@ -27,7 +27,7 @@ const AddExpenseModal = ({ isOpen, onClose, setExpenses }) => {
 			toast.success('Expense added successfully!');
 			resetForm();
 			onClose();
-			setExpenses((prevExpenses) => [response.data.createExpense, ...prevExpenses]);
+			setExpenses((prevExpenses) => [...prevExpenses, response.data.createExpense]);
 		} catch (error) {
 			if (error?.errors?.length > 0) {
 				const errorMessage = error.errors[0]?.message || 'An unknown error occurred.';
