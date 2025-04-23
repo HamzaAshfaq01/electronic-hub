@@ -14,36 +14,16 @@ const client = generateClient();
 const validationSchema = Yup.object({
 	name: Yup.string().required('Product name is required'),
 	description: Yup.string().required('Description is required'),
-	price: Yup.number().required('Price is required').min(0.01, 'Price must be greater than 0'),
-	stock: Yup.number().required('Stock is required').min(1, 'Stock must be at least 1'),
+	unitPrice: Yup.number().required('Price is required').min(0.01, 'Price must be greater than 0'),
+	sku: Yup.number().required('SKU is required'),
 	brand: Yup.string().required('Brand is required'),
 	model: Yup.string().required('Model is required'),
-	warehouse: Yup.string().required('Warehouse is required'),
 });
 
 const EditProductModal = ({ onClose, productToEdit, setProducts }) => {
 	if (!productToEdit) return null;
 
-	const [warehouses, setWarehouses] = useState([]);
 	const [loading, setLoading] = useState(false);
-
-	// Fetch warehouses
-	useEffect(() => {
-		const fetchWarehouses = async () => {
-			try {
-				const response = await client.graphql({ query: listWarehouses });
-				setWarehouses(
-					response.data.listWarehouses.items.map((warehouse) => ({
-						label: warehouse.name,
-						value: warehouse.id,
-					}))
-				);
-			} catch (error) {
-				toast.error('Failed to fetch warehouses. Please try again later.');
-			}
-		};
-		fetchWarehouses();
-	}, []);
 
 	const handleSubmit = async (values, { setSubmitting }) => {
 		setLoading(true);
@@ -55,11 +35,10 @@ const EditProductModal = ({ onClose, productToEdit, setProducts }) => {
 						id: productToEdit.id,
 						name: values.name,
 						description: values.description,
-						price: parseFloat(values.price),
-						stock: parseInt(values.stock, 10),
+						unitPrice: parseFloat(values.unitPrice),
+						sku: values.sku,
 						brand: values.brand,
 						model: values.model,
-						warehouseID: values.warehouse,
 					},
 				},
 			});
@@ -89,11 +68,10 @@ const EditProductModal = ({ onClose, productToEdit, setProducts }) => {
 					initialValues={{
 						name: productToEdit.name || '',
 						description: productToEdit.description || '',
-						price: productToEdit.price || '',
-						stock: productToEdit.stock || '',
+						unitPrice: productToEdit.unitPrice || '',
+						sku: productToEdit.sku || '',
 						brand: productToEdit.brand || '',
 						model: productToEdit.model || '',
-						warehouse: productToEdit.warehouseID,
 					}}
 					enableReinitialize
 					validationSchema={validationSchema}
@@ -127,22 +105,22 @@ const EditProductModal = ({ onClose, productToEdit, setProducts }) => {
 								<div>
 									<Label className='block text-[14px] font-medium text-[#4F5B67]'>Price</Label>
 									<Field
-										name='price'
+										name='unitPrice'
 										type='number'
 										placeholder='Enter price'
 										className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
 									/>
-									<ErrorMessage name='price' component='div' className='text-red-500 text-sm mt-1' />
+									<ErrorMessage name='unitPrice' component='div' className='text-red-500 text-sm mt-1' />
 								</div>
 								<div>
-									<Label className='block text-[14px] font-medium text-[#4F5B67]'>Stock</Label>
+									<Label className='block text-[14px] font-medium text-[#4F5B67]'>sku</Label>
 									<Field
-										name='stock'
+										name='sku'
 										type='number'
-										placeholder='Enter stock quantity'
+										placeholder='Enter sku quantity'
 										className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
 									/>
-									<ErrorMessage name='stock' component='div' className='text-red-500 text-sm mt-1' />
+									<ErrorMessage name='sku' component='div' className='text-red-500 text-sm mt-1' />
 								</div>
 							</div>
 
@@ -167,20 +145,6 @@ const EditProductModal = ({ onClose, productToEdit, setProducts }) => {
 									/>
 									<ErrorMessage name='model' component='div' className='text-red-500 text-sm mt-1' />
 								</div>
-							</div>
-
-							<h3 className='text-[18px] font-[800] leading-[18px]'>Warehouse</h3>
-							<div>
-								<Label className='block text-[14px] font-medium text-[#4F5B67]'>Warehouse</Label>
-								<Select
-									options={warehouses}
-									value={values.warehouse}
-									defaultValue={values.warehouse}
-									onChange={(option) => setFieldValue('warehouse', option)}
-									placeholder='Select a warehouse'
-									className='w-full border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
-								/>
-								<ErrorMessage name='warehouse' component='div' className='text-red-500 text-sm mt-1' />
 							</div>
 
 							<div className='flex justify-end shadow absolute bottom-0 w-full right-0 p-5 bg-white gap-4'>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { generateClient } from 'aws-amplify/api';
-import { createUser } from '../../graphql/mutations';
+import { createCustomer } from '../../graphql/mutations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
@@ -8,8 +8,7 @@ import { getCurrentFormattedDate } from '../../utils/dateUtils';
 
 const validationSchema = Yup.object({
 	name: Yup.string().required('Name is required'),
-	email: Yup.string().email('Invalid email').required('Email is required'),
-	phoneNo: Yup.string().required('Mobile Number is required'),
+	phone: Yup.string().required('Mobile Number is required'),
 	cnic: Yup.string().required('CNIC Number is required'),
 	address: Yup.string().required('Address is required'),
 	city: Yup.string().required('City is required'),
@@ -23,7 +22,7 @@ const AddCustomerModal = ({ isOpen, onClose, setCustomers }) => {
 		try {
 			values.createdAt = getCurrentFormattedDate();
 			await client.graphql({
-				query: createUser,
+				query: createCustomer,
 				variables: { input: values },
 			});
 			toast.success('Customer added successfully!');
@@ -60,7 +59,7 @@ const AddCustomerModal = ({ isOpen, onClose, setCustomers }) => {
 					initialValues={{
 						name: '',
 						email: '',
-						phoneNo: '',
+						phone: '',
 						cnic: '',
 						address: '',
 						city: '',
@@ -69,7 +68,7 @@ const AddCustomerModal = ({ isOpen, onClose, setCustomers }) => {
 					onSubmit={handleSubmit}>
 					{({ isSubmitting }) => (
 						<Form className='flex flex-col gap-[24px] mt-[40px]'>
-							{['name', 'email', 'phoneNo', 'cnic', 'address', 'city'].map((field, index) => (
+							{['name', 'email', 'phone', 'cnic', 'address', 'city'].map((field, index) => (
 								<div key={index}>
 									<label className='block text-[14px] font-medium text-[#4F5B67]' htmlFor={field}>
 										{field.charAt(0).toUpperCase() + field.slice(1).replace(/([A-Z])/g, ' $1')}

@@ -7,7 +7,7 @@
             "UserPoolId"
           ],
           "category": "auth",
-          "resourceName": "electronichube904f985"
+          "resourceName": "electronichubbd2eb653"
         }
       ],
       "output": {
@@ -20,7 +20,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authelectronichube904f985"
+              "userPoolId": "authelectronichubbd2eb653"
             }
           }
         }
@@ -30,7 +30,7 @@
     }
   },
   "auth": {
-    "electronichube904f985": {
+    "electronichubbd2eb653": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {

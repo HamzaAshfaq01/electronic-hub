@@ -1,7 +1,0 @@
-enum ExpenseType {
-	SALARY
-	ELECTRICITY
-	RENT
-	MAINTENANCE
-	MISC
-}

@@ -6,7 +6,7 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "auth": {
-    "electronichube904f985": {
+    "electronichubbd2eb653": {
       "AppClientID": "string",
       "AppClientIDWeb": "string",
       "IdentityPoolId": "string",

@@ -1,0 +1,224 @@
+type Customer
+	@model
+	@auth(
+		rules: [
+			{ allow: groups, operations: [create, read, update, delete], groups: ["admin"], provider: userPools }
+			{ allow: owner, operations: [create, read, update, delete], ownerField: "id", provider: userPools }
+			{ allow: private, operations: [read], provider: userPools }
+		]
+	) {
+	id: ID! @primaryKey
+	name: String!
+	phone: String! @index(name: "byPhone", queryField: "customerByPhone")
+	email: String
+	cnic: String!
+	address: String
+	city: String
+	invoices: [Invoice] @hasMany(indexName: "byCustomer", fields: ["id"])
+	quotations: [Quotation] @hasMany(indexName: "byCustomer", fields: ["id"])
+	createdAt: String
+}
+
+type Warehouse
+	@model
+	@auth(
+		rules: [
+			{ allow: groups, operations: [create, read, update, delete], groups: ["admin"], provider: userPools }
+			{ allow: owner, operations: [create, read, update, delete], ownerField: "id", provider: userPools }
+			{ allow: private, operations: [read], provider: userPools }
+		]
+	) {
+	id: ID! @primaryKey
+	name: String!
+	location: String
+	contactNumber: String
+	stocks: [Stock] @hasMany(indexName: "byWarehouse", fields: ["id"])
+	invoices: [Invoice] @hasMany(indexName: "byWarehouse", fields: ["id"])
+	createdAt: String
+}
+
+type Product
+	@model
+	@auth(
+		rules: [
+			{ allow: groups, operations: [create, read, update, delete], groups: ["admin"], provider: userPools }
+			{ allow: owner, operations: [create, read, update, delete], ownerField: "id", provider: userPools }
+			{ allow: private, operations: [read], provider: userPools }
+		]
+	) {
+	id: ID! @primaryKey
+	name: String!
+	sku: String! @index(name: "bySKU", queryField: "productBySKU")
+	brand: String
+	unitPrice: Float!
+	model: String
+	description: String
+	stocks: [Stock] @hasMany(indexName: "byProduct", fields: ["id"])
+	invoiceItems: [InvoiceItem] @hasMany(indexName: "byProduct", fields: ["id"])
+	quotationItems: [QuotationItem] @hasMany(indexName: "byProduct", fields: ["id"])
+	createdAt: AWSDateTime
+	updatedAt: AWSDateTime
+}
+
+type Stock
+	@model
+	@auth(
+		rules: [
+			{ allow: groups, operations: [create, read, update, delete], groups: ["admin"], provider: userPools }
+			{ allow: owner, operations: [create, read, update, delete], ownerField: "id", provider: userPools }
+			{ allow: private, operations: [read], provider: userPools }
+		]
+	) {
+	id: ID! @primaryKey
+	warehouseID: ID! @index(name: "byWarehouse", queryField: "stocksByWarehouse")
+	warehouse: Warehouse @belongsTo(fields: ["warehouseID"])
+	productID: ID! @index(name: "byProduct", queryField: "stocksByProduct")
+	product: Product @belongsTo(fields: ["productID"])
+	quantity: Int!
+	createdAt: String
+}
+
+type Invoice
+	@model
+	@auth(
+		rules: [
+			{ allow: groups, operations: [create, read, update, delete], groups: ["admin"], provider: userPools }
+			{ allow: owner, operations: [create, read, update, delete], ownerField: "id", provider: userPools }
+			{ allow: private, operations: [read], provider: userPools }
+		]
+	) {
+	id: ID! @primaryKey
+	customerID: ID! @index(name: "byCustomer", queryField: "invoicesByCustomer")
+	customer: Customer @belongsTo(fields: ["customerID"])
+	warehouseID: ID! @index(name: "byWarehouse", queryField: "invoicesByWarehouse")
+	warehouse: Warehouse @belongsTo(fields: ["warehouseID"])
+	totalAmount: Float!
+	paidAmount: Float!
+	paymentMethod: PaymentMethod
+	dueDate: AWSDate
+	status: InvoiceStatus
+	items: [InvoiceItem] @hasMany(indexName: "byInvoice", fields: ["id"])
+	installments: [Installment] @hasMany(indexName: "byInvoice", fields: ["id"])
+	createdAt: String
+}
+
+type InvoiceItem
+	@model
+	@auth(
+		rules: [
+			{ allow: groups, operations: [create, read, update, delete], groups: ["admin"], provider: userPools }
+			{ allow: owner, operations: [create, read, update, delete], ownerField: "id", provider: userPools }
+			{ allow: private, operations: [read], provider: userPools }
+		]
+	) {
+	id: ID! @primaryKey
+	invoiceID: ID! @index(name: "byInvoice", queryField: "itemsByInvoice")
+	invoice: Invoice @belongsTo(fields: ["invoiceID"])
+	productID: ID! @index(name: "byProduct", queryField: "invoiceItemsByProduct")
+	product: Product @belongsTo(fields: ["productID"])
+	quantity: Int!
+	pricePerUnit: Float!
+	totalPrice: Float!
+	createdAt: String
+}
+
+type Installment
+	@model
+	@auth(
+		rules: [
+			{ allow: groups, operations: [create, read, update, delete], groups: ["admin"], provider: userPools }
+			{ allow: owner, operations: [create, read, update, delete], ownerField: "id", provider: userPools }
+			{ allow: private, operations: [read], provider: userPools }
+		]
+	) {
+	id: ID! @primaryKey
+	invoiceID: ID! @index(name: "byInvoice", queryField: "installmentsByInvoice")
+	invoice: Invoice @belongsTo(fields: ["invoiceID"])
+	dueDate: AWSDate!
+	paidDate: AWSDate
+	amount: Float!
+	status: InstallmentStatus!
+	createdAt: String
+}
+
+type Quotation
+	@model
+	@auth(
+		rules: [
+			{ allow: groups, operations: [create, read, update, delete], groups: ["admin"], provider: userPools }
+			{ allow: owner, operations: [create, read, update, delete], ownerField: "id", provider: userPools }
+			{ allow: private, operations: [read], provider: userPools }
+		]
+	) {
+	id: ID! @primaryKey
+	customerID: ID! @index(name: "byCustomer", queryField: "quotationsByCustomer")
+	customer: Customer @belongsTo(fields: ["customerID"])
+	totalAmount: Float!
+	items: [QuotationItem] @hasMany(indexName: "byQuotation", fields: ["id"])
+	createdAt: String
+}
+
+type QuotationItem
+	@model
+	@auth(
+		rules: [
+			{ allow: groups, operations: [create, read, update, delete], groups: ["admin"], provider: userPools }
+			{ allow: owner, operations: [create, read, update, delete], ownerField: "id", provider: userPools }
+			{ allow: private, operations: [read], provider: userPools }
+		]
+	) {
+	id: ID! @primaryKey
+	quotationID: ID! @index(name: "byQuotation", queryField: "itemsByQuotation")
+	quotation: Quotation @belongsTo(fields: ["quotationID"])
+	productID: ID! @index(name: "byProduct", queryField: "quotationItemsByProduct")
+	product: Product @belongsTo(fields: ["productID"])
+	quantity: Int!
+	pricePerUnit: Float!
+	totalPrice: Float!
+	createdAt: String
+}
+
+type Expense
+	@model
+	@auth(
+		rules: [
+			{ allow: groups, operations: [create, read, update, delete], groups: ["admin"], provider: userPools }
+			{ allow: owner, operations: [create, read, update, delete], ownerField: "id", provider: userPools }
+			{ allow: private, operations: [read], provider: userPools }
+		]
+	) {
+	id: ID! @primaryKey
+	title: String!
+	description: String
+	amount: Float!
+	expenseType: ExpenseType! @index(name: "byExpenseType", queryField: "expensesByExpenseType")
+	createdAt: String!
+	updatedAt: String
+}
+
+enum InstallmentStatus {
+	PENDING
+	PAID
+	OVERDUE
+}
+
+enum InvoiceStatus {
+	PAID
+	PARTIALLY_PAID
+	UNPAID
+}
+
+enum PaymentMethod {
+	MCB
+	CREDIT
+	CASH
+	INSTALLMENT
+}
+
+enum ExpenseType {
+	SALARY
+	ELECTRICITY
+	RENT
+	MAINTENANCE
+	MISC
+}

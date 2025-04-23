@@ -1,4 +1,0 @@
-enum TrueFalse {
-  TRUE
-  FALSE
-}

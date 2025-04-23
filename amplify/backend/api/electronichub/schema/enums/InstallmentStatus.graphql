@@ -1,4 +1,0 @@
-enum InstallmentStatus {
-	PAID
-	PENDING
-}

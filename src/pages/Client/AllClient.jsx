@@ -7,8 +7,8 @@ import EditCustomerModal from '../../components/modal/EditCustomerModal';
 import ConfirmDeleteModal from '../../components/modal/DeleteConfirmationModal';
 import { generateClient } from 'aws-amplify/api';
 import { toast } from 'react-toastify';
-import { listUsers } from '../../graphql/queries';
-import { deleteUser } from '../../graphql/mutations';
+import { listCustomers } from '../../graphql/queries';
+import { deleteCustomer } from '../../graphql/mutations';
 
 const client = generateClient();
 
@@ -26,13 +26,13 @@ export default function Managewarehouses() {
 		setLoading(true);
 		try {
 			const response = await client.graphql({
-				query: listUsers,
+				query: listCustomers,
 				variables: {
 					nextToken: token,
 					limit: 10,
 				},
 			});
-			const data = response.data.listUsers;
+			const data = response.data.listCustomers;
 			setCustomers(data.items);
 			setNextToken(data.nextToken || null);
 			if (token && !prevTokens.includes(token)) {
@@ -73,7 +73,7 @@ export default function Managewarehouses() {
 		setIsDeleting(true);
 		try {
 			await client.graphql({
-				query: deleteUser,
+				query: deleteCustomer,
 				variables: {
 					input: {
 						id: itemToDelete.id,
@@ -163,7 +163,7 @@ export default function Managewarehouses() {
 													{customer.name}
 												</TableCell>
 												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{customer.email}</TableCell>
-												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{customer.phoneNo}</TableCell>
+												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{customer.phone}</TableCell>
 												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{customer.cnic}</TableCell>
 												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{customer.city}</TableCell>
 												<TableCell className=' py-[26px] p-3 text-[#475467] font-normal'>

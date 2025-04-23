@@ -98,41 +98,46 @@ const navItems = [
 		name: 'Dashboard',
 		path: '/',
 	},
-	{
-		icon: <BarChart3 className='w-5 h-5' />,
-		name: 'Sales Management',
-		path: '/sales-summary',
-	},
-	{
-		icon: <FileText className='w-5 h-5' />,
-		name: 'Invoices Management',
-		path: '/manage-invoices',
-	},
+	// {
+	// 	icon: <BarChart3 className='w-5 h-5' />,
+	// 	name: 'Sales Management',
+	// 	path: '/sales-summary',
+	// },
+	// {
+	// 	icon: <FileText className='w-5 h-5' />,
+	// 	name: 'Invoices Management',
+	// 	path: '/manage-invoices',
+	// },
+	// {
+	// 	icon: <Package className='w-5 h-5' />,
+	// 	name: 'Product Sale Quotation',
+	// 	path: '/product-sale-quotation',
+	// },
+	// {
+	// 	icon: <Undo2 className='w-5 h-5' />,
+	// 	name: 'Refunds Management',
+	// 	path: '/refunds',
+	// },
+	// {
+	// 	icon: <Package className='w-5 h-5' />,
+	// 	name: 'Warehouse Management',
+	// 	path: '/warehouse',
+	// },
 	{
 		icon: <Package className='w-5 h-5' />,
-		name: 'Product Sale Quotation',
-		path: '/product-sale-quotation',
-	},
-	{
-		icon: <Undo2 className='w-5 h-5' />,
-		name: 'Refunds Management',
-		path: '/refunds',
-	},
-	{
-		icon: <Package className='w-5 h-5' />,
-		name: 'Warehouse Management',
-		path: '/warehouse',
+		name: 'Products Management',
+		path: '/all-products',
 	},
 	{
 		icon: <UsersRound className='w-5 h-5' />,
 		name: 'Customer Management',
 		path: '/all-client',
 	},
-	{
-		icon: <Calendar className='w-5 h-5' />,
-		name: 'Installment Management',
-		path: '/all-installments',
-	},
+	// {
+	// 	icon: <Calendar className='w-5 h-5' />,
+	// 	name: 'Installment Management',
+	// 	path: '/all-installments',
+	// },
 	{
 		icon: <CreditCard className='w-5 h-5' />,
 		name: 'Expense Management',
