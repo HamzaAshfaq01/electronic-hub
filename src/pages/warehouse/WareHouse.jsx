@@ -5,16 +5,16 @@ import { Eye, Pencil, Trash2 } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/ui/table';
 import ConfirmDeleteModal from '../../components/modal/DeleteConfirmationModal';
 import { generateClient } from 'aws-amplify/api';
-import { getWarehouse, productsByWarehouseID } from '../../graphql/queries';
+import { getWarehouse, stocksByWarehouse } from '../../graphql/queries';
 import { deleteProduct } from '../../graphql/mutations';
-import AddProductModal from '../../components/modal/AddProductModal';
+import AddProductStockModal from '../../components/modal/AddProductStockModal';
 import { toast } from 'react-toastify';
-import EditProductModal from '../../components/modal/EditProductModal';
+import EditProductStockModal from '../../components/modal/EditProductStockModal';
 
 const client = generateClient();
 
 export default function WareHouse() {
-	const { warehouseId } = useParams(); // Get warehouse ID from the URL
+	const { warehouseId } = useParams();
 	const [warehouse, setWarehouse] = useState(null);
 	const [products, setProducts] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -39,22 +39,22 @@ export default function WareHouse() {
 			setLoading(false);
 		}
 	};
-	const fetchWarehouseProducts = async (token) => {
+	const fetchWarehouseStocks = async (token) => {
 		setLoading(true);
 		try {
 			const response = await client.graphql({
-				query: productsByWarehouseID,
+				query: stocksByWarehouse,
 				variables: { warehouseID: warehouseId, nextToken: token, limit: 10 },
 			});
-			setProducts(response.data.productsByWarehouseID.items || []);
-			setNextToken(response.data.productsByWarehouseID.nextToken || null);
+			setProducts(response.data.stocksByWarehouse.items || []);
+			setNextToken(response.data.stocksByWarehouse.nextToken || null);
 			if (token && !prevTokens.includes(token)) {
 				setPrevTokens((prev) => {
 					return [...prev, token];
 				});
 			}
 		} catch (error) {
-			toast.error('Failed to fetch warehouse products. Please try again later.');
+			toast.error('Failed to fetch warehouse stocks. Please try again later.');
 		} finally {
 			setLoading(false);
 		}
@@ -62,7 +62,7 @@ export default function WareHouse() {
 
 	useEffect(() => {
 		fetchWarehouseDetails();
-		fetchWarehouseProducts();
+		fetchWarehouseStocks();
 	}, [warehouseId]);
 
 	const handlePrev = () => {
@@ -71,12 +71,12 @@ export default function WareHouse() {
 			newPrevTokens.pop();
 			const prevToken = newPrevTokens[newPrevTokens.length - 1];
 			setPrevTokens(newPrevTokens);
-			fetchWarehouseProducts(prevToken);
+			fetchWarehouseStocks(prevToken);
 		}
 	};
 
 	const handleNext = () => {
-		fetchWarehouseProducts(nextToken);
+		fetchWarehouseStocks(nextToken);
 	};
 
 	const handleDeleteClick = (product) => {
@@ -120,7 +120,7 @@ export default function WareHouse() {
 						<button
 							onClick={() => setModalOpen(true)}
 							className='inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300 px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0BA5EC] hover:text-[#fff]'>
-							Add Product
+							Add Stock
 						</button>
 					</div>
 				</div>
@@ -136,19 +136,13 @@ export default function WareHouse() {
 									Name
 								</TableCell>
 								<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
-									Price
-								</TableCell>
-								<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
-									Stock
+									Quantity
 								</TableCell>
 								<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 									Brand
 								</TableCell>
 								<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 									Model
-								</TableCell>
-								<TableCell className='w-[400px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
-									description
 								</TableCell>
 								<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 									Action
@@ -166,14 +160,10 @@ export default function WareHouse() {
 								products.map((product) => (
 									<TableRow key={product.id}>
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal col-span-12'>{product.id}</TableCell>
-										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.name}</TableCell>
-										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.price}</TableCell>
-										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.stock}</TableCell>
-										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.brand}</TableCell>
-										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.model}</TableCell>
-										<TableCell className='py-[26px] p-3 text-[#475467] font-normal text-wrap'>
-											{product.description}
-										</TableCell>
+										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.product.name}</TableCell>
+										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.quantity}</TableCell>
+										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.product.brand}</TableCell>
+										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.product.model}</TableCell>
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>
 											<div className='flex items-center gap-3'>
 												{/* <Link to={`/warehouse/${product.id}`}>
@@ -213,13 +203,13 @@ export default function WareHouse() {
 			</div>
 
 			{/* Add Product Modal */}
-			<AddProductModal
+			<AddProductStockModal
 				setProducts={setProducts}
 				warehouseId={warehouseId}
 				isOpen={modalOpen}
 				onClose={() => setModalOpen(false)}
 			/>
-			<EditProductModal
+			<EditProductStockModal
 				setProducts={setProducts}
 				productToEdit={productToEdit}
 				onClose={() => setProductToEdit(null)}

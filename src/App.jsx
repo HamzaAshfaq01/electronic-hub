@@ -12,10 +12,10 @@ import NotFound from './pages/OtherPage/NotFound';
 // import PurchaseOrders from './pages/Purchase/PurchaseOrders';
 // import ManageSuppliers from './pages/Purchase/ManageSuppliers';
 // import SupplierProducts from './pages/Purchase/SupplierProducts';
-// import WareHouse from './pages/warehouse/WareHouse';
 import Products from './pages/Products';
 // import Blank from './pages/Blank';
 import AllWareHouse from './pages/warehouse/AllWarehouse';
+import WareHouse from './pages/warehouse/WareHouse';
 import AppLayout from './layout/AppLayout';
 import { ScrollToTop } from './components/common/ScrollToTop';
 import Home from './pages/Dashboard/Home';
@@ -41,9 +41,9 @@ export default function App() {
 						{/* <Route path='/manage-suppliers' element={<ManageSuppliers />} /> */}
 						{/* <Route path='/manage-suppliers/:supplier' element={<SupplierProducts />} /> */}
 						{/* <Route path='/all-warehouse' element={<AllWareHouse />} /> */}
-						{/* <Route path='/warehouse/:warehouseId' element={<WareHouse />} /> */}
 						{/* <Route path='/all-installments' element={<AllInstallments />} /> */}
 						<Route path='/warehouse' element={<AllWareHouse />} />
+						<Route path='/warehouse/:warehouseId' element={<WareHouse />} />
 						<Route path='/expenses' element={<Expenses />} />
 						<Route path='/all-client' element={<AllClient />} />
 						<Route path='/all-products' element={<Products />} />
