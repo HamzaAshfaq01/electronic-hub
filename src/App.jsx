@@ -31,7 +31,7 @@ export default function App() {
 				<Routes>
 					{/* Dashboard Layout */}
 					<Route element={<AppLayout />}>
-						<Route index path='/' element={<Home />} />
+						{/* <Route index path='/' element={<Home />} /> */}
 						{/* <Route path='/overview' element={<Overview />} /> */}
 						{/* <Route path='/manage-invoices' element={<ManageInvoices />} /> */}
 						{/* <Route path='/product-sale-quotation' element={<ProductSaleQuotation />} /> */}

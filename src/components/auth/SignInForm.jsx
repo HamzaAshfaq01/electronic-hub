@@ -41,7 +41,7 @@ export default function SignInForm() {
 			}
 			const { username, userId, signInDetails } = await getCurrentUser();
 			setUser({ username, userId, signInDetails });
-			navigate('/');
+			navigate('/warehouse');
 			toast.success('Logged in successfully');
 		} catch (error) {
 			const errorMessage = error.message || 'Incorrect email or password';
