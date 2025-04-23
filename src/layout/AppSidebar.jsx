@@ -118,11 +118,11 @@ const navItems = [
 	// 	name: 'Refunds Management',
 	// 	path: '/refunds',
 	// },
-	// {
-	// 	icon: <Package className='w-5 h-5' />,
-	// 	name: 'Warehouse Management',
-	// 	path: '/warehouse',
-	// },
+	{
+		icon: <Package className='w-5 h-5' />,
+		name: 'Warehouse Management',
+		path: '/warehouse',
+	},
 	{
 		icon: <Package className='w-5 h-5' />,
 		name: 'Products Management',

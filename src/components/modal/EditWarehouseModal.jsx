@@ -55,6 +55,7 @@ const EditWarehouseModal = ({ warehouseToEdit, onClose, setWarehouses }) => {
 					initialValues={{
 						name: warehouseToEdit.name || '',
 						location: warehouseToEdit.location || '',
+						contactNumber: warehouseToEdit.contactNumber || '',
 					}}
 					validationSchema={validationSchema}
 					onSubmit={handleSubmit}>
@@ -73,6 +74,20 @@ const EditWarehouseModal = ({ warehouseToEdit, onClose, setWarehouses }) => {
 									className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
 								/>
 								<ErrorMessage name='name' component='div' className='text-red-500 text-sm mt-1' />
+							</div>
+
+							<div>
+								<label className='block text-[14px] font-medium text-[#4F5B67]' htmlFor='name'>
+									Contact Number
+								</label>
+								<Field
+									id='contactNumber'
+									name='contactNumber'
+									type='text'
+									placeholder='Enter Phone Number'
+									className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
+								/>
+								<ErrorMessage name='contactNumber' component='div' className='text-red-500 text-sm mt-1' />
 							</div>
 
 							{/* Location Field */}

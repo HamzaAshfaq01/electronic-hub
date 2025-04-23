@@ -127,6 +127,9 @@ export default function Managewarehouses() {
 										<TableCell className='w-[250px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 											Name
 										</TableCell>
+										<TableCell className='w-[250px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+											Phone No
+										</TableCell>
 										<TableCell className='w-[450px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 											Location
 										</TableCell>
@@ -151,6 +154,9 @@ export default function Managewarehouses() {
 													{warehouse.id}
 												</TableCell>
 												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{warehouse.name}</TableCell>
+												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>
+													{warehouse.contactNumber}
+												</TableCell>
 												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{warehouse.location}</TableCell>
 												<TableCell className=' py-[26px] p-3 text-[#475467] font-normal'>
 													<div className='flex items-center gap-3'>
