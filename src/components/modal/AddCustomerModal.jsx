@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { generateClient } from 'aws-amplify/api';
+import { customerByPhone } from '../../graphql/queries';
 import { createCustomer } from '../../graphql/mutations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -20,6 +21,16 @@ const AddCustomerModal = ({ isOpen, onClose, setCustomers }) => {
 
 	const handleSubmit = async (values, { setSubmitting, resetForm }) => {
 		try {
+			const response = await client.graphql({
+				query: customerByPhone,
+				variables: {
+					phone: values.phone.trim(),
+					limit: 1000,
+				},
+			});
+			if (response.data.customerByPhone.items.length > 0) {
+				throw new Error('Customer with this phone number already exists.');
+			}
 			values.createdAt = getCurrentFormattedDate();
 			await client.graphql({
 				query: createCustomer,

@@ -1,13 +1,13 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { Eye, Pencil, Trash2 } from 'lucide-react';
+import { Eye, Pencil, Trash2, Search } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/ui/table';
 import AddCustomerModal from '../../components/modal/AddCustomerModal';
 import EditCustomerModal from '../../components/modal/EditCustomerModal';
 import ConfirmDeleteModal from '../../components/modal/DeleteConfirmationModal';
 import { generateClient } from 'aws-amplify/api';
 import { toast } from 'react-toastify';
-import { listCustomers } from '../../graphql/queries';
+import { listCustomers, customerByPhone } from '../../graphql/queries';
 import { deleteCustomer } from '../../graphql/mutations';
 
 const client = generateClient();
@@ -21,6 +21,47 @@ export default function Managewarehouses() {
 	const [prevTokens, setPrevTokens] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [isDeleting, setIsDeleting] = useState(false);
+	const [query, setQuery] = useState('');
+	const [debouncedQuery, setDebouncedQuery] = useState('');
+
+	useEffect(() => {
+		const handler = setTimeout(() => {
+			setDebouncedQuery(query);
+		}, 500);
+
+		return () => {
+			clearTimeout(handler);
+		};
+	}, [query]);
+
+	useEffect(() => {
+		if (debouncedQuery) {
+			searchCustomersByPhone(debouncedQuery);
+		} else {
+			fetchCustomers();
+		}
+	}, [debouncedQuery]);
+
+	const searchCustomersByPhone = async (query) => {
+		setLoading(true);
+		try {
+			const response = await client.graphql({
+				query: customerByPhone,
+				variables: {
+					phone: query.trim(),
+					limit: 1000,
+				},
+			});
+			const data = response.data.customerByPhone;
+			setCustomers(data.items);
+			setNextToken(data.nextToken || null);
+			setPrevTokens([]); // Reset pagination when searching
+		} catch (error) {
+			console.error('Error fetching customers:', error);
+		} finally {
+			setLoading(false);
+		}
+	};
 
 	const fetchCustomers = async (token = null) => {
 		setLoading(true);
@@ -46,10 +87,6 @@ export default function Managewarehouses() {
 			setLoading(false);
 		}
 	};
-
-	useEffect(() => {
-		fetchCustomers();
-	}, []);
 
 	const handlePrev = () => {
 		if (prevTokens.length >= 1) {
@@ -104,6 +141,28 @@ export default function Managewarehouses() {
 			<div className='mb-6'>
 				<div className='flex flex-col gap-2 mb-4 sm:flex-row sm:items-center sm:justify-between pt-5'>
 					<div className='w-full'>
+						<div className='flex justify-end items-center mb-[16px]'>
+							<div className='w-[400px]'>
+								<label
+									htmlFor='search'
+									className='block text-[14px] font-medium text-[#344054] mb-[6px] leading-[20px]'>
+									Search Customer By Phone Number
+								</label>
+								<div className='relative'>
+									<div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none'>
+										<Search className='h-5 w-5 text-[#667085]' />
+									</div>
+									<input
+										type='text'
+										id='search'
+										value={query}
+										onChange={(e) => setQuery(e.target.value)}
+										className='block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm'
+										placeholder='Enter phone number'
+									/>
+								</div>
+							</div>
+						</div>
 						<div className='flex justify-between items-center mb-[16px]'>
 							<h2>All Clients</h2>
 							<div>
