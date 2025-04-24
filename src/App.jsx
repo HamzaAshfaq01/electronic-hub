@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router';
 import SignIn from './pages/AuthPages/SignIn';
 import SignUp from './pages/AuthPages/SignUp';
 import NotFound from './pages/OtherPage/NotFound';
-// import UserProfiles from './pages/UserProfiles';
+import UserProfiles from './pages/UserProfiles';
 // import Calendar from './pages/Calendar';
 // import Overview from './pages/Sales/Overview';
 // import ManageInvoices from './pages/Sales/ManageInvoices';
@@ -47,7 +47,7 @@ export default function App() {
 						<Route path='/expenses' element={<Expenses />} />
 						<Route path='/all-client' element={<AllClient />} />
 						<Route path='/all-products' element={<Products />} />
-						{/* <Route path='/profile' element={<UserProfiles />} /> */}
+						<Route path='/profile' element={<UserProfiles />} />
 						{/* <Route path='/calendar' element={<Calendar />} /> */}
 						{/* <Route path='/blank' element={<Blank />} /> */}
 					</Route>
