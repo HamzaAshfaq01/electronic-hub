@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import { getCurrentFormattedDate } from '../../utils/dateUtils';
+import DatePicker from 'react-datepicker';
 
 const validationSchema = Yup.object({
 	title: Yup.string().required('Title is required'),
@@ -19,7 +20,7 @@ const EditExpenseModal = ({ expenseToEdit, onClose, setExpenses }) => {
 
 	const handleSubmit = async (values, { setSubmitting, resetForm }) => {
 		try {
-			values.updatedAt = getCurrentFormattedDate();
+			values.createdAt = getCurrentFormattedDate(values.createdAt);
 			await client.graphql({
 				query: updateExpense,
 				variables: { input: values },
@@ -66,10 +67,11 @@ const EditExpenseModal = ({ expenseToEdit, onClose, setExpenses }) => {
 						description: expenseToEdit.description || '',
 						amount: expenseToEdit.amount || '',
 						expenseType: expenseToEdit.expenseType || 'SALARY', // Default value
+						createdAt: expenseToEdit.createdAt,
 					}}
 					validationSchema={validationSchema}
 					onSubmit={handleSubmit}>
-					{({ isSubmitting }) => (
+					{({ isSubmitting, values, setFieldValue }) => (
 						<Form className='flex flex-col gap-[24px] mt-[40px]'>
 							<div>
 								<label className='block text-[14px] font-medium text-[#4F5B67]' htmlFor='title'>
@@ -130,6 +132,17 @@ const EditExpenseModal = ({ expenseToEdit, onClose, setExpenses }) => {
 									<option value='MISC'>Miscellaneous</option>
 								</Field>
 								<ErrorMessage name='expenseType' component='div' className='text-red-500 text-sm mt-1' />
+							</div>
+
+							<div>
+								<label className='block text-[14px] font-medium text-[#4F5B67]' htmlFor='expenseType'>
+									Created At
+								</label>
+								<DatePicker
+									className='p-2 w-full border rounded'
+									selected={values.createdAt}
+									onChange={(date) => setFieldValue('createdAt', date)}
+								/>
 							</div>
 
 							<div className='flex justify-end border-t border-gray-200 absolute bottom-0 w-full right-0 p-5'>

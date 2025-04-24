@@ -186,6 +186,9 @@ export default function Managewarehouses() {
 										<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 											Type
 										</TableCell>
+										<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+											Date
+										</TableCell>
 										<TableCell className='w-[450px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 											Description
 										</TableCell>
@@ -211,6 +214,7 @@ export default function Managewarehouses() {
 												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>
 													{expense.expenseType}
 												</TableCell>
+												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{expense.createdAt}</TableCell>
 												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>
 													{expense.description}
 												</TableCell>

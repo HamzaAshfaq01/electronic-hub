@@ -1,6 +1,7 @@
 import { generateClient } from 'aws-amplify/api';
 import { createExpense } from '../../graphql/mutations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import DatePicker from 'react-datepicker';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import { getCurrentFormattedDate } from '../../utils/dateUtils';
@@ -19,7 +20,7 @@ const AddExpenseModal = ({ isOpen, onClose, setExpenses }) => {
 
 	const handleSubmit = async (values, { setSubmitting, resetForm }) => {
 		try {
-			values.createdAt = getCurrentFormattedDate();
+			values.createdAt = getCurrentFormattedDate(values.createdAt);
 			const response = await client.graphql({
 				query: createExpense,
 				variables: { input: values },
@@ -58,10 +59,11 @@ const AddExpenseModal = ({ isOpen, onClose, setExpenses }) => {
 						description: '',
 						amount: '',
 						expenseType: 'SALARY', // Default value
+						createdAt: new Date(),
 					}}
 					validationSchema={validationSchema}
 					onSubmit={handleSubmit}>
-					{({ isSubmitting }) => (
+					{({ values, isSubmitting, setFieldValue }) => (
 						<Form className='flex flex-col gap-[24px] mt-[40px]'>
 							<div>
 								<label className='block text-[14px] font-medium text-[#4F5B67]' htmlFor='title'>
@@ -122,6 +124,17 @@ const AddExpenseModal = ({ isOpen, onClose, setExpenses }) => {
 									<option value='MISC'>Miscellaneous</option>
 								</Field>
 								<ErrorMessage name='expenseType' component='div' className='text-red-500 text-sm mt-1' />
+							</div>
+
+							<div>
+								<label className='block text-[14px] font-medium text-[#4F5B67]' htmlFor='expenseType'>
+									Created At
+								</label>
+								<DatePicker
+									className='p-2 w-full border rounded'
+									selected={values.createdAt}
+									onChange={(date) => setFieldValue('createdAt', date)}
+								/>
 							</div>
 
 							<div className='flex justify-end border-t border-gray-200 absolute bottom-0 w-full right-0 p-5'>
