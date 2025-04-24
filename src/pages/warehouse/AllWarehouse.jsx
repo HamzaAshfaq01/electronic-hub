@@ -121,14 +121,8 @@ export default function Managewarehouses() {
 							<Table className='table-fixed w-full'>
 								<TableHeader className='border-gray-100 dark:border-gray-800 border-b'>
 									<TableRow className='w-full mx-3 col-span-12'>
-										<TableCell className='w-[350px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
-											ID
-										</TableCell>
 										<TableCell className='w-[250px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 											Name
-										</TableCell>
-										<TableCell className='w-[250px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
-											Phone No
 										</TableCell>
 										<TableCell className='w-[450px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 											Location
@@ -150,13 +144,7 @@ export default function Managewarehouses() {
 									) : (
 										warehouses.map((warehouse) => (
 											<TableRow key={warehouse.id}>
-												<TableCell className='py-[26px] p-3 text-[#475467] font-normal col-span-12'>
-													{warehouse.id}
-												</TableCell>
 												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{warehouse.name}</TableCell>
-												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>
-													{warehouse.contactNumber}
-												</TableCell>
 												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{warehouse.location}</TableCell>
 												<TableCell className=' py-[26px] p-3 text-[#475467] font-normal'>
 													<div className='flex items-center gap-3'>
