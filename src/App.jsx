@@ -3,7 +3,7 @@ import SignIn from './pages/AuthPages/SignIn';
 import SignUp from './pages/AuthPages/SignUp';
 import NotFound from './pages/OtherPage/NotFound';
 import UserProfiles from './pages/UserProfiles';
-// import Calendar from './pages/Calendar';
+import Qoutation from './pages/Qoutation';
 // import Overview from './pages/Sales/Overview';
 // import ManageInvoices from './pages/Sales/ManageInvoices';
 // import ProductSaleQuotation from './pages/Sales/ProductSaleQuotation';
@@ -48,7 +48,7 @@ export default function App() {
 						<Route path='/all-client' element={<AllClient />} />
 						<Route path='/all-products' element={<Products />} />
 						<Route path='/profile' element={<UserProfiles />} />
-						{/* <Route path='/calendar' element={<Calendar />} /> */}
+						<Route path='/qoutations' element={<Qoutation />} />
 						{/* <Route path='/blank' element={<Blank />} /> */}
 					</Route>
 

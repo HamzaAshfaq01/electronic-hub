@@ -129,6 +129,11 @@ const navItems = [
 		path: '/all-products',
 	},
 	{
+		icon: <Calendar className='w-5 h-5' />,
+		name: 'Qoutation Management',
+		path: '/qoutations',
+	},
+	{
 		icon: <UsersRound className='w-5 h-5' />,
 		name: 'Customer Management',
 		path: '/all-client',

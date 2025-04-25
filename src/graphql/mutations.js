@@ -18,12 +18,160 @@ export const createCustomer = /* GraphQL */ `
         items {
           id
           customerID
+          customer {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotations {
+              items {
+                id
+                customerID
+                totalAmount
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           warehouseID
+          warehouse {
+            id
+            name
+            location
+            contactNumber
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           totalAmount
           paidAmount
           paymentMethod
           dueDate
           status
+          items {
+            items {
+              id
+              invoiceID
+              invoice {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                name
+                sku
+                brand
+                unitPrice
+                model
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              pricePerUnit
+              totalPrice
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          installments {
+            items {
+              id
+              invoiceID
+              invoice {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              dueDate
+              paidDate
+              amount
+              status
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -35,7 +183,83 @@ export const createCustomer = /* GraphQL */ `
         items {
           id
           customerID
+          customer {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotations {
+              items {
+                id
+                customerID
+                totalAmount
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           totalAmount
+          items {
+            items {
+              id
+              quotationID
+              quotation {
+                id
+                customerID
+                totalAmount
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                name
+                sku
+                brand
+                unitPrice
+                model
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              pricePerUnit
+              totalPrice
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -66,12 +290,160 @@ export const updateCustomer = /* GraphQL */ `
         items {
           id
           customerID
+          customer {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotations {
+              items {
+                id
+                customerID
+                totalAmount
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           warehouseID
+          warehouse {
+            id
+            name
+            location
+            contactNumber
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           totalAmount
           paidAmount
           paymentMethod
           dueDate
           status
+          items {
+            items {
+              id
+              invoiceID
+              invoice {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                name
+                sku
+                brand
+                unitPrice
+                model
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              pricePerUnit
+              totalPrice
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          installments {
+            items {
+              id
+              invoiceID
+              invoice {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              dueDate
+              paidDate
+              amount
+              status
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -83,7 +455,83 @@ export const updateCustomer = /* GraphQL */ `
         items {
           id
           customerID
+          customer {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotations {
+              items {
+                id
+                customerID
+                totalAmount
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           totalAmount
+          items {
+            items {
+              id
+              quotationID
+              quotation {
+                id
+                customerID
+                totalAmount
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                name
+                sku
+                brand
+                unitPrice
+                model
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              pricePerUnit
+              totalPrice
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -114,12 +562,160 @@ export const deleteCustomer = /* GraphQL */ `
         items {
           id
           customerID
+          customer {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotations {
+              items {
+                id
+                customerID
+                totalAmount
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           warehouseID
+          warehouse {
+            id
+            name
+            location
+            contactNumber
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           totalAmount
           paidAmount
           paymentMethod
           dueDate
           status
+          items {
+            items {
+              id
+              invoiceID
+              invoice {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                name
+                sku
+                brand
+                unitPrice
+                model
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              pricePerUnit
+              totalPrice
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          installments {
+            items {
+              id
+              invoiceID
+              invoice {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              dueDate
+              paidDate
+              amount
+              status
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -131,7 +727,83 @@ export const deleteCustomer = /* GraphQL */ `
         items {
           id
           customerID
+          customer {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotations {
+              items {
+                id
+                customerID
+                totalAmount
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           totalAmount
+          items {
+            items {
+              id
+              quotationID
+              quotation {
+                id
+                customerID
+                totalAmount
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                name
+                sku
+                brand
+                unitPrice
+                model
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              pricePerUnit
+              totalPrice
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -159,7 +831,101 @@ export const createWarehouse = /* GraphQL */ `
         items {
           id
           warehouseID
+          warehouse {
+            id
+            name
+            location
+            contactNumber
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           createdAt
           updatedAt
@@ -172,12 +938,160 @@ export const createWarehouse = /* GraphQL */ `
         items {
           id
           customerID
+          customer {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotations {
+              items {
+                id
+                customerID
+                totalAmount
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           warehouseID
+          warehouse {
+            id
+            name
+            location
+            contactNumber
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           totalAmount
           paidAmount
           paymentMethod
           dueDate
           status
+          items {
+            items {
+              id
+              invoiceID
+              invoice {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                name
+                sku
+                brand
+                unitPrice
+                model
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              pricePerUnit
+              totalPrice
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          installments {
+            items {
+              id
+              invoiceID
+              invoice {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              dueDate
+              paidDate
+              amount
+              status
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -205,7 +1119,101 @@ export const updateWarehouse = /* GraphQL */ `
         items {
           id
           warehouseID
+          warehouse {
+            id
+            name
+            location
+            contactNumber
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           createdAt
           updatedAt
@@ -218,12 +1226,160 @@ export const updateWarehouse = /* GraphQL */ `
         items {
           id
           customerID
+          customer {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotations {
+              items {
+                id
+                customerID
+                totalAmount
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           warehouseID
+          warehouse {
+            id
+            name
+            location
+            contactNumber
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           totalAmount
           paidAmount
           paymentMethod
           dueDate
           status
+          items {
+            items {
+              id
+              invoiceID
+              invoice {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                name
+                sku
+                brand
+                unitPrice
+                model
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              pricePerUnit
+              totalPrice
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          installments {
+            items {
+              id
+              invoiceID
+              invoice {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              dueDate
+              paidDate
+              amount
+              status
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -251,7 +1407,101 @@ export const deleteWarehouse = /* GraphQL */ `
         items {
           id
           warehouseID
+          warehouse {
+            id
+            name
+            location
+            contactNumber
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           createdAt
           updatedAt
@@ -264,12 +1514,160 @@ export const deleteWarehouse = /* GraphQL */ `
         items {
           id
           customerID
+          customer {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotations {
+              items {
+                id
+                customerID
+                totalAmount
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           warehouseID
+          warehouse {
+            id
+            name
+            location
+            contactNumber
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           totalAmount
           paidAmount
           paymentMethod
           dueDate
           status
+          items {
+            items {
+              id
+              invoiceID
+              invoice {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                name
+                sku
+                brand
+                unitPrice
+                model
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              pricePerUnit
+              totalPrice
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          installments {
+            items {
+              id
+              invoiceID
+              invoice {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              dueDate
+              paidDate
+              amount
+              status
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -300,7 +1698,101 @@ export const createProduct = /* GraphQL */ `
         items {
           id
           warehouseID
+          warehouse {
+            id
+            name
+            location
+            contactNumber
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           createdAt
           updatedAt
@@ -313,7 +1805,142 @@ export const createProduct = /* GraphQL */ `
         items {
           id
           invoiceID
+          invoice {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           pricePerUnit
           totalPrice
@@ -328,7 +1955,105 @@ export const createProduct = /* GraphQL */ `
         items {
           id
           quotationID
+          quotation {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            items {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           pricePerUnit
           totalPrice
@@ -362,7 +2087,101 @@ export const updateProduct = /* GraphQL */ `
         items {
           id
           warehouseID
+          warehouse {
+            id
+            name
+            location
+            contactNumber
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           createdAt
           updatedAt
@@ -375,7 +2194,142 @@ export const updateProduct = /* GraphQL */ `
         items {
           id
           invoiceID
+          invoice {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           pricePerUnit
           totalPrice
@@ -390,7 +2344,105 @@ export const updateProduct = /* GraphQL */ `
         items {
           id
           quotationID
+          quotation {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            items {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           pricePerUnit
           totalPrice
@@ -424,7 +2476,101 @@ export const deleteProduct = /* GraphQL */ `
         items {
           id
           warehouseID
+          warehouse {
+            id
+            name
+            location
+            contactNumber
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoices {
+              items {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           createdAt
           updatedAt
@@ -437,7 +2583,142 @@ export const deleteProduct = /* GraphQL */ `
         items {
           id
           invoiceID
+          invoice {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           pricePerUnit
           totalPrice
@@ -452,7 +2733,105 @@ export const deleteProduct = /* GraphQL */ `
         items {
           id
           quotationID
+          quotation {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            items {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           pricePerUnit
           totalPrice
@@ -483,10 +2862,140 @@ export const createStock = /* GraphQL */ `
         location
         contactNumber
         stocks {
+          items {
+            id
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         invoices {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -504,14 +3013,200 @@ export const createStock = /* GraphQL */ `
         model
         description
         stocks {
+          items {
+            id
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         invoiceItems {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         quotationItems {
+          items {
+            id
+            quotationID
+            quotation {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -540,10 +3235,140 @@ export const updateStock = /* GraphQL */ `
         location
         contactNumber
         stocks {
+          items {
+            id
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         invoices {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -561,14 +3386,200 @@ export const updateStock = /* GraphQL */ `
         model
         description
         stocks {
+          items {
+            id
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         invoiceItems {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         quotationItems {
+          items {
+            id
+            quotationID
+            quotation {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -597,10 +3608,140 @@ export const deleteStock = /* GraphQL */ `
         location
         contactNumber
         stocks {
+          items {
+            id
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         invoices {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -618,14 +3759,200 @@ export const deleteStock = /* GraphQL */ `
         model
         description
         stocks {
+          items {
+            id
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         invoiceItems {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         quotationItems {
+          items {
+            id
+            quotationID
+            quotation {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -657,10 +3984,133 @@ export const createInvoice = /* GraphQL */ `
         address
         city
         invoices {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         quotations {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            items {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -675,10 +4125,140 @@ export const createInvoice = /* GraphQL */ `
         location
         contactNumber
         stocks {
+          items {
+            id
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         invoices {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -695,7 +4275,142 @@ export const createInvoice = /* GraphQL */ `
         items {
           id
           invoiceID
+          invoice {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           pricePerUnit
           totalPrice
@@ -710,6 +4425,86 @@ export const createInvoice = /* GraphQL */ `
         items {
           id
           invoiceID
+          invoice {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           dueDate
           paidDate
           amount
@@ -744,10 +4539,133 @@ export const updateInvoice = /* GraphQL */ `
         address
         city
         invoices {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         quotations {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            items {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -762,10 +4680,140 @@ export const updateInvoice = /* GraphQL */ `
         location
         contactNumber
         stocks {
+          items {
+            id
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         invoices {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -782,7 +4830,142 @@ export const updateInvoice = /* GraphQL */ `
         items {
           id
           invoiceID
+          invoice {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           pricePerUnit
           totalPrice
@@ -797,6 +4980,86 @@ export const updateInvoice = /* GraphQL */ `
         items {
           id
           invoiceID
+          invoice {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           dueDate
           paidDate
           amount
@@ -831,10 +5094,133 @@ export const deleteInvoice = /* GraphQL */ `
         address
         city
         invoices {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         quotations {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            items {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -849,10 +5235,140 @@ export const deleteInvoice = /* GraphQL */ `
         location
         contactNumber
         stocks {
+          items {
+            id
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         invoices {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -869,7 +5385,142 @@ export const deleteInvoice = /* GraphQL */ `
         items {
           id
           invoiceID
+          invoice {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           pricePerUnit
           totalPrice
@@ -884,6 +5535,86 @@ export const deleteInvoice = /* GraphQL */ `
         items {
           id
           invoiceID
+          invoice {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           dueDate
           paidDate
           amount
@@ -920,6 +5651,80 @@ export const createInvoiceItem = /* GraphQL */ `
           cnic
           address
           city
+          invoices {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          quotations {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -930,6 +5735,86 @@ export const createInvoiceItem = /* GraphQL */ `
           name
           location
           contactNumber
+          stocks {
+            items {
+              id
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                name
+                sku
+                brand
+                unitPrice
+                model
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          invoices {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -940,10 +5825,140 @@ export const createInvoiceItem = /* GraphQL */ `
         dueDate
         status
         items {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         installments {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            dueDate
+            paidDate
+            amount
+            status
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -961,14 +5976,200 @@ export const createInvoiceItem = /* GraphQL */ `
         model
         description
         stocks {
+          items {
+            id
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         invoiceItems {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         quotationItems {
+          items {
+            id
+            quotationID
+            quotation {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -1004,6 +6205,80 @@ export const updateInvoiceItem = /* GraphQL */ `
           cnic
           address
           city
+          invoices {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          quotations {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -1014,6 +6289,86 @@ export const updateInvoiceItem = /* GraphQL */ `
           name
           location
           contactNumber
+          stocks {
+            items {
+              id
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                name
+                sku
+                brand
+                unitPrice
+                model
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          invoices {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -1024,10 +6379,140 @@ export const updateInvoiceItem = /* GraphQL */ `
         dueDate
         status
         items {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         installments {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            dueDate
+            paidDate
+            amount
+            status
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -1045,14 +6530,200 @@ export const updateInvoiceItem = /* GraphQL */ `
         model
         description
         stocks {
+          items {
+            id
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         invoiceItems {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         quotationItems {
+          items {
+            id
+            quotationID
+            quotation {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -1088,6 +6759,80 @@ export const deleteInvoiceItem = /* GraphQL */ `
           cnic
           address
           city
+          invoices {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          quotations {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -1098,6 +6843,86 @@ export const deleteInvoiceItem = /* GraphQL */ `
           name
           location
           contactNumber
+          stocks {
+            items {
+              id
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                name
+                sku
+                brand
+                unitPrice
+                model
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          invoices {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -1108,10 +6933,140 @@ export const deleteInvoiceItem = /* GraphQL */ `
         dueDate
         status
         items {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         installments {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            dueDate
+            paidDate
+            amount
+            status
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -1129,14 +7084,200 @@ export const deleteInvoiceItem = /* GraphQL */ `
         model
         description
         stocks {
+          items {
+            id
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         invoiceItems {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         quotationItems {
+          items {
+            id
+            quotationID
+            quotation {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -1172,6 +7313,80 @@ export const createInstallment = /* GraphQL */ `
           cnic
           address
           city
+          invoices {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          quotations {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -1182,6 +7397,86 @@ export const createInstallment = /* GraphQL */ `
           name
           location
           contactNumber
+          stocks {
+            items {
+              id
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                name
+                sku
+                brand
+                unitPrice
+                model
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          invoices {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -1192,10 +7487,140 @@ export const createInstallment = /* GraphQL */ `
         dueDate
         status
         items {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         installments {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            dueDate
+            paidDate
+            amount
+            status
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -1232,6 +7657,80 @@ export const updateInstallment = /* GraphQL */ `
           cnic
           address
           city
+          invoices {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          quotations {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -1242,6 +7741,86 @@ export const updateInstallment = /* GraphQL */ `
           name
           location
           contactNumber
+          stocks {
+            items {
+              id
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                name
+                sku
+                brand
+                unitPrice
+                model
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          invoices {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -1252,10 +7831,140 @@ export const updateInstallment = /* GraphQL */ `
         dueDate
         status
         items {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         installments {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            dueDate
+            paidDate
+            amount
+            status
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -1292,6 +8001,80 @@ export const deleteInstallment = /* GraphQL */ `
           cnic
           address
           city
+          invoices {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          quotations {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -1302,6 +8085,86 @@ export const deleteInstallment = /* GraphQL */ `
           name
           location
           contactNumber
+          stocks {
+            items {
+              id
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                name
+                sku
+                brand
+                unitPrice
+                model
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          invoices {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
@@ -1312,10 +8175,140 @@ export const deleteInstallment = /* GraphQL */ `
         dueDate
         status
         items {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         installments {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            dueDate
+            paidDate
+            amount
+            status
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -1350,10 +8343,133 @@ export const createQuotation = /* GraphQL */ `
         address
         city
         invoices {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         quotations {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            items {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -1366,7 +8482,105 @@ export const createQuotation = /* GraphQL */ `
         items {
           id
           quotationID
+          quotation {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            items {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           pricePerUnit
           totalPrice
@@ -1400,10 +8614,133 @@ export const updateQuotation = /* GraphQL */ `
         address
         city
         invoices {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         quotations {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            items {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -1416,7 +8753,105 @@ export const updateQuotation = /* GraphQL */ `
         items {
           id
           quotationID
+          quotation {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            items {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           pricePerUnit
           totalPrice
@@ -1450,10 +8885,133 @@ export const deleteQuotation = /* GraphQL */ `
         address
         city
         invoices {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            paidAmount
+            paymentMethod
+            dueDate
+            status
+            items {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            installments {
+              items {
+                id
+                invoiceID
+                dueDate
+                paidDate
+                amount
+                status
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         quotations {
+          items {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            items {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -1466,7 +9024,105 @@ export const deleteQuotation = /* GraphQL */ `
         items {
           id
           quotationID
+          quotation {
+            id
+            customerID
+            customer {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              invoices {
+                nextToken
+                __typename
+              }
+              quotations {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            totalAmount
+            items {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           productID
+          product {
+            id
+            name
+            sku
+            brand
+            unitPrice
+            model
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           quantity
           pricePerUnit
           totalPrice
@@ -1502,12 +9158,145 @@ export const createQuotationItem = /* GraphQL */ `
           cnic
           address
           city
+          invoices {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          quotations {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
         }
         totalAmount
         items {
+          items {
+            id
+            quotationID
+            quotation {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -1525,14 +9314,200 @@ export const createQuotationItem = /* GraphQL */ `
         model
         description
         stocks {
+          items {
+            id
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         invoiceItems {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         quotationItems {
+          items {
+            id
+            quotationID
+            quotation {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -1568,12 +9543,145 @@ export const updateQuotationItem = /* GraphQL */ `
           cnic
           address
           city
+          invoices {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          quotations {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
         }
         totalAmount
         items {
+          items {
+            id
+            quotationID
+            quotation {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -1591,14 +9699,200 @@ export const updateQuotationItem = /* GraphQL */ `
         model
         description
         stocks {
+          items {
+            id
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         invoiceItems {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         quotationItems {
+          items {
+            id
+            quotationID
+            quotation {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -1634,12 +9928,145 @@ export const deleteQuotationItem = /* GraphQL */ `
           cnic
           address
           city
+          invoices {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          quotations {
+            items {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
           createdAt
           updatedAt
           __typename
         }
         totalAmount
         items {
+          items {
+            id
+            quotationID
+            quotation {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
@@ -1657,14 +10084,200 @@ export const deleteQuotationItem = /* GraphQL */ `
         model
         description
         stocks {
+          items {
+            id
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         invoiceItems {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
         quotationItems {
+          items {
+            id
+            quotationID
+            quotation {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              name
+              sku
+              brand
+              unitPrice
+              model
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
           nextToken
           __typename
         }
