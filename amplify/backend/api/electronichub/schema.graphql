@@ -191,8 +191,25 @@ type Expense
 	title: String!
 	description: String
 	amount: Float!
-	expenseType: ExpenseType! @index(name: "byExpenseType", queryField: "expensesByExpenseType")
+	expenseTypeID: ID! @index(name: "byExpenseType", queryField: "expensesByExpenseType")
+	expenseType: ExpenseType @belongsTo(fields: ["expenseTypeID"])
 	createdAt: String!
+	updatedAt: String
+}
+
+type ExpenseType
+	@model
+	@auth(
+		rules: [
+			{ allow: groups, operations: [create, read, update, delete], groups: ["admin"], provider: userPools }
+			{ allow: owner, operations: [create, read, update, delete], ownerField: "id", provider: userPools }
+			{ allow: private, operations: [read], provider: userPools }
+		]
+	) {
+	id: ID! @primaryKey
+	name: String!
+	expenses: [Expense] @hasMany(indexName: "byExpenseType", fields: ["id"])
+	createdAt: String
 	updatedAt: String
 }
 
@@ -213,12 +230,4 @@ enum PaymentMethod {
 	CREDIT
 	CASH
 	INSTALLMENT
-}
-
-enum ExpenseType {
-	SALARY
-	ELECTRICITY
-	RENT
-	MAINTENANCE
-	MISC
 }

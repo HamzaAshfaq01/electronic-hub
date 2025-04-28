@@ -10304,7 +10304,39 @@ export const onCreateExpense = /* GraphQL */ `
       title
       description
       amount
-      expenseType
+      expenseTypeID
+      expenseType {
+        id
+        name
+        expenses {
+          items {
+            id
+            title
+            description
+            amount
+            expenseTypeID
+            expenseType {
+              id
+              name
+              expenses {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -10321,7 +10353,39 @@ export const onUpdateExpense = /* GraphQL */ `
       title
       description
       amount
-      expenseType
+      expenseTypeID
+      expenseType {
+        id
+        name
+        expenses {
+          items {
+            id
+            title
+            description
+            amount
+            expenseTypeID
+            expenseType {
+              id
+              name
+              expenses {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -10338,7 +10402,186 @@ export const onDeleteExpense = /* GraphQL */ `
       title
       description
       amount
-      expenseType
+      expenseTypeID
+      expenseType {
+        id
+        name
+        expenses {
+          items {
+            id
+            title
+            description
+            amount
+            expenseTypeID
+            expenseType {
+              id
+              name
+              expenses {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onCreateExpenseType = /* GraphQL */ `
+  subscription OnCreateExpenseType(
+    $filter: ModelSubscriptionExpenseTypeFilterInput
+    $id: String
+  ) {
+    onCreateExpenseType(filter: $filter, id: $id) {
+      id
+      name
+      expenses {
+        items {
+          id
+          title
+          description
+          amount
+          expenseTypeID
+          expenseType {
+            id
+            name
+            expenses {
+              items {
+                id
+                title
+                description
+                amount
+                expenseTypeID
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateExpenseType = /* GraphQL */ `
+  subscription OnUpdateExpenseType(
+    $filter: ModelSubscriptionExpenseTypeFilterInput
+    $id: String
+  ) {
+    onUpdateExpenseType(filter: $filter, id: $id) {
+      id
+      name
+      expenses {
+        items {
+          id
+          title
+          description
+          amount
+          expenseTypeID
+          expenseType {
+            id
+            name
+            expenses {
+              items {
+                id
+                title
+                description
+                amount
+                expenseTypeID
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteExpenseType = /* GraphQL */ `
+  subscription OnDeleteExpenseType(
+    $filter: ModelSubscriptionExpenseTypeFilterInput
+    $id: String
+  ) {
+    onDeleteExpenseType(filter: $filter, id: $id) {
+      id
+      name
+      expenses {
+        items {
+          id
+          title
+          description
+          amount
+          expenseTypeID
+          expenseType {
+            id
+            name
+            expenses {
+              items {
+                id
+                title
+                description
+                amount
+                expenseTypeID
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       __typename

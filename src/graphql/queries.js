@@ -5475,7 +5475,39 @@ export const getExpense = /* GraphQL */ `
       title
       description
       amount
-      expenseType
+      expenseTypeID
+      expenseType {
+        id
+        name
+        expenses {
+          items {
+            id
+            title
+            description
+            amount
+            expenseTypeID
+            expenseType {
+              id
+              name
+              expenses {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
       createdAt
       updatedAt
       __typename
@@ -5502,7 +5534,133 @@ export const listExpenses = /* GraphQL */ `
         title
         description
         amount
-        expenseType
+        expenseTypeID
+        expenseType {
+          id
+          name
+          expenses {
+            items {
+              id
+              title
+              description
+              amount
+              expenseTypeID
+              expenseType {
+                id
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const getExpenseType = /* GraphQL */ `
+  query GetExpenseType($id: ID!) {
+    getExpenseType(id: $id) {
+      id
+      name
+      expenses {
+        items {
+          id
+          title
+          description
+          amount
+          expenseTypeID
+          expenseType {
+            id
+            name
+            expenses {
+              items {
+                id
+                title
+                description
+                amount
+                expenseTypeID
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listExpenseTypes = /* GraphQL */ `
+  query ListExpenseTypes(
+    $id: ID
+    $filter: ModelExpenseTypeFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listExpenseTypes(
+      id: $id
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        id
+        name
+        expenses {
+          items {
+            id
+            title
+            description
+            amount
+            expenseTypeID
+            expenseType {
+              id
+              name
+              expenses {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
         createdAt
         updatedAt
         __typename
@@ -8544,14 +8702,14 @@ export const quotationItemsByProduct = /* GraphQL */ `
 `;
 export const expensesByExpenseType = /* GraphQL */ `
   query ExpensesByExpenseType(
-    $expenseType: ExpenseType!
+    $expenseTypeID: ID!
     $sortDirection: ModelSortDirection
     $filter: ModelExpenseFilterInput
     $limit: Int
     $nextToken: String
   ) {
     expensesByExpenseType(
-      expenseType: $expenseType
+      expenseTypeID: $expenseTypeID
       sortDirection: $sortDirection
       filter: $filter
       limit: $limit
@@ -8562,7 +8720,35 @@ export const expensesByExpenseType = /* GraphQL */ `
         title
         description
         amount
-        expenseType
+        expenseTypeID
+        expenseType {
+          id
+          name
+          expenses {
+            items {
+              id
+              title
+              description
+              amount
+              expenseTypeID
+              expenseType {
+                id
+                name
+                createdAt
+                updatedAt
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
         createdAt
         updatedAt
         __typename
