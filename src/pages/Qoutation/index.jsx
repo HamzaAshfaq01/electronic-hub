@@ -184,7 +184,7 @@ export default function ManageQuotations() {
 												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>
 													{quotation.createdAt}
 												</TableCell>
-												<TableCell className='py-[26px] p-3 text-[#475467] font-normal flex gap-[10px]'>
+												<TableCell className='w-[300px] py-[26px] p-3 text-[#475467] font-normal flex gap-[10px] flex-wrap'>
 													{quotation.items?.items?.map((item) => {
 														return (
 															<span className='border border-[#079455] text-[#067647] rounded p-[10px]' key={item.id}>

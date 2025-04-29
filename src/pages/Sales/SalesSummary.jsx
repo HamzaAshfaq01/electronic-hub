@@ -1,89 +1,108 @@
-'use client'
-import { useState } from 'react'
-import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/ui/table'
-import AddCustomerModal from '../../components/modal/AddCustomerModal'
+'use client';
+import { useState, useEffect } from 'react';
+import { generateClient } from 'aws-amplify/api';
+import { Eye, Pencil, Trash2 } from 'lucide-react';
+import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/ui/table';
+import AddInvoiceModal from '../../components/modal/AddInvoiceModal';
+import EditInvoiceModal from '../../components/modal/EditInvoiceModal';
+import { listInvoices } from '../../graphql/queries'; // GraphQL query to fetch invoices
+import ConfirmDeleteModal from '../../components/modal/DeleteConfirmationModal';
+import { deleteInstallment, deleteInvoice, deleteInvoiceItem } from '../../graphql/mutations';
+import { toast } from 'react-toastify';
 
-
-const allInvoices = [
-	{
-		id: 1,
-		invoice_number: '#12345678',
-		customer_name: 'John Doe',
-		sku: 'Dawlance SBS 600 INV GD Black',
-		date: '2023-08-01',
-		price: '$500.00',
-		payment_status: 'Cash',
-	},
-	{
-		id: 2,
-		invoice_number: '#12345681',
-		customer_name: 'Bob Williams',
-		sku: 'Dawlance SBS 600 INV GD Black',
-		date: '2023-08-04',
-		price: '$1000.00',
-		payment_status: 'Credit',
-
-		due_date: '2023-09-10',
-	},
-	{
-		id: 3,
-		invoice_number: '#12345680',
-		customer_name: 'Alice Johnson',
-		sku: 'Dawlance SBS 600 INV GD Black',
-		date: '2023-08-03',
-		price: '$250.00',
-		payment_status: 'Mix Cash/Credit',
-	},
-]
-
-const walkinInvoices = [
-	{
-		id: 1,
-		invoice_number: '#12345678',
-		customer_name: 'John Doe',
-		sku: 'Dawlance SBS 600 INV GD Black',
-		date: '2023-08-01',
-		price: '$500.00',
-		payment_status: 'Cash',
-	},
-	{
-		id: 3,
-		invoice_number: '#12345680',
-		customer_name: 'Alice Johnson',
-		sku: 'Dawlance SBS 600 INV GD Black',
-		date: '2023-08-03',
-		price: '$250.00',
-		payment_status: 'Mix Cash/Credit',
-	},
-]
-
-const registeredInvoices = [
-	{
-		id: 4,
-		invoice_number: '#12345681',
-		customer_name: 'Bob Williams',
-		sku: 'Dawlance SBS 600 INV GD Black',
-		date: '2023-08-04',
-		price: '$1000.00',
-		payment_status: 'Credit',
-		due_date: '2023-09-10',
-	},
-]
+const client = generateClient();
 
 export default function SalesSummary() {
-	const [activeFilter, setActiveFilter] = useState('all')
-	const [modalOpen, setModalOpen] = useState(false)
+	const [invoices, setInvoices] = useState([]);
+	const [filteredInvoices, setFilteredInvoices] = useState([]);
+	const [activeFilter, setActiveFilter] = useState('all');
+	const [modalOpen, setModalOpen] = useState(false);
+	const [isDeleting, setIsDeleting] = useState(false);
+	const [itemToDelete, setItemToDelete] = useState(null);
+	const [invoiceToEdit, setInvoiceToEdit] = useState(null);
 
-	const getFilteredData = () => {
-		switch (activeFilter) {
-			case 'walkin':
-				return walkinInvoices
-			case 'registered':
-				return registeredInvoices
-			default:
-				return allInvoices
+	const fetchInvoices = async () => {
+		try {
+			const response = await client.graphql({ query: listInvoices });
+			const fetchedInvoices = response.data.listInvoices.items;
+			setInvoices(fetchedInvoices);
+			setFilteredInvoices(fetchedInvoices); // Initialize filtered invoices
+		} catch (error) {
+			console.error('Error fetching invoices:', error);
 		}
-	}
+	};
+	useEffect(() => {
+		fetchInvoices();
+	}, []);
+
+	// Filter invoices based on the active filter
+	useEffect(() => {
+		if (activeFilter === 'all') {
+			setFilteredInvoices(invoices);
+		} else if (activeFilter === 'walkin') {
+			setFilteredInvoices(invoices.filter((invoice) => invoice.paymentMethod === 'CASH'));
+		} else if (activeFilter === 'registered') {
+			setFilteredInvoices(invoices.filter((invoice) => invoice.paymentMethod !== 'CASH'));
+		}
+	}, [activeFilter, invoices]);
+
+	const handleDeleteClick = (quotation) => {
+		setItemToDelete({ id: quotation.id, title: `Quotation #${quotation.id}`, ...quotation });
+	};
+
+	const handleConfirmDelete = async () => {
+		setIsDeleting(true);
+		try {
+			await client.graphql({
+				query: deleteInvoice,
+				variables: {
+					input: {
+						id: itemToDelete.id,
+					},
+				},
+			});
+			await Promise.all(
+				itemToDelete?.items?.items.map((item) =>
+					client.graphql({
+						query: deleteInvoiceItem,
+						variables: {
+							input: {
+								id: item.id,
+							},
+						},
+					})
+				)
+			);
+			await Promise.all(
+				itemToDelete?.installments?.items.map((item) =>
+					client.graphql({
+						query: deleteInstallment,
+						variables: {
+							input: {
+								id: item.id,
+							},
+						},
+					})
+				)
+			);
+			toast.success('Quotation deleted successfully!');
+			setItemToDelete(null);
+			setInvoices((prevInvoice) => {
+				return prevInvoice.filter((invoice) => invoice.id !== itemToDelete.id);
+			});
+		} catch (error) {
+			if (error?.errors?.length > 0) {
+				const errorMessage = error.errors[0]?.message || 'An unknown error occurred.';
+				toast.error(`Failed to delete quotation: ${errorMessage}`);
+			} else if (error?.message) {
+				toast.error(`Failed to delete quotation: ${error.message}`);
+			} else {
+				toast.error('Failed to delete quotation. Please try again later.');
+			}
+		} finally {
+			setIsDeleting(false);
+		}
+	};
 
 	return (
 		<div>
@@ -125,20 +144,7 @@ export default function SalesSummary() {
 				</div>
 				<div className='p-4 flex md:justify-between lg:justify-between justify-end items-center flex-wrap gap-4'>
 					{/* Tabs */}
-					<div className='inline-flex rounded-md border border-gray-200 p-1 bg-white  '>
-						{['all', 'walkin', 'registered'].map((tab) => (
-							<button
-								key={tab}
-								className={`rounded-sm lg:px-4 px-2 py-2 text-sm font-medium transition-all ${
-									activeFilter === tab
-										? 'bg-blue-50 text-[#0086C9] rounded-[4px]'
-										: 'bg-transparent text-[#667085] hover:bg-gray-50'
-								}`}
-								onClick={() => setActiveFilter(tab)}>
-								{tab === 'all' ? 'All' : tab === 'walkin' ? 'Walkin Customers' : 'Registered Customers'}
-							</button>
-						))}
-					</div>
+					<div className='inline-flex rounded-md border border-gray-200 p-1 bg-white  '></div>
 					<button
 						onClick={() => setModalOpen(true)}
 						className='inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0BA5EC] hover:text-[#fff]  dark:bg-gray-800 dark:text-[#667085] dark:hover:bg-white/[0.03] dark:hover:text-gray-200'>
@@ -151,7 +157,7 @@ export default function SalesSummary() {
 								strokeLinejoin='round'
 							/>
 						</svg>
-						Add Customer
+						Add Invoice
 					</button>
 				</div>
 
@@ -161,112 +167,70 @@ export default function SalesSummary() {
 							<Table>
 								<TableHeader className='border-gray-100 dark:border-gray-800 border-b'>
 									<TableRow className='w-full mx-3'>
-										<TableCell className='font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3'>
-											Invoice number
-										</TableCell>
-										<TableCell className='font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3'>
+										<TableCell className='font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 											Customer Name
 										</TableCell>
-										<TableCell className='font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3'>
-											SKU
-										</TableCell>
-										<TableCell className='font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3'>
+										<TableCell className='font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 											Purchase Date
 										</TableCell>
-										<TableCell className='font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3'>
-											Pay
+										<TableCell className='font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+											Total Items
 										</TableCell>
-
-										<TableCell className='font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3'>
-											Payment
+										<TableCell className='font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+											Paid Amount
 										</TableCell>
-										<TableCell
-											isHeader
-											className='font-medium text-[#494949] text-start text-theme-xs dark:text-[#667085] p-3'>
+										<TableCell className='font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+											Payment Method
+										</TableCell>
+										<TableCell className='font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+											Installments
+										</TableCell>
+										<TableCell className='font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+											Remainings
+										</TableCell>
+										<TableCell className='w-[100px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 											Action
 										</TableCell>
 									</TableRow>
 								</TableHeader>
 								<TableBody className='divide-y divide-gray-100 dark:divide-gray-800 '>
-									{getFilteredData().map((invoice) => (
+									{filteredInvoices.map((invoice) => (
 										<TableRow key={invoice.id}>
-											<TableCell className='py-[26px] px-[10px] '>
-												<p className='font-medium text-[#212121] text-theme-sm dark:text-white/90'>
-													{invoice.invoice_number}
-												</p>
-											</TableCell>
 											<TableCell className='py-[26px] px-[10px]'>
-												<div className='flex items-center gap-3 '>{invoice.customer_name}</div>
+												<div className='flex items-center gap-3 '>{invoice.customer?.name || 'N/A'}</div>
 											</TableCell>
-											<TableCell className='py-[26px] px-[10px]'> {invoice.sku}</TableCell>
-											<TableCell className='py-[26px] px-[10px]'>{invoice.date}</TableCell>
-											<TableCell className='py-[26px] px-[10px]'>{invoice.price}</TableCell>
-											<TableCell>
-												{invoice.payment_status === 'Cash' && (
-													<span className='inline-flex items-center px-2.5 py-0.5 justify-center gap-1 rounded-full font-medium text-theme-xs bg-transparent  text-[#079455] border border-[#079455]'>
-														<span className='w-[6px] h-[6px] rounded-full bg-[#079455]'></span> Cash
-													</span>
-												)}
-												{invoice.payment_status === 'Credit' && (
-													<div className='flex flex-col gap-2'>
-														<div className='flex gap-2 items-center'>
-															<span className='inline-flex items-center px-2.5 py-0.5 justify-center gap-1 rounded-full font-medium text-theme-xs bg-warning-50 border border-[#DC6803]  text-warning-600 dark:bg-warning-500/15 dark:text-orange-400'>
-																<span className='w-[6px] h-[6px] rounded-full bg-[#DC6803]'></span> Credit
-															</span>
-															<p className='text-[#0BA5EC] decoration-underline text-[12px] cursor-pointer'>Remind</p>
-														</div>
-														{invoice.due_date && (
-															<div className='text-xs text-[#494949]'>Due date: {invoice.due_date}</div>
-														)}
-													</div>
-												)}
-												{invoice.payment_status === 'Mix Cash/Credit' && (
-													<span className='inline-flex items-center px-2.5 py-0.5 justify-center gap-1 rounded-full font-medium text-theme-xs bg-warning-50 border border-[#DC6803]  text-warning-600 dark:bg-warning-500/15 dark:text-orange-400'>
-														<span className='w-[6px] h-[6px] rounded-full bg-[#DC6803]'></span> Mix Cash/Credit
-													</span>
-												)}
+											<TableCell className='py-[26px] px-[10px]'>{invoice.createdAt}</TableCell>
+											<TableCell className='w-[200px] py-[26px] px-[10px] flex gap-[10px] flex-wrap'>
+												{invoice.items?.items?.map((item) => {
+													return (
+														<span className='border border-[#079455] text-[#067647] rounded p-[10px]' key={item.id}>
+															{item?.product?.name}
+														</span>
+													);
+												})}
 											</TableCell>
-											<TableCell className='py-[26px] px-[10px]'>
+											<TableCell className='py-[26px] px-[10px]'>{invoice.paidAmount}</TableCell>
+											<TableCell className='py-[26px] px-[10px] uppercase'>{invoice.paymentMethod}</TableCell>
+											<TableCell className='w-[300px] py-[26px] px-[10px] flex gap-[10px] flex-wrap'>
+												{invoice.installments?.items?.map((item) => {
+													return (
+														<span className='border border-[#079455] text-[#067647] rounded p-[10px]' key={item.id}>
+															Rs:{item?.amount}
+															<hr className='my-[10px] border-[#079455]' />
+															{item?.dueDate}
+														</span>
+													);
+												}) || 'N/A'}
+											</TableCell>
+											<TableCell className='py-[26px] px-[10px]'>{invoice.totalAmount - invoice.paidAmount}</TableCell>
+											<TableCell className=' py-[26px] p-3 text-[#475467] font-normal'>
 												<div className='flex items-center gap-3'>
-													<div>
-														<svg
-															width='20'
-															height='20'
-															viewBox='0 0 20 20'
-															fill='none'
-															xmlns='http://www.w3.org/2000/svg'>
-															<path
-																d='M2.01677 10.5943C1.90328 10.4146 1.84654 10.3248 1.81477 10.1862C1.79091 10.0821 1.79091 9.91794 1.81477 9.81384C1.84654 9.67525 1.90328 9.5854 2.01677 9.40571C2.95461 7.92072 5.74617 4.16669 10.0003 4.16669C14.2545 4.16669 17.0461 7.92072 17.9839 9.4057C18.0974 9.5854 18.1541 9.67525 18.1859 9.81384C18.2098 9.91794 18.2098 10.0821 18.1859 10.1862C18.1541 10.3248 18.0974 10.4146 17.9839 10.5943C17.0461 12.0793 14.2545 15.8334 10.0003 15.8334C5.74617 15.8334 2.95461 12.0793 2.01677 10.5943Z'
-																stroke='#475467'
-																strokeWidth='1.66667'
-																strokeLinecap='round'
-																strokeLinejoin='round'
-															/>
-															<path
-																d='M10.0003 12.5C11.381 12.5 12.5003 11.3807 12.5003 10C12.5003 8.61931 11.381 7.50002 10.0003 7.50002C8.61962 7.50002 7.50034 8.61931 7.50034 10C7.50034 11.3807 8.61962 12.5 10.0003 12.5Z'
-																stroke='#475467'
-																strokeWidth='1.66667'
-																strokeLinecap='round'
-																strokeLinejoin='round'
-															/>
-														</svg>
-													</div>
-													<div>
-														<svg
-															width='20'
-															height='20'
-															viewBox='0 0 20 20'
-															fill='none'
-															xmlns='http://www.w3.org/2000/svg'>
-															<path
-																d='M2.39662 15.0964C2.43491 14.7518 2.45405 14.5795 2.50618 14.4185C2.55243 14.2756 2.61778 14.1396 2.70045 14.0142C2.79363 13.8729 2.91621 13.7504 3.16136 13.5052L14.1666 2.49999C15.0871 1.57951 16.5795 1.57951 17.4999 2.49999C18.4204 3.42046 18.4204 4.91285 17.4999 5.83332L6.49469 16.8386C6.24954 17.0837 6.12696 17.2063 5.98566 17.2995C5.86029 17.3821 5.72433 17.4475 5.58146 17.4937C5.42042 17.5459 5.24813 17.565 4.90356 17.6033L2.08325 17.9167L2.39662 15.0964Z'
-																stroke='#475467'
-																strokeWidth='1.66667'
-																strokeLinecap='round'
-																strokeLinejoin='round'
-															/>
-														</svg>
-													</div>
+													<button onClick={() => setInvoiceToEdit(invoice)}>
+														<Pencil className='w-6 h-6 text-slate-600' />
+													</button>
+													<button onClick={() => handleDeleteClick(invoice)}>
+														<Trash2 className='w-6 h-6 text-slate-600' />
+													</button>
 												</div>
 											</TableCell>
 										</TableRow>
@@ -277,22 +241,22 @@ export default function SalesSummary() {
 					</div>
 				</div>
 			</div>
-			<div className='flex justify-end items-center p-4 border-t border-[#EAECF0] mx-5  '>
-				<button className='p-3 py-2 border hover:bg-gray-100 bg-white'>←</button>
-
-				<button className='p-3 py-2 border  bg-gray-200 font-semibold'>1</button>
-
-				<button className='p-3 py-2 border hover:bg-gray-100 bg-white'>2</button>
-
-				<span className='p-3 py-2 border hover:bg-gray-100 bg-white'>...</span>
-
-				<button className='p-3 py-2 border hover:bg-gray-100 bg-white'>9</button>
-
-				<button className='p-3 py-2 border hover:bg-gray-100 bg-white'>10</button>
-
-				<button className='p-3 py-2 border hover:bg-gray-100 bg-white'>→</button>
-			</div>
-			<AddCustomerModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+			<AddInvoiceModal isOpen={modalOpen} setInvoices={setInvoices} onClose={() => setModalOpen(false)} />
+			<EditInvoiceModal
+				invoice={invoiceToEdit}
+				setInvoices={setInvoices}
+				onClose={() => {
+					setInvoiceToEdit(null);
+					fetchInvoices();
+				}}
+			/>
+			<ConfirmDeleteModal
+				isDeleting={isDeleting}
+				itemToDelete={itemToDelete?.title}
+				isOpen={itemToDelete}
+				onConfirm={handleConfirmDelete}
+				onClose={() => setItemToDelete(null)}
+			/>
 		</div>
-	)
+	);
 }

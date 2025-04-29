@@ -8,10 +8,10 @@ import Qoutation from './pages/Qoutation';
 // import ManageInvoices from './pages/Sales/ManageInvoices';
 // import ProductSaleQuotation from './pages/Sales/ProductSaleQuotation';
 // import Refunds from './pages/Sales/Refunds';
-// import SalesSummary from './pages/Sales/SalesSummary';
 // import PurchaseOrders from './pages/Purchase/PurchaseOrders';
 // import ManageSuppliers from './pages/Purchase/ManageSuppliers';
 // import SupplierProducts from './pages/Purchase/SupplierProducts';
+import SalesSummary from './pages/Sales/SalesSummary';
 import Products from './pages/Products';
 // import Blank from './pages/Blank';
 import AllWareHouse from './pages/warehouse/AllWarehouse';
@@ -19,7 +19,7 @@ import WareHouse from './pages/warehouse/WareHouse';
 import AppLayout from './layout/AppLayout';
 import { ScrollToTop } from './components/common/ScrollToTop';
 import Home from './pages/Dashboard/Home';
-// import AllInstallments from './pages/Installments/AllInstallments';
+import AllInstallments from './pages/Installments/AllInstallments';
 import Expenses from './pages/Accounting/Expenses';
 import AllClient from './pages/Client/AllClient';
 
@@ -36,12 +36,12 @@ export default function App() {
 						{/* <Route path='/manage-invoices' element={<ManageInvoices />} /> */}
 						{/* <Route path='/product-sale-quotation' element={<ProductSaleQuotation />} /> */}
 						{/*<Route path='/refunds' element={<Refunds />} /> */}
-						{/*<Route path='/sales-summary' element={<SalesSummary />} /> */}
+						<Route path='/sales-summary' element={<SalesSummary />} />
 						{/* <Route path='/purchase-orders' element={<PurchaseOrders />} /> */}
 						{/* <Route path='/manage-suppliers' element={<ManageSuppliers />} /> */}
 						{/* <Route path='/manage-suppliers/:supplier' element={<SupplierProducts />} /> */}
 						{/* <Route path='/all-warehouse' element={<AllWareHouse />} /> */}
-						{/* <Route path='/all-installments' element={<AllInstallments />} /> */}
+						<Route path='/all-installments' element={<AllInstallments />} />
 						<Route path='/warehouse' element={<AllWareHouse />} />
 						<Route path='/warehouse/:warehouseId' element={<WareHouse />} />
 						<Route path='/expenses' element={<Expenses />} />

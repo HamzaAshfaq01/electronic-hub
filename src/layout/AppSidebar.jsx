@@ -120,6 +120,11 @@ const navItems = [
 	// },
 	{
 		icon: <Package className='w-5 h-5' />,
+		name: 'Sale Management',
+		path: '/sales-summary',
+	},
+	{
+		icon: <Package className='w-5 h-5' />,
 		name: 'Warehouse Management',
 		path: '/warehouse',
 	},
@@ -138,11 +143,11 @@ const navItems = [
 		name: 'Customer Management',
 		path: '/all-client',
 	},
-	// {
-	// 	icon: <Calendar className='w-5 h-5' />,
-	// 	name: 'Installment Management',
-	// 	path: '/all-installments',
-	// },
+	{
+		icon: <Calendar className='w-5 h-5' />,
+		name: 'Installment Management',
+		path: '/all-installments',
+	},
 	{
 		icon: <CreditCard className='w-5 h-5' />,
 		name: 'Expense Management',
