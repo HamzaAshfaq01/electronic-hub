@@ -1,5 +1,5 @@
 import { generateClient } from 'aws-amplify/api';
-import { updateInvoice, updateInstallment, updateInvoiceItem } from '../../graphql/mutations';
+import { updateInvoice, updateInstallment, updateInvoiceItem, createInstallment } from '../../graphql/mutations';
 import { listCustomers, listWarehouses, listProducts } from '../../graphql/queries';
 import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
 import DatePicker from 'react-datepicker';
@@ -111,7 +111,7 @@ const EditInvoiceModal = ({ invoice, onClose, setInvoices }) => {
 				paymentMethod: values.paymentMethod,
 				dueDate: values.dueDate || null,
 				status: values.status,
-				createdAt: getCurrentFormattedDate(values.createdAt),
+				createdAt: values.createdAt,
 			};
 
 			await client.graphql({
@@ -139,21 +139,36 @@ const EditInvoiceModal = ({ invoice, onClose, setInvoices }) => {
 
 			if (values.installments.length > 0) {
 				await Promise.all(
-					values.installments.map((installment) =>
-						client.graphql({
-							query: updateInstallment,
-							variables: {
-								input: {
-									id: installment.id,
-									invoiceID: invoice.id,
-									dueDate: getCurrentFormattedDate(installment.dueDate),
-									amount: installment.amount,
-									status: installment.status,
-									createdAt: getCurrentFormattedDate(installment.createdAt),
+					values.installments.map((installment) => {
+						if (installment.id) {
+							return client.graphql({
+								query: updateInstallment,
+								variables: {
+									input: {
+										id: installment.id,
+										invoiceID: invoice.id,
+										dueDate: installment.dueDate,
+										amount: installment.amount,
+										status: installment.status,
+										createdAt: installment.createdAt,
+									},
 								},
-							},
-						})
-					)
+							});
+						} else {
+							return client.graphql({
+								query: createInstallment,
+								variables: {
+									input: {
+										invoiceID: invoice.id,
+										dueDate: installment.dueDate,
+										amount: installment.amount,
+										status: 'PENDING',
+										createdAt: getCurrentFormattedDate(),
+									},
+								},
+							});
+						}
+					})
 				);
 			}
 
@@ -378,7 +393,9 @@ const EditInvoiceModal = ({ invoice, onClose, setInvoices }) => {
 																<DatePicker
 																	className='p-2 w-full border rounded'
 																	selected={values.installments[index].dueDate}
-																	onChange={(date) => setFieldValue(`installments.${index}.dueDate`, date)}
+																	onChange={(date) =>
+																		setFieldValue(`installments.${index}.dueDate`, getCurrentFormattedDate(date))
+																	}
 																/>
 																<Field
 																	name={`installments.${index}.amount`}
@@ -413,7 +430,7 @@ const EditInvoiceModal = ({ invoice, onClose, setInvoices }) => {
 										<DatePicker
 											className='p-2 w-full border rounded'
 											selected={values.createdAt}
-											onChange={(date) => setFieldValue('createdAt', date)}
+											onChange={(date) => setFieldValue('createdAt', getCurrentFormattedDate(date))}
 										/>
 										<ErrorMessage name='createdAt' component='div' className='text-red-500 text-sm mt-1' />
 									</div>

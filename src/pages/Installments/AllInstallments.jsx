@@ -8,7 +8,7 @@ import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../compon
 import EditInstallmentModal from '../../components/modal/EditInstallmentModal';
 import ConfirmDeleteModal from '../../components/modal/DeleteConfirmationModal';
 import { Search, ChevronDown } from 'lucide-react';
-import { deleteInstallment } from '../../graphql/mutations';
+import { deleteInstallment, updateInvoice } from '../../graphql/mutations';
 
 const client = generateClient();
 
@@ -18,6 +18,9 @@ export default function AllInstallments() {
 	const [itemToDelete, setItemToDelete] = useState(null);
 	const [isDeleting, setIsDeleting] = useState(false);
 	const [installmentToEdit, setInstallmentToEdit] = useState(null);
+	const [installmentStatus, setInstallmentStatus] = useState('');
+	const [nextToken, setNextToken] = useState(null);
+	const [prevTokens, setPrevTokens] = useState([]);
 
 	const fetchInstallments = async (token = null, filter) => {
 		try {
@@ -30,6 +33,12 @@ export default function AllInstallments() {
 				},
 			});
 			setInstallments(response.data.listInstallments.items || []);
+			setNextToken(response.data.listInstallments.nextToken || null);
+			if (token && !prevTokens.includes(token)) {
+				setPrevTokens((prev) => {
+					return [...prev, token];
+				});
+			}
 		} catch (error) {
 			toast.error('Failed to load installments. Please try again later.');
 			console.error(error);
@@ -53,6 +62,15 @@ export default function AllInstallments() {
 					},
 				},
 			});
+			await client.graphql({
+				query: updateInvoice,
+				variables: {
+					input: {
+						id: itemToDelete.invoice.id,
+						paidAmount: itemToDelete?.invoice?.paidAmount + itemToDelete.amount,
+					},
+				},
+			});
 			toast.success('Expense deleted successfully!');
 			setItemToDelete(null);
 			setInstallments((prevInstallment) => {
@@ -72,9 +90,31 @@ export default function AllInstallments() {
 		}
 	};
 
+	const handlePrev = () => {
+		if (prevTokens.length >= 1) {
+			const newPrevTokens = [...prevTokens];
+			newPrevTokens.pop();
+			const prevToken = newPrevTokens[newPrevTokens.length - 1];
+			setPrevTokens(newPrevTokens);
+			fetchInstallments(prevToken);
+		}
+	};
+
+	const handleNext = () => {
+		fetchInstallments(nextToken);
+	};
+
 	useEffect(() => {
-		fetchInstallments();
-	}, []);
+		if (installmentStatus) {
+			fetchInstallments(null, {
+				status: {
+					eq: installmentStatus,
+				},
+			});
+		} else {
+			fetchInstallments();
+		}
+	}, [installmentStatus]);
 
 	return (
 		<div className=''>
@@ -98,7 +138,7 @@ export default function AllInstallments() {
 				</div>
 			</div>
 			<div className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-[#FFFFFF] p-[20px] rounded-[8px] border-white border-2'>
-				<div>
+				{/* <div>
 					<label htmlFor='search' className='block text-[14px] font-medium text-[#344054] mb-[6px] leading-[20px]'>
 						Search for client
 					</label>
@@ -113,7 +153,7 @@ export default function AllInstallments() {
 							placeholder='Search'
 						/>
 					</div>
-				</div>
+				</div> */}
 
 				<div>
 					<label htmlFor='status' className='block text-[14px] font-medium text-[#344054] mb-[6px] leading-[20px]'>
@@ -122,6 +162,7 @@ export default function AllInstallments() {
 					<div className='relative'>
 						<select
 							id='status'
+							onChange={(e) => setInstallmentStatus(e.target.value)}
 							className='appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm'
 							defaultValue='all'>
 							<option value='all'>All</option>
@@ -220,6 +261,22 @@ export default function AllInstallments() {
 					onConfirm={handleConfirmDelete}
 					onClose={() => setItemToDelete(null)}
 				/>
+			</div>
+			<div className='flex justify-end gap-[10px] items-center py-4 border-t border-[#EAECF0] '>
+				<button
+					onClick={handlePrev}
+					disabled={prevTokens.length == 0}
+					className={`p-3 py-2 cursor-pointer border ${
+						prevTokens.length == 0 ? 'bg-gray-200' : 'hover:bg-gray-100 bg-white'
+					}`}>
+					← Previous
+				</button>
+				<button
+					onClick={handleNext}
+					disabled={!nextToken}
+					className={`p-3 py-2 cursor-pointer border ${!nextToken ? 'bg-gray-200' : 'hover:bg-gray-100 bg-white'}`}>
+					Next →
+				</button>
 			</div>
 		</div>
 	);

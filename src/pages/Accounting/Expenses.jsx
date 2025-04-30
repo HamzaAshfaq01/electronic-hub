@@ -9,7 +9,7 @@ import EditExpenseModal from '../../components/modal/EditExpenseModal';
 import ConfirmDeleteModal from '../../components/modal/DeleteConfirmationModal';
 import { generateClient } from 'aws-amplify/api';
 import { toast } from 'react-toastify';
-import { listExpenses, expensesByExpenseType } from '../../graphql/queries';
+import { listExpenses, expensesByExpenseType, listExpenseTypes } from '../../graphql/queries';
 import { deleteExpense } from '../../graphql/mutations';
 import { getCurrentFormattedDate, getCurrentMonthRange } from '../../utils/dateUtils';
 
@@ -21,6 +21,7 @@ export default function Managewarehouses() {
 	const [itemToDelete, setItemToDelete] = useState(null);
 	const [expenseToEdit, setExpenseToEdit] = useState(null);
 	const [expenses, setExpenses] = useState([]);
+	const [expenseTypes, setExpenseTypes] = useState([]);
 	const [nextToken, setNextToken] = useState(null);
 	const [prevTokens, setPrevTokens] = useState([]);
 	const [loading, setLoading] = useState(false);
@@ -41,7 +42,7 @@ export default function Managewarehouses() {
 						nextToken: token,
 						filter: filter,
 						limit: 10,
-						expenseType: selectedExpenseType,
+						expenseTypeID: selectedExpenseType,
 					},
 				});
 				data = response.data.expensesByExpenseType;
@@ -69,6 +70,28 @@ export default function Managewarehouses() {
 			setLoading(false);
 		}
 	};
+
+	const fetchExpensesType = async (token = null, filter) => {
+		setLoading(true);
+		try {
+			const response = await client.graphql({
+				query: listExpenseTypes,
+				variables: {
+					limit: 100,
+				},
+			});
+			const data = response.data.listExpenseTypes;
+			setExpenseTypes(data.items);
+		} catch (error) {
+			console.error('Error fetching expenses:', error);
+		} finally {
+			setLoading(false);
+		}
+	};
+
+	useEffect(() => {
+		fetchExpensesType();
+	}, []);
 
 	useEffect(() => {
 		fetchExpenses();
@@ -161,11 +184,11 @@ export default function Managewarehouses() {
 								onChange={(e) => setSelectedExpenseType(e.target.value)}
 								className='p-2 border rounded'>
 								<option value=''>All Types</option>
-								<option value='SALARY'>Salary</option>
-								<option value='ELECTRICITY'>Electricity</option>
-								<option value='RENT'>Rent</option>
-								<option value='MAINTENANCE'>Maintenance</option>
-								<option value='MISC'>Miscellaneous</option>
+								{expenseTypes.map((type) => (
+									<option key={type.id} value={type.id}>
+										{type.name}
+									</option>
+								))}
 							</select>
 							<DatePicker className='p-2 border rounded' selected={startDate} onChange={(date) => setStartDate(date)} />
 							<DatePicker className='p-2 border rounded' selected={endDate} onChange={(date) => setEndDate(date)} />
@@ -212,7 +235,7 @@ export default function Managewarehouses() {
 												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{expense.title}</TableCell>
 												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{expense.amount}</TableCell>
 												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>
-													{expense.expenseType}
+													{expense.expenseType?.name}
 												</TableCell>
 												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{expense.createdAt}</TableCell>
 												<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>

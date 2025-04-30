@@ -40,6 +40,15 @@ const EditInvoiceModal = ({ installment, onClose, setInstallments }) => {
 						},
 					},
 				});
+				await client.graphql({
+					query: updateInvoice,
+					variables: {
+						input: {
+							id: installment.invoice.id,
+							paidAmount: installment?.invoice?.paidAmount + installment.amount,
+						},
+					},
+				});
 			}
 			toast.success('Installement updated successfully!');
 			resetForm();

@@ -211,16 +211,21 @@ export default function SalesSummary() {
 											</TableCell>
 											<TableCell className='py-[26px] px-[10px]'>{invoice.paidAmount}</TableCell>
 											<TableCell className='py-[26px] px-[10px] uppercase'>{invoice.paymentMethod}</TableCell>
-											<TableCell className='w-[300px] py-[26px] px-[10px] flex gap-[10px] flex-wrap'>
-												{invoice.installments?.items?.map((item) => {
-													return (
-														<span className='border border-[#079455] text-[#067647] rounded p-[10px]' key={item.id}>
-															Rs:{item?.amount}
-															<hr className='my-[10px] border-[#079455]' />
-															{item?.dueDate}
-														</span>
-													);
-												}) || 'N/A'}
+											<TableCell
+												className={`${
+													invoice.installments?.items?.length > 0 ? 'w-[300px]' : 'w-[130px]'
+												} py-[26px] px-[10px] flex gap-[10px] flex-wrap`}>
+												{invoice.installments?.items?.length > 0
+													? invoice.installments?.items?.map((item) => {
+															return (
+																<span className='border border-[#079455] text-[#067647] rounded p-[10px]' key={item.id}>
+																	Rs:{item?.amount}
+																	<hr className='my-[10px] border-[#079455]' />
+																	{item?.dueDate}
+																</span>
+															);
+													  })
+													: 'N/A'}
 											</TableCell>
 											<TableCell className='py-[26px] px-[10px]'>{invoice.totalAmount - invoice.paidAmount}</TableCell>
 											<TableCell className=' py-[26px] p-3 text-[#475467] font-normal'>
