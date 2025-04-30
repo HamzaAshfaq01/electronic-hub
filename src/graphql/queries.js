@@ -33,6 +33,9 @@ export const getCustomer = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -85,6 +88,9 @@ export const getCustomer = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -101,6 +107,9 @@ export const getCustomer = /* GraphQL */ `
           paymentMethod
           dueDate
           status
+          advance
+          month
+          percentage
           items {
             items {
               id
@@ -114,6 +123,9 @@ export const getCustomer = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -160,6 +172,9 @@ export const getCustomer = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -204,6 +219,9 @@ export const getCustomer = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -352,6 +370,9 @@ export const listCustomers = /* GraphQL */ `
             paymentMethod
             dueDate
             status
+            advance
+            month
+            percentage
             items {
               items {
                 id
@@ -484,6 +505,9 @@ export const getWarehouse = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -587,6 +611,9 @@ export const getWarehouse = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -639,6 +666,9 @@ export const getWarehouse = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -655,6 +685,9 @@ export const getWarehouse = /* GraphQL */ `
           paymentMethod
           dueDate
           status
+          advance
+          month
+          percentage
           items {
             items {
               id
@@ -668,6 +701,9 @@ export const getWarehouse = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -714,6 +750,9 @@ export const getWarehouse = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -869,6 +908,9 @@ export const listWarehouses = /* GraphQL */ `
             paymentMethod
             dueDate
             status
+            advance
+            month
+            percentage
             items {
               items {
                 id
@@ -963,6 +1005,9 @@ export const getProduct = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -1094,6 +1139,9 @@ export const getProduct = /* GraphQL */ `
             paymentMethod
             dueDate
             status
+            advance
+            month
+            percentage
             items {
               items {
                 id
@@ -1448,6 +1496,9 @@ export const listProducts = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -1696,6 +1747,9 @@ export const getStock = /* GraphQL */ `
             paymentMethod
             dueDate
             status
+            advance
+            month
+            percentage
             items {
               items {
                 id
@@ -1846,6 +1900,9 @@ export const getStock = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -2073,6 +2130,9 @@ export const listStocks = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -2160,6 +2220,9 @@ export const listStocks = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -2308,6 +2371,9 @@ export const getInvoice = /* GraphQL */ `
             paymentMethod
             dueDate
             status
+            advance
+            month
+            percentage
             items {
               items {
                 id
@@ -2509,6 +2575,9 @@ export const getInvoice = /* GraphQL */ `
             paymentMethod
             dueDate
             status
+            advance
+            month
+            percentage
             items {
               items {
                 id
@@ -2555,6 +2624,9 @@ export const getInvoice = /* GraphQL */ `
       paymentMethod
       dueDate
       status
+      advance
+      month
+      percentage
       items {
         items {
           id
@@ -2605,6 +2677,9 @@ export const getInvoice = /* GraphQL */ `
             paymentMethod
             dueDate
             status
+            advance
+            month
+            percentage
             items {
               items {
                 id
@@ -2761,6 +2836,9 @@ export const getInvoice = /* GraphQL */ `
             paymentMethod
             dueDate
             status
+            advance
+            month
+            percentage
             items {
               items {
                 id
@@ -2869,6 +2947,9 @@ export const listInvoices = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -2993,6 +3074,9 @@ export const listInvoices = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -3017,6 +3101,9 @@ export const listInvoices = /* GraphQL */ `
         paymentMethod
         dueDate
         status
+        advance
+        month
+        percentage
         items {
           items {
             id
@@ -3051,6 +3138,9 @@ export const listInvoices = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -3138,6 +3228,9 @@ export const listInvoices = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -3217,6 +3310,9 @@ export const getInvoiceItem = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -3341,6 +3437,9 @@ export const getInvoiceItem = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -3365,6 +3464,9 @@ export const getInvoiceItem = /* GraphQL */ `
         paymentMethod
         dueDate
         status
+        advance
+        month
+        percentage
         items {
           items {
             id
@@ -3399,6 +3501,9 @@ export const getInvoiceItem = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -3486,6 +3591,9 @@ export const getInvoiceItem = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -3622,6 +3730,9 @@ export const getInvoiceItem = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -3796,6 +3907,9 @@ export const listInvoiceItems = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -3848,6 +3962,9 @@ export const listInvoiceItems = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -3864,6 +3981,9 @@ export const listInvoiceItems = /* GraphQL */ `
           paymentMethod
           dueDate
           status
+          advance
+          month
+          percentage
           items {
             items {
               id
@@ -3877,6 +3997,9 @@ export const listInvoiceItems = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -3923,6 +4046,9 @@ export const listInvoiceItems = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -4010,6 +4136,9 @@ export const listInvoiceItems = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -4147,6 +4276,9 @@ export const getInstallment = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -4271,6 +4403,9 @@ export const getInstallment = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -4295,6 +4430,9 @@ export const getInstallment = /* GraphQL */ `
         paymentMethod
         dueDate
         status
+        advance
+        month
+        percentage
         items {
           items {
             id
@@ -4329,6 +4467,9 @@ export const getInstallment = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -4416,6 +4557,9 @@ export const getInstallment = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -4492,6 +4636,9 @@ export const listInstallments = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -4544,6 +4691,9 @@ export const listInstallments = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -4560,6 +4710,9 @@ export const listInstallments = /* GraphQL */ `
           paymentMethod
           dueDate
           status
+          advance
+          month
+          percentage
           items {
             items {
               id
@@ -4573,6 +4726,9 @@ export const listInstallments = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -4619,6 +4775,9 @@ export const listInstallments = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -4711,6 +4870,9 @@ export const getQuotation = /* GraphQL */ `
             paymentMethod
             dueDate
             status
+            advance
+            month
+            percentage
             items {
               items {
                 id
@@ -4982,6 +5144,9 @@ export const listQuotations = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -5155,6 +5320,9 @@ export const getQuotationItem = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -5385,6 +5553,9 @@ export const getQuotationItem = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -5559,6 +5730,9 @@ export const listQuotationItems = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -5696,6 +5870,9 @@ export const listQuotationItems = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -6058,6 +6235,9 @@ export const customerByPhone = /* GraphQL */ `
             paymentMethod
             dueDate
             status
+            advance
+            month
+            percentage
             items {
               items {
                 id
@@ -6274,6 +6454,9 @@ export const productBySKU = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -6499,6 +6682,9 @@ export const stocksByWarehouse = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -6586,6 +6772,9 @@ export const stocksByWarehouse = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -6768,6 +6957,9 @@ export const stocksByProduct = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -6855,6 +7047,9 @@ export const stocksByProduct = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -7000,6 +7195,9 @@ export const invoicesByCustomer = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -7124,6 +7322,9 @@ export const invoicesByCustomer = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -7148,6 +7349,9 @@ export const invoicesByCustomer = /* GraphQL */ `
         paymentMethod
         dueDate
         status
+        advance
+        month
+        percentage
         items {
           items {
             id
@@ -7182,6 +7386,9 @@ export const invoicesByCustomer = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -7269,6 +7476,9 @@ export const invoicesByCustomer = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -7358,6 +7568,9 @@ export const invoicesByWarehouse = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -7482,6 +7695,9 @@ export const invoicesByWarehouse = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -7506,6 +7722,9 @@ export const invoicesByWarehouse = /* GraphQL */ `
         paymentMethod
         dueDate
         status
+        advance
+        month
+        percentage
         items {
           items {
             id
@@ -7540,6 +7759,9 @@ export const invoicesByWarehouse = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -7627,6 +7849,9 @@ export const invoicesByWarehouse = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -7698,6 +7923,9 @@ export const itemsByInvoice = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -7750,6 +7978,9 @@ export const itemsByInvoice = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -7766,6 +7997,9 @@ export const itemsByInvoice = /* GraphQL */ `
           paymentMethod
           dueDate
           status
+          advance
+          month
+          percentage
           items {
             items {
               id
@@ -7779,6 +8013,9 @@ export const itemsByInvoice = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -7825,6 +8062,9 @@ export const itemsByInvoice = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -7912,6 +8152,9 @@ export const itemsByInvoice = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -8041,6 +8284,9 @@ export const invoiceItemsByProduct = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -8093,6 +8339,9 @@ export const invoiceItemsByProduct = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -8109,6 +8358,9 @@ export const invoiceItemsByProduct = /* GraphQL */ `
           paymentMethod
           dueDate
           status
+          advance
+          month
+          percentage
           items {
             items {
               id
@@ -8122,6 +8374,9 @@ export const invoiceItemsByProduct = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -8168,6 +8423,9 @@ export const invoiceItemsByProduct = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -8255,6 +8513,9 @@ export const invoiceItemsByProduct = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -8384,6 +8645,9 @@ export const installmentsByInvoice = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -8436,6 +8700,9 @@ export const installmentsByInvoice = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -8452,6 +8719,9 @@ export const installmentsByInvoice = /* GraphQL */ `
           paymentMethod
           dueDate
           status
+          advance
+          month
+          percentage
           items {
             items {
               id
@@ -8465,6 +8735,9 @@ export const installmentsByInvoice = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -8511,6 +8784,9 @@ export const installmentsByInvoice = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -8600,6 +8876,9 @@ export const quotationsByCustomer = /* GraphQL */ `
               paymentMethod
               dueDate
               status
+              advance
+              month
+              percentage
               items {
                 nextToken
                 __typename
@@ -8765,6 +9044,9 @@ export const itemsByQuotation = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -8902,6 +9184,9 @@ export const itemsByQuotation = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -9031,6 +9316,9 @@ export const quotationItemsByProduct = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename
@@ -9168,6 +9456,9 @@ export const quotationItemsByProduct = /* GraphQL */ `
                 paymentMethod
                 dueDate
                 status
+                advance
+                month
+                percentage
                 createdAt
                 updatedAt
                 __typename

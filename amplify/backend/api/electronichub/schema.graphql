@@ -103,6 +103,9 @@ type Invoice
 	paymentMethod: PaymentMethod
 	dueDate: AWSDate
 	status: InvoiceStatus
+	advance: Float
+	month: Float
+	percentage: Float
 	items: [InvoiceItem] @hasMany(indexName: "byInvoice", fields: ["id"])
 	installments: [Installment] @hasMany(indexName: "byInvoice", fields: ["id"])
 	createdAt: String
