@@ -121,7 +121,7 @@ export default function AllInstallments() {
 			<div className='flex justify-between items-center mb-[16px]'>
 				<h2>All Installments</h2>
 				<div>
-					<button
+					{/* <button
 						className='inline-flex items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300 px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0BA5EC] hover:text-[#fff]'
 						onClick={() => toast.info('Add Installment functionality coming soon!')}>
 						<svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -134,7 +134,7 @@ export default function AllInstallments() {
 							/>
 						</svg>
 						Create Installment
-					</button>
+					</button> */}
 				</div>
 			</div>
 			<div className='grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 bg-[#FFFFFF] p-[20px] rounded-[8px] border-white border-2'>
