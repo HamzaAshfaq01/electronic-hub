@@ -49,9 +49,15 @@ type Product
 	id: ID! @primaryKey
 	name: String!
 	sku: String! @index(name: "bySKU", queryField: "productBySKU")
+	revisedIP: String
+	straightDiscount: Float
+	specialDiscount: Float
+	semiAnnual: Float
+	collectionDiscount: Float
+	smIncentive: Float
 	brand: String
-	unitPrice: Float!
 	model: String
+	unitPrice: Float
 	description: String
 	stocks: [Stock] @hasMany(indexName: "byProduct", fields: ["id"])
 	invoiceItems: [InvoiceItem] @hasMany(indexName: "byProduct", fields: ["id"])

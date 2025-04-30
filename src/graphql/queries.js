@@ -123,9 +123,15 @@ export const getCustomer = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -239,9 +245,15 @@ export const getCustomer = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -488,9 +500,15 @@ export const getWarehouse = /* GraphQL */ `
             id
             name
             sku
+            revisedIP
+            straightDiscount
+            specialDiscount
+            semiAnnual
+            collectionDiscount
+            smIncentive
             brand
-            unitPrice
             model
+            unitPrice
             description
             stocks {
               items {
@@ -659,9 +677,15 @@ export const getWarehouse = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -764,9 +788,15 @@ export const listWarehouses = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -891,9 +921,15 @@ export const getProduct = /* GraphQL */ `
       id
       name
       sku
+      revisedIP
+      straightDiscount
+      specialDiscount
+      semiAnnual
+      collectionDiscount
+      smIncentive
       brand
-      unitPrice
       model
+      unitPrice
       description
       stocks {
         items {
@@ -943,9 +979,15 @@ export const getProduct = /* GraphQL */ `
             id
             name
             sku
+            revisedIP
+            straightDiscount
+            specialDiscount
+            semiAnnual
+            collectionDiscount
+            smIncentive
             brand
-            unitPrice
             model
+            unitPrice
             description
             stocks {
               items {
@@ -1091,9 +1133,15 @@ export const getProduct = /* GraphQL */ `
             id
             name
             sku
+            revisedIP
+            straightDiscount
+            specialDiscount
+            semiAnnual
+            collectionDiscount
+            smIncentive
             brand
-            unitPrice
             model
+            unitPrice
             description
             stocks {
               items {
@@ -1204,9 +1252,15 @@ export const getProduct = /* GraphQL */ `
             id
             name
             sku
+            revisedIP
+            straightDiscount
+            specialDiscount
+            semiAnnual
+            collectionDiscount
+            smIncentive
             brand
-            unitPrice
             model
+            unitPrice
             description
             stocks {
               items {
@@ -1290,9 +1344,15 @@ export const listProducts = /* GraphQL */ `
         id
         name
         sku
+        revisedIP
+        straightDiscount
+        specialDiscount
+        semiAnnual
+        collectionDiscount
+        smIncentive
         brand
-        unitPrice
         model
+        unitPrice
         description
         stocks {
           items {
@@ -1320,9 +1380,15 @@ export const listProducts = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -1399,9 +1465,15 @@ export const listProducts = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -1462,9 +1534,15 @@ export const listProducts = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -1537,9 +1615,15 @@ export const getStock = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -1658,9 +1742,15 @@ export const getStock = /* GraphQL */ `
         id
         name
         sku
+        revisedIP
+        straightDiscount
+        specialDiscount
+        semiAnnual
+        collectionDiscount
+        smIncentive
         brand
-        unitPrice
         model
+        unitPrice
         description
         stocks {
           items {
@@ -1688,9 +1778,15 @@ export const getStock = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -1767,9 +1863,15 @@ export const getStock = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -1830,9 +1932,15 @@ export const getStock = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -1912,9 +2020,15 @@ export const listStocks = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -1983,9 +2097,15 @@ export const listStocks = /* GraphQL */ `
           id
           name
           sku
+          revisedIP
+          straightDiscount
+          specialDiscount
+          semiAnnual
+          collectionDiscount
+          smIncentive
           brand
-          unitPrice
           model
+          unitPrice
           description
           stocks {
             items {
@@ -2005,9 +2125,15 @@ export const listStocks = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -2043,9 +2169,15 @@ export const listStocks = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -2078,9 +2210,15 @@ export const listStocks = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -2290,9 +2428,15 @@ export const getInvoice = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -2500,9 +2644,15 @@ export const getInvoice = /* GraphQL */ `
             id
             name
             sku
+            revisedIP
+            straightDiscount
+            specialDiscount
+            semiAnnual
+            collectionDiscount
+            smIncentive
             brand
-            unitPrice
             model
+            unitPrice
             description
             stocks {
               items {
@@ -2790,9 +2940,15 @@ export const listInvoices = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -2912,9 +3068,15 @@ export const listInvoices = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -3126,9 +3288,15 @@ export const getInvoiceItem = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -3248,9 +3416,15 @@ export const getInvoiceItem = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -3344,9 +3518,15 @@ export const getInvoiceItem = /* GraphQL */ `
         id
         name
         sku
+        revisedIP
+        straightDiscount
+        specialDiscount
+        semiAnnual
+        collectionDiscount
+        smIncentive
         brand
-        unitPrice
         model
+        unitPrice
         description
         stocks {
           items {
@@ -3374,9 +3554,15 @@ export const getInvoiceItem = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -3453,9 +3639,15 @@ export const getInvoiceItem = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -3516,9 +3708,15 @@ export const getInvoiceItem = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -3688,9 +3886,15 @@ export const listInvoiceItems = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -3743,9 +3947,15 @@ export const listInvoiceItems = /* GraphQL */ `
           id
           name
           sku
+          revisedIP
+          straightDiscount
+          specialDiscount
+          semiAnnual
+          collectionDiscount
+          smIncentive
           brand
-          unitPrice
           model
+          unitPrice
           description
           stocks {
             items {
@@ -3765,9 +3975,15 @@ export const listInvoiceItems = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -3803,9 +4019,15 @@ export const listInvoiceItems = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -3838,9 +4060,15 @@ export const listInvoiceItems = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -3990,9 +4218,15 @@ export const getInstallment = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -4112,9 +4346,15 @@ export const getInstallment = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -4342,9 +4582,15 @@ export const listInstallments = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -4606,9 +4852,15 @@ export const getQuotation = /* GraphQL */ `
             id
             name
             sku
+            revisedIP
+            straightDiscount
+            specialDiscount
+            semiAnnual
+            collectionDiscount
+            smIncentive
             brand
-            unitPrice
             model
+            unitPrice
             description
             stocks {
               items {
@@ -4811,9 +5063,15 @@ export const listQuotations = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -4978,9 +5236,15 @@ export const getQuotationItem = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -5017,9 +5281,15 @@ export const getQuotationItem = /* GraphQL */ `
         id
         name
         sku
+        revisedIP
+        straightDiscount
+        specialDiscount
+        semiAnnual
+        collectionDiscount
+        smIncentive
         brand
-        unitPrice
         model
+        unitPrice
         description
         stocks {
           items {
@@ -5047,9 +5317,15 @@ export const getQuotationItem = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -5126,9 +5402,15 @@ export const getQuotationItem = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -5189,9 +5471,15 @@ export const getQuotationItem = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -5312,9 +5600,15 @@ export const listQuotationItems = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -5339,9 +5633,15 @@ export const listQuotationItems = /* GraphQL */ `
           id
           name
           sku
+          revisedIP
+          straightDiscount
+          specialDiscount
+          semiAnnual
+          collectionDiscount
+          smIncentive
           brand
-          unitPrice
           model
+          unitPrice
           description
           stocks {
             items {
@@ -5361,9 +5661,15 @@ export const listQuotationItems = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -5399,9 +5705,15 @@ export const listQuotationItems = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -5434,9 +5746,15 @@ export const listQuotationItems = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -5852,9 +6170,15 @@ export const productBySKU = /* GraphQL */ `
         id
         name
         sku
+        revisedIP
+        straightDiscount
+        specialDiscount
+        semiAnnual
+        collectionDiscount
+        smIncentive
         brand
-        unitPrice
         model
+        unitPrice
         description
         stocks {
           items {
@@ -5882,9 +6206,15 @@ export const productBySKU = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -5961,9 +6291,15 @@ export const productBySKU = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -6024,9 +6360,15 @@ export const productBySKU = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -6104,9 +6446,15 @@ export const stocksByWarehouse = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -6175,9 +6523,15 @@ export const stocksByWarehouse = /* GraphQL */ `
           id
           name
           sku
+          revisedIP
+          straightDiscount
+          specialDiscount
+          semiAnnual
+          collectionDiscount
+          smIncentive
           brand
-          unitPrice
           model
+          unitPrice
           description
           stocks {
             items {
@@ -6197,9 +6551,15 @@ export const stocksByWarehouse = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -6235,9 +6595,15 @@ export const stocksByWarehouse = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -6270,9 +6636,15 @@ export const stocksByWarehouse = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -6343,9 +6715,15 @@ export const stocksByProduct = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -6414,9 +6792,15 @@ export const stocksByProduct = /* GraphQL */ `
           id
           name
           sku
+          revisedIP
+          straightDiscount
+          specialDiscount
+          semiAnnual
+          collectionDiscount
+          smIncentive
           brand
-          unitPrice
           model
+          unitPrice
           description
           stocks {
             items {
@@ -6436,9 +6820,15 @@ export const stocksByProduct = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -6474,9 +6864,15 @@ export const stocksByProduct = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -6509,9 +6905,15 @@ export const stocksByProduct = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -6669,9 +7071,15 @@ export const invoicesByCustomer = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -6791,9 +7199,15 @@ export const invoicesByCustomer = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -7015,9 +7429,15 @@ export const invoicesByWarehouse = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -7137,9 +7557,15 @@ export const invoicesByWarehouse = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -7362,9 +7788,15 @@ export const itemsByInvoice = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -7417,9 +7849,15 @@ export const itemsByInvoice = /* GraphQL */ `
           id
           name
           sku
+          revisedIP
+          straightDiscount
+          specialDiscount
+          semiAnnual
+          collectionDiscount
+          smIncentive
           brand
-          unitPrice
           model
+          unitPrice
           description
           stocks {
             items {
@@ -7439,9 +7877,15 @@ export const itemsByInvoice = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -7477,9 +7921,15 @@ export const itemsByInvoice = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -7512,9 +7962,15 @@ export const itemsByInvoice = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -7675,9 +8131,15 @@ export const invoiceItemsByProduct = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -7730,9 +8192,15 @@ export const invoiceItemsByProduct = /* GraphQL */ `
           id
           name
           sku
+          revisedIP
+          straightDiscount
+          specialDiscount
+          semiAnnual
+          collectionDiscount
+          smIncentive
           brand
-          unitPrice
           model
+          unitPrice
           description
           stocks {
             items {
@@ -7752,9 +8220,15 @@ export const invoiceItemsByProduct = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -7790,9 +8264,15 @@ export const invoiceItemsByProduct = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -7825,9 +8305,15 @@ export const invoiceItemsByProduct = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -7988,9 +8474,15 @@ export const installmentsByInvoice = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -8189,9 +8681,15 @@ export const quotationsByCustomer = /* GraphQL */ `
               id
               name
               sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
               brand
-              unitPrice
               model
+              unitPrice
               description
               stocks {
                 nextToken
@@ -8308,9 +8806,15 @@ export const itemsByQuotation = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -8335,9 +8839,15 @@ export const itemsByQuotation = /* GraphQL */ `
           id
           name
           sku
+          revisedIP
+          straightDiscount
+          specialDiscount
+          semiAnnual
+          collectionDiscount
+          smIncentive
           brand
-          unitPrice
           model
+          unitPrice
           description
           stocks {
             items {
@@ -8357,9 +8867,15 @@ export const itemsByQuotation = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -8395,9 +8911,15 @@ export const itemsByQuotation = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -8430,9 +8952,15 @@ export const itemsByQuotation = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -8544,9 +9072,15 @@ export const quotationItemsByProduct = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -8571,9 +9105,15 @@ export const quotationItemsByProduct = /* GraphQL */ `
           id
           name
           sku
+          revisedIP
+          straightDiscount
+          specialDiscount
+          semiAnnual
+          collectionDiscount
+          smIncentive
           brand
-          unitPrice
           model
+          unitPrice
           description
           stocks {
             items {
@@ -8593,9 +9133,15 @@ export const quotationItemsByProduct = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -8631,9 +9177,15 @@ export const quotationItemsByProduct = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt
@@ -8666,9 +9218,15 @@ export const quotationItemsByProduct = /* GraphQL */ `
                 id
                 name
                 sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
                 brand
-                unitPrice
                 model
+                unitPrice
                 description
                 createdAt
                 updatedAt

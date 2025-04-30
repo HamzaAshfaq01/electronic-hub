@@ -1,13 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { generateClient } from 'aws-amplify/api';
 import { updateProduct } from '../../graphql/mutations';
-import { listWarehouses } from '../../graphql/queries';
 import { toast } from 'react-toastify';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Label from '../form/Label';
-import Input from '../form/input/InputField';
-import Select from '../form/Select';
 
 const client = generateClient();
 
@@ -15,9 +12,15 @@ const validationSchema = Yup.object({
 	name: Yup.string().required('Product name is required'),
 	description: Yup.string().required('Description is required'),
 	unitPrice: Yup.number().required('Price is required').min(0.01, 'Price must be greater than 0'),
-	sku: Yup.number().required('SKU is required'),
+	sku: Yup.string().required('SKU is required'),
 	brand: Yup.string().required('Brand is required'),
 	model: Yup.string().required('Model is required'),
+	revisedIP: Yup.string().required('Revised IP is required'),
+	straightDiscount: Yup.number().min(0, 'Discount must be non-negative'),
+	specialDiscount: Yup.number().min(0, 'Discount must be non-negative'),
+	semiAnnual: Yup.number().min(0, 'Value must be non-negative'),
+	collectionDiscount: Yup.number().min(0, 'Discount must be non-negative'),
+	smIncentive: Yup.number().min(0, 'Value must be non-negative'),
 });
 
 const EditProductModal = ({ onClose, productToEdit, setProducts }) => {
@@ -39,6 +42,12 @@ const EditProductModal = ({ onClose, productToEdit, setProducts }) => {
 						sku: values.sku,
 						brand: values.brand,
 						model: values.model,
+						revisedIP: values.revisedIP,
+						straightDiscount: parseFloat(values.straightDiscount),
+						specialDiscount: parseFloat(values.specialDiscount),
+						semiAnnual: parseFloat(values.semiAnnual),
+						collectionDiscount: parseFloat(values.collectionDiscount),
+						smIncentive: parseFloat(values.smIncentive),
 					},
 				},
 			});
@@ -72,15 +81,21 @@ const EditProductModal = ({ onClose, productToEdit, setProducts }) => {
 						sku: productToEdit.sku || '',
 						brand: productToEdit.brand || '',
 						model: productToEdit.model || '',
+						revisedIP: productToEdit.revisedIP || '',
+						straightDiscount: productToEdit.straightDiscount || '',
+						specialDiscount: productToEdit.specialDiscount || '',
+						semiAnnual: productToEdit.semiAnnual || '',
+						collectionDiscount: productToEdit.collectionDiscount || '',
+						smIncentive: productToEdit.smIncentive || '',
 					}}
 					enableReinitialize
 					validationSchema={validationSchema}
 					onSubmit={handleSubmit}>
-					{({ values, setFieldValue, isSubmitting }) => (
-						<Form className='flex flex-col gap-[24px] mt-[40px] overflow-y-auto max-h-[80vh]'>
+					{({ isSubmitting }) => (
+						<Form className='flex flex-col gap-[24px] mt-[40px] overflow-y-auto max-h-[70vh]'>
 							<h3 className='text-[18px] font-[800] leading-[18px]'>Product Information</h3>
 							<div>
-								<Label className='block text-[14px] font-medium text-[#4F5B67]'>Name</Label>
+								<Label>Name</Label>
 								<Field
 									name='name'
 									type='text'
@@ -89,9 +104,8 @@ const EditProductModal = ({ onClose, productToEdit, setProducts }) => {
 								/>
 								<ErrorMessage name='name' component='div' className='text-red-500 text-sm mt-1' />
 							</div>
-
 							<div>
-								<Label className='block text-[14px] font-medium text-[#4F5B67]'>Description</Label>
+								<Label>Description</Label>
 								<Field
 									name='description'
 									as='textarea'
@@ -100,10 +114,9 @@ const EditProductModal = ({ onClose, productToEdit, setProducts }) => {
 								/>
 								<ErrorMessage name='description' component='div' className='text-red-500 text-sm mt-1' />
 							</div>
-
 							<div className='grid grid-cols-2 gap-4'>
 								<div>
-									<Label className='block text-[14px] font-medium text-[#4F5B67]'>Price</Label>
+									<Label>Price</Label>
 									<Field
 										name='unitPrice'
 										type='number'
@@ -113,20 +126,19 @@ const EditProductModal = ({ onClose, productToEdit, setProducts }) => {
 									<ErrorMessage name='unitPrice' component='div' className='text-red-500 text-sm mt-1' />
 								</div>
 								<div>
-									<Label className='block text-[14px] font-medium text-[#4F5B67]'>sku</Label>
+									<Label>SKU</Label>
 									<Field
 										name='sku'
-										type='number'
-										placeholder='Enter sku quantity'
+										type='text'
+										placeholder='Enter SKU'
 										className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
 									/>
 									<ErrorMessage name='sku' component='div' className='text-red-500 text-sm mt-1' />
 								</div>
 							</div>
-
 							<div className='grid grid-cols-2 gap-4'>
 								<div>
-									<Label className='block text-[14px] font-medium text-[#4F5B67]'>Brand</Label>
+									<Label>Brand</Label>
 									<Field
 										name='brand'
 										type='text'
@@ -136,7 +148,7 @@ const EditProductModal = ({ onClose, productToEdit, setProducts }) => {
 									<ErrorMessage name='brand' component='div' className='text-red-500 text-sm mt-1' />
 								</div>
 								<div>
-									<Label className='block text-[14px] font-medium text-[#4F5B67]'>Model</Label>
+									<Label>Model</Label>
 									<Field
 										name='model'
 										type='text'
@@ -146,7 +158,66 @@ const EditProductModal = ({ onClose, productToEdit, setProducts }) => {
 									<ErrorMessage name='model' component='div' className='text-red-500 text-sm mt-1' />
 								</div>
 							</div>
-
+							<div>
+								<Label>Revised IP</Label>
+								<Field
+									name='revisedIP'
+									type='text'
+									placeholder='Enter revised IP'
+									className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
+								/>
+								<ErrorMessage name='revisedIP' component='div' className='text-red-500 text-sm mt-1' />
+							</div>
+							<div>
+								<Label>Straight Discount</Label>
+								<Field
+									name='straightDiscount'
+									type='number'
+									placeholder='Enter straight discount'
+									className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
+								/>
+								<ErrorMessage name='straightDiscount' component='div' className='text-red-500 text-sm mt-1' />
+							</div>
+							<div>
+								<Label>Special Discount</Label>
+								<Field
+									name='specialDiscount'
+									type='number'
+									placeholder='Enter special discount'
+									className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
+								/>
+								<ErrorMessage name='specialDiscount' component='div' className='text-red-500 text-sm mt-1' />
+							</div>
+							<div>
+								<Label>Semi-Annual</Label>
+								<Field
+									name='semiAnnual'
+									type='number'
+									placeholder='Enter semi-annual value'
+									className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
+								/>
+								<ErrorMessage name='semiAnnual' component='div' className='text-red-500 text-sm mt-1' />
+							</div>
+							<div>
+								<Label>Collection Discount</Label>
+								<Field
+									name='collectionDiscount'
+									type='number'
+									placeholder='Enter collection discount'
+									className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
+								/>
+								<ErrorMessage name='collectionDiscount' component='div' className='text-red-500 text-sm mt-1' />
+							</div>
+							<div>
+								<Label>SM Incentive</Label>
+								<Field
+									name='smIncentive'
+									type='number'
+									placeholder='Enter SM incentive'
+									className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
+								/>
+								<ErrorMessage name='smIncentive' component='div' className='text-red-500 text-sm mt-1' />
+							</div>
 							<div className='flex justify-end shadow absolute bottom-0 w-full right-0 p-5 bg-white gap-4'>
 								<button
 									type='submit'

@@ -122,13 +122,22 @@ export default function WareHouse() {
 									Price
 								</TableCell>
 								<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
-									Brand
+									Revised IP
 								</TableCell>
 								<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
-									Model
+									Straight Discount
 								</TableCell>
-								<TableCell className='w-[400px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
-									Description
+								<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+									Special Discount
+								</TableCell>
+								<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+									Semi-Annual
+								</TableCell>
+								<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+									Collection Discount
+								</TableCell>
+								<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+									SM Incentive
 								</TableCell>
 								<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 									Action
@@ -138,7 +147,7 @@ export default function WareHouse() {
 						<TableBody className='divide-y divide-gray-100 dark:divide-gray-800 '>
 							{products.length === 0 ? (
 								<TableRow>
-									<TableCell colSpan={6} className='flex justify-center items-center text-center py-4 text-gray-500'>
+									<TableCell colSpan={10} className='flex justify-center items-center text-center py-4 text-gray-500'>
 										No Data Found
 									</TableCell>
 								</TableRow>
@@ -148,16 +157,20 @@ export default function WareHouse() {
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.name}</TableCell>
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.sku}</TableCell>
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.unitPrice}</TableCell>
-										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.brand}</TableCell>
-										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.model}</TableCell>
-										<TableCell className='py-[26px] p-3 text-[#475467] font-normal text-wrap'>
-											{product.description}
+										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.revisedIP}</TableCell>
+										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>
+											{product.straightDiscount}
 										</TableCell>
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>
+											{product.specialDiscount}
+										</TableCell>
+										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.semiAnnual}</TableCell>
+										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>
+											{product.collectionDiscount}
+										</TableCell>
+										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.smIncentive}</TableCell>
+										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>
 											<div className='flex items-center gap-3'>
-												{/* <Link to={`/warehouse/${product.id}`}>
-													<Eye className='w-6 h-6 text-slate-600' />
-												</Link> */}
 												<button onClick={() => setProductToEdit(product)}>
 													<Pencil className='w-6 h-6 text-slate-600' />
 												</button>
