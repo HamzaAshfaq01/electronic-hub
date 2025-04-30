@@ -132,6 +132,9 @@ export default function WareHouse() {
 								<TableCell className='w-[200px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 									Name
 								</TableCell>
+								<TableCell className='w-[200px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+									SKU
+								</TableCell>
 								<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 									Quantity
 								</TableCell>
@@ -157,6 +160,7 @@ export default function WareHouse() {
 								products.map((product) => (
 									<TableRow key={product.id}>
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.product.name}</TableCell>
+										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.product.sku}</TableCell>
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.quantity}</TableCell>
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.product.brand}</TableCell>
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.product.model}</TableCell>
