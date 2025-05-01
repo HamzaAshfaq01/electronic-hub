@@ -6,7 +6,7 @@ import DatePicker from 'react-datepicker';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import { getCurrentFormattedDate } from '../../utils/dateUtils';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 const validationSchema = Yup.object({
 	customerID: Yup.string().required('Customer is required'),
@@ -15,13 +15,10 @@ const validationSchema = Yup.object({
 	paidAmount: Yup.number().required('Paid Amount is required').min(0),
 	paymentMethod: Yup.string().required('Payment Method is required'),
 	dueDate: Yup.date().nullable(),
+	advance: Yup.number().min(0, 'Advance must be non-negative'),
+	month: Yup.number().min(1, 'Month must be at least 1').required('Month is required'),
+	percentage: Yup.number().min(0, 'Percentage must be non-negative').required('Percentage is required'),
 	status: Yup.string().required('Status is required'),
-	installments: Yup.array().of(
-		Yup.object({
-			dueDate: Yup.date().required('Due Date is required'),
-			amount: Yup.number().required('Amount is required'),
-		})
-	),
 	items: Yup.array().of(
 		Yup.object({
 			productID: Yup.string().required('Product is required'),
@@ -43,6 +40,8 @@ const AddInvoiceModal = ({ isOpen, onClose, setInvoices }) => {
 	const [quotationItems, setQuotationItems] = useState([]);
 	const [totalAmount, setTotalAmount] = useState(0); // State for total amount
 
+	const formikRef = useRef(null);
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -62,6 +61,7 @@ const AddInvoiceModal = ({ isOpen, onClose, setInvoices }) => {
 
 	useEffect(() => {
 		const updatedTotalAmount = quotationItems.reduce((sum, item) => sum + (item.totalPrice || 0), 0);
+		formikRef.current.setFieldValue('totalAmount', updatedTotalAmount);
 		setTotalAmount(updatedTotalAmount);
 	}, [quotationItems]);
 
@@ -105,7 +105,7 @@ const AddInvoiceModal = ({ isOpen, onClose, setInvoices }) => {
 			const invoiceInput = {
 				customerID: values.customerID,
 				warehouseID: values.warehouseID,
-				totalAmount: totalAmount,
+				totalAmount: values.totalAmount,
 				paidAmount: values.paidAmount,
 				paymentMethod: values.paymentMethod,
 				dueDate: values.dueDate || null,
@@ -136,23 +136,25 @@ const AddInvoiceModal = ({ isOpen, onClose, setInvoices }) => {
 					})
 				)
 			);
-			if (values.installments.length > 0) {
-				await Promise.all(
-					values.installments.map((installment) =>
-						client.graphql({
-							query: createInstallment,
-							variables: {
-								input: {
-									invoiceID,
-									dueDate: getCurrentFormattedDate(installment.dueDate),
-									amount: installment.amount,
-									status: 'PENDING',
-									createdAt: getCurrentFormattedDate(),
-								},
+			// Create Installments
+			if (values.paymentMethod === 'INSTALLMENT') {
+				const installmentDate = new Date();
+
+				for (let i = 0; i < values.month; i++) {
+					await client.graphql({
+						query: createInstallment,
+						variables: {
+							input: {
+								invoiceID,
+								dueDate: getCurrentFormattedDate(installmentDate),
+								amount: values.amountPerMonth,
+								status: 'PENDING',
+								createdAt: getCurrentFormattedDate(),
 							},
-						})
-					)
-				);
+						},
+					});
+					installmentDate.setMonth(installmentDate.getMonth() + 1); // Increment by 1 month
+				}
 			}
 
 			toast.success('Invoice added successfully!');
@@ -189,14 +191,18 @@ const AddInvoiceModal = ({ isOpen, onClose, setInvoices }) => {
 							paymentMethod: '',
 							dueDate: '',
 							status: '',
+							advance: 0,
+							month: 1,
+							percentage: 0,
+							amountPerMonth: 0,
 							installments: [],
 							items: [],
 							createdAt: new Date(),
 						}}
+						innerRef={formikRef}
 						validationSchema={validationSchema}
 						onSubmit={handleSubmit}>
 						{({ values, errors, isSubmitting, setFieldValue }) => {
-							console.log(errors, 'errprs');
 							return (
 								<Form className='flex flex-col gap-[24px]'>
 									{/* Customer Selection */}
@@ -303,7 +309,8 @@ const AddInvoiceModal = ({ isOpen, onClose, setInvoices }) => {
 											as='input'
 											placeholder='Total Amount'
 											type='number'
-											value={totalAmount}
+											value={values.totalAmount}
+											name='totalAmount'
 											disabled
 											className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
 										/>
@@ -362,43 +369,60 @@ const AddInvoiceModal = ({ isOpen, onClose, setInvoices }) => {
 										<ErrorMessage name='status' component='div' className='text-red-500 text-sm mt-1' />
 									</div>
 
-									{/* Installments Section */}
 									{values.paymentMethod === 'INSTALLMENT' && (
-										<div>
-											<FieldArray
-												name='installments'
-												render={(arrayHelpers) => (
-													<div>
-														{values.installments.map((_, index) => (
-															<div key={index} className='flex gap-4 items-center'>
-																<DatePicker
-																	className='p-2 w-full border rounded'
-																	selected={values.installments[index].dueDate}
-																	onChange={(date) => setFieldValue(`installments.${index}.dueDate`, date)}
-																/>
-																<Field
-																	name={`installments.${index}.amount`}
-																	type='number'
-																	placeholder='Amount'
-																	className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
-																/>
-																<button
-																	type='button'
-																	onClick={() => arrayHelpers.remove(index)}
-																	className='text-red-500'>
-																	Remove
-																</button>
-															</div>
-														))}
-														<button
-															type='button'
-															onClick={() => arrayHelpers.push({ dueDate: '', amount: '' })}
-															className='mt-2 text-blue-500'>
-															Add Installment
-														</button>
-													</div>
-												)}
-											/>
+										<div className='border p-4 rounded'>
+											<h3 className='text-[16px] font-medium text-[#1B1F29]'>Payment Information</h3>
+											<div className='grid grid-cols-2 gap-4 mt-2'>
+												<div>
+													<label className='block text-[14px] font-medium text-[#4F5B67]'>Advance</label>
+													<Field
+														name='advance'
+														type='number'
+														value={values.paidAmount}
+														disabled
+														className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
+													/>
+												</div>
+												<div>
+													<label className='block text-[14px] font-medium text-[#4F5B67]'>Months</label>
+													<Field
+														name='month'
+														type='number'
+														onChange={(e) => {
+															setFieldValue('month', e.target.value);
+															let pricePerMonth = (values.totalAmount - values.paidAmount) / e.target.value;
+															setFieldValue('amountPerMonth', pricePerMonth);
+														}}
+														value={values.month}
+														className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
+													/>
+												</div>
+												<div>
+													<label className='block text-[14px] font-medium text-[#4F5B67]'>Percentage</label>
+													<Field
+														name='percentage'
+														type='number'
+														onChange={(e) => {
+															setFieldValue('percentage', e.target.value);
+															const percentageAmount = (totalAmount * e.target.value) / 100;
+															const updatedTotalAmount = totalAmount + percentageAmount;
+															formikRef.current.setFieldValue('totalAmount', updatedTotalAmount);
+														}}
+														value={values.percentage}
+														className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
+													/>
+												</div>
+												<div>
+													<label className='block text-[14px] font-medium text-[#4F5B67]'>Amount Per Month</label>
+													<Field
+														name='amountPerMonth'
+														type='number'
+														value={values.amountPerMonth}
+														disabled
+														className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
+													/>
+												</div>
+											</div>
 										</div>
 									)}
 

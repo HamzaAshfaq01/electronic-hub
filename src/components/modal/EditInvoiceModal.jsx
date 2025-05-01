@@ -203,7 +203,7 @@ const EditInvoiceModal = ({ invoice, onClose, setInvoices }) => {
 						initialValues={{
 							customerID: invoice?.customerID || '',
 							warehouseID: invoice?.warehouseID || '',
-							totalAmount: totalAmount || 0,
+							totalAmount: invoice?.totalAmount || totalAmount,
 							paidAmount: invoice?.paidAmount || '',
 							paymentMethod: invoice?.paymentMethod || '',
 							dueDate: invoice?.dueDate || '',
@@ -322,7 +322,7 @@ const EditInvoiceModal = ({ invoice, onClose, setInvoices }) => {
 											as='input'
 											placeholder='Total Amount'
 											type='number'
-											value={totalAmount}
+											value={values.totalAmount}
 											disabled
 											className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
 										/>
@@ -401,22 +401,17 @@ const EditInvoiceModal = ({ invoice, onClose, setInvoices }) => {
 																	name={`installments.${index}.amount`}
 																	type='number'
 																	placeholder='Amount'
+																	disabled
 																	className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
 																/>
-																<button
+																{/* <button
 																	type='button'
 																	onClick={() => arrayHelpers.remove(index)}
 																	className='text-red-500'>
 																	Remove
-																</button>
+																</button> */}
 															</div>
 														))}
-														<button
-															type='button'
-															onClick={() => arrayHelpers.push({ dueDate: '', amount: '' })}
-															className='mt-2 text-blue-500'>
-															Add Installment
-														</button>
 													</div>
 												)}
 											/>
