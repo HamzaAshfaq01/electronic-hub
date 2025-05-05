@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import { getCurrentFormattedDate } from '../../utils/dateUtils';
 import { useEffect, useState, useRef } from 'react';
+import AddCustomerModal from './AddCustomerModal';
 
 const validationSchema = Yup.object({
 	customerID: Yup.string().required('Customer is required'),
@@ -35,6 +36,7 @@ const AddInvoiceModal = ({ isOpen, onClose, setInvoices }) => {
 	if (!isOpen) return null;
 
 	const [customers, setCustomers] = useState([]);
+	const [modalOpen, setModalOpen] = useState(false);
 	const [warehouses, setWarehouses] = useState([]);
 	const [products, setProducts] = useState([]);
 	const [quotationItems, setQuotationItems] = useState([]);
@@ -223,6 +225,20 @@ const AddInvoiceModal = ({ isOpen, onClose, setInvoices }) => {
 											))}
 										</Field>
 										<ErrorMessage name='customerID' component='div' className='text-red-500 text-sm mt-1' />
+										<button
+											onClick={() => setModalOpen(true)}
+											className='inline-flex w-[160px] items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0BA5EC] hover:text-[#fff]  dark:bg-gray-800 dark:text-[#667085] dark:hover:bg-white/[0.03] dark:hover:text-gray-200'>
+											<svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
+												<path
+													d='M10.0001 4.16669V15.8334M4.16675 10H15.8334'
+													stroke='white'
+													strokeWidth='1.66667'
+													strokeLinecap='round'
+													strokeLinejoin='round'
+												/>
+											</svg>
+											Add Customer
+										</button>
 									</div>
 
 									<div>
@@ -450,6 +466,8 @@ const AddInvoiceModal = ({ isOpen, onClose, setInvoices }) => {
 						}}
 					</Formik>
 				</div>
+
+				<AddCustomerModal isOpen={modalOpen} setCustomers={setCustomers} onClose={() => setModalOpen(false)} />
 
 				{/* Footer */}
 			</div>
