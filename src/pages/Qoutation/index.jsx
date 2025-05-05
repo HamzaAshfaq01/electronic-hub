@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { Eye, Pencil, Trash2 } from 'lucide-react';
+import { Eye, Pencil, Trash2, Printer } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/ui/table';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -196,7 +196,7 @@ export default function ManageQuotations() {
 												<TableCell className=' py-[26px] p-3 text-[#475467] font-normal'>
 													<div className='flex items-center gap-3'>
 														<button onClick={() => setQuotationToPrint(quotation)}>
-															<Eye className='w-6 h-6 text-slate-600' />
+															<Printer className='w-6 h-6 text-slate-600' />
 														</button>
 														<button onClick={() => setQuotationToEdit(quotation)}>
 															<Pencil className='w-6 h-6 text-slate-600' />

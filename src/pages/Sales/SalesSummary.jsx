@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { generateClient } from 'aws-amplify/api';
-import { Eye, Pencil, Trash2 } from 'lucide-react';
+import { Eye, Pencil, Trash2, Printer } from 'lucide-react';
 import { Table, TableBody, TableCell, TableHeader, TableRow } from '../../components/ui/table';
 import AddInvoiceModal from '../../components/modal/AddInvoiceModal';
 import EditInvoiceModal from '../../components/modal/EditInvoiceModal';
@@ -9,6 +9,7 @@ import { listInvoices } from '../../graphql/queries'; // GraphQL query to fetch 
 import ConfirmDeleteModal from '../../components/modal/DeleteConfirmationModal';
 import { deleteInstallment, deleteInvoice, deleteInvoiceItem } from '../../graphql/mutations';
 import { toast } from 'react-toastify';
+import PrintInvoice from '../../components/invoices/PrintInvoice';
 
 const client = generateClient();
 
@@ -20,11 +21,27 @@ export default function SalesSummary() {
 	const [isDeleting, setIsDeleting] = useState(false);
 	const [itemToDelete, setItemToDelete] = useState(null);
 	const [invoiceToEdit, setInvoiceToEdit] = useState(null);
+	const [quotationToPrint, setQuotationToPrint] = useState(null);
+	const [nextToken, setNextToken] = useState(null);
+	const [prevTokens, setPrevTokens] = useState([]);
 
-	const fetchInvoices = async () => {
+	const fetchInvoices = async (token = null, filter) => {
 		try {
-			const response = await client.graphql({ query: listInvoices });
+			const response = await client.graphql({
+				query: listInvoices,
+				variables: {
+					nextToken: token,
+					filter: filter,
+					limit: 10,
+				},
+			});
 			const fetchedInvoices = response.data.listInvoices.items;
+			setNextToken(response.data.listInvoices.nextToken || null);
+			if (token && !prevTokens.includes(token)) {
+				setPrevTokens((prev) => {
+					return [...prev, token];
+				});
+			}
 			setInvoices(fetchedInvoices);
 			setFilteredInvoices(fetchedInvoices); // Initialize filtered invoices
 		} catch (error) {
@@ -102,6 +119,20 @@ export default function SalesSummary() {
 		} finally {
 			setIsDeleting(false);
 		}
+	};
+
+	const handlePrev = () => {
+		if (prevTokens.length >= 1) {
+			const newPrevTokens = [...prevTokens];
+			newPrevTokens.pop();
+			const prevToken = newPrevTokens[newPrevTokens.length - 1];
+			setPrevTokens(newPrevTokens);
+			fetchInvoices(prevToken);
+		}
+	};
+
+	const handleNext = () => {
+		fetchInvoices(nextToken);
 	};
 
 	return (
@@ -230,6 +261,9 @@ export default function SalesSummary() {
 											<TableCell className='py-[26px] px-[10px]'>{invoice.totalAmount - invoice.paidAmount}</TableCell>
 											<TableCell className=' py-[26px] p-3 text-[#475467] font-normal'>
 												<div className='flex items-center gap-3'>
+													<button onClick={() => setQuotationToPrint(invoice)}>
+														<Printer className='w-6 h-6 text-slate-600' />
+													</button>
 													<button onClick={() => setInvoiceToEdit(invoice)}>
 														<Pencil className='w-6 h-6 text-slate-600' />
 													</button>
@@ -245,7 +279,28 @@ export default function SalesSummary() {
 						</div>
 					</div>
 				</div>
+				<div className='flex justify-end gap-[10px] items-center py-4 border-t border-[#EAECF0] '>
+					<button
+						onClick={handlePrev}
+						disabled={prevTokens.length == 0}
+						className={`p-3 py-2 cursor-pointer border ${
+							prevTokens.length == 0 ? 'bg-gray-200' : 'hover:bg-gray-100 bg-white'
+						}`}>
+						← Previous
+					</button>
+					<button
+						onClick={handleNext}
+						disabled={!nextToken}
+						className={`p-3 py-2 cursor-pointer border ${!nextToken ? 'bg-gray-200' : 'hover:bg-gray-100 bg-white'}`}>
+						Next →
+					</button>
+				</div>
 			</div>
+			{quotationToPrint && (
+				<div className='hidden print:block'>
+					<PrintInvoice quotation={quotationToPrint} onClose={() => setQuotationToPrint(null)} />
+				</div>
+			)}
 			<AddInvoiceModal isOpen={modalOpen} setInvoices={setInvoices} onClose={() => setModalOpen(false)} />
 			<EditInvoiceModal
 				invoice={invoiceToEdit}
