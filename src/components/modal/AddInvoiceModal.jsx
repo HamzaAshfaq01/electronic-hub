@@ -227,7 +227,7 @@ const AddInvoiceModal = ({ isOpen, onClose, setInvoices }) => {
 										<ErrorMessage name='customerID' component='div' className='text-red-500 text-sm mt-1' />
 										<button
 											onClick={() => setModalOpen(true)}
-											className='inline-flex w-[160px] items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0BA5EC] hover:text-[#fff]  dark:bg-gray-800 dark:text-[#667085] dark:hover:bg-white/[0.03] dark:hover:text-gray-200'>
+											className='inline-flex mt-[10px] w-[160px] items-center gap-2 bg-[#0BA5EC] rounded-lg border border-gray-300  px-4 py-2.5 text-theme-sm font-medium text-[#fff] shadow-theme-xs hover:bg-[#0BA5EC] hover:text-[#fff]  dark:bg-gray-800 dark:text-[#667085] dark:hover:bg-white/[0.03] dark:hover:text-gray-200'>
 											<svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
 												<path
 													d='M10.0001 4.16669V15.8334M4.16675 10H15.8334'
@@ -423,6 +423,8 @@ const AddInvoiceModal = ({ isOpen, onClose, setInvoices }) => {
 															const percentageAmount = (totalAmount * e.target.value) / 100;
 															const updatedTotalAmount = totalAmount + percentageAmount;
 															formikRef.current.setFieldValue('totalAmount', updatedTotalAmount);
+															let pricePerMonth = (updatedTotalAmount - values.paidAmount) / values.month;
+															formikRef.current.setFieldValue('amountPerMonth', pricePerMonth);
 														}}
 														value={values.percentage}
 														className='w-full p-2 border border-[#E5E4EA] bg-[#F7F7F9] rounded-[5px] mt-1'
