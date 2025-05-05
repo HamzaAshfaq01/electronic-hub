@@ -63,15 +63,17 @@ const PrintInvoice = ({ quotation, onClose }) => {
 			<table className='w-full border border-gray-300 mb-4'>
 				<thead>
 					<tr className='bg-gray-100'>
-						<th className='border px-4 py-2'>Amount</th>
+						<th className='border px-4 py-2 text-left'>No</th>
+						<th className='border px-4 py-2 text-left'>Amount</th>
 						<th className='border px-4 py-2 text-right'>Due Date</th>
 						<th className='border px-4 py-2 text-right'>Status</th>
 					</tr>
 				</thead>
 				<tbody>
-					{quotation.installments?.items?.map((item) => (
+					{quotation.installments?.items?.map((item, index) => (
 						<tr key={item.id}>
-							<td className='border px-4 py-2'>{item.amount}</td>
+							<td className='border px-4 py-2 text-left'>{index + 1}</td>
+							<td className='border px-4 py-2 text-left'>{item.amount}</td>
 							<td className='border px-4 py-2 text-right'>{item.dueDate}</td>
 							<td className='border px-4 py-2 text-right'>{item.status}</td>
 						</tr>
