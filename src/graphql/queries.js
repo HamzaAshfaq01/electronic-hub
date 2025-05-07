@@ -133,6 +133,7 @@ export const getCustomer = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -261,6 +262,7 @@ export const getCustomer = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -466,6 +468,327 @@ export const listCustomers = /* GraphQL */ `
     }
   }
 `;
+export const getSupplier = /* GraphQL */ `
+  query GetSupplier($id: ID!) {
+    getSupplier(id: $id) {
+      id
+      name
+      phone
+      email
+      cnic
+      address
+      city
+      products {
+        items {
+          id
+          supplierID
+          supplier {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            products {
+              items {
+                id
+                supplierID
+                name
+                sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
+                brand
+                model
+                unitPrice
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          name
+          sku
+          revisedIP
+          straightDiscount
+          specialDiscount
+          semiAnnual
+          collectionDiscount
+          smIncentive
+          brand
+          model
+          unitPrice
+          description
+          stocks {
+            items {
+              id
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                supplierID
+                name
+                sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
+                brand
+                model
+                unitPrice
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          invoiceItems {
+            items {
+              id
+              invoiceID
+              invoice {
+                id
+                customerID
+                warehouseID
+                totalAmount
+                paidAmount
+                paymentMethod
+                dueDate
+                status
+                advance
+                month
+                percentage
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                supplierID
+                name
+                sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
+                brand
+                model
+                unitPrice
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              pricePerUnit
+              totalPrice
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          quotationItems {
+            items {
+              id
+              quotationID
+              quotation {
+                id
+                customerID
+                totalAmount
+                createdAt
+                updatedAt
+                __typename
+              }
+              productID
+              product {
+                id
+                supplierID
+                name
+                sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
+                brand
+                model
+                unitPrice
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              quantity
+              pricePerUnit
+              totalPrice
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        nextToken
+        __typename
+      }
+      createdAt
+      updatedAt
+      __typename
+    }
+  }
+`;
+export const listSuppliers = /* GraphQL */ `
+  query ListSuppliers(
+    $id: ID
+    $filter: ModelSupplierFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listSuppliers(
+      id: $id
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        id
+        name
+        phone
+        email
+        cnic
+        address
+        city
+        products {
+          items {
+            id
+            supplierID
+            supplier {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              products {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            name
+            sku
+            revisedIP
+            straightDiscount
+            specialDiscount
+            semiAnnual
+            collectionDiscount
+            smIncentive
+            brand
+            model
+            unitPrice
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
 export const getWarehouse = /* GraphQL */ `
   query GetWarehouse($id: ID!) {
     getWarehouse(id: $id) {
@@ -522,6 +845,23 @@ export const getWarehouse = /* GraphQL */ `
           productID
           product {
             id
+            supplierID
+            supplier {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              products {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
             name
             sku
             revisedIP
@@ -711,6 +1051,7 @@ export const getWarehouse = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -825,6 +1166,19 @@ export const listWarehouses = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -961,6 +1315,101 @@ export const getProduct = /* GraphQL */ `
   query GetProduct($id: ID!) {
     getProduct(id: $id) {
       id
+      supplierID
+      supplier {
+        id
+        name
+        phone
+        email
+        cnic
+        address
+        city
+        products {
+          items {
+            id
+            supplierID
+            supplier {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              products {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            name
+            sku
+            revisedIP
+            straightDiscount
+            specialDiscount
+            semiAnnual
+            collectionDiscount
+            smIncentive
+            brand
+            model
+            unitPrice
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
       name
       sku
       revisedIP
@@ -1022,6 +1471,23 @@ export const getProduct = /* GraphQL */ `
           productID
           product {
             id
+            supplierID
+            supplier {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              products {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
             name
             sku
             revisedIP
@@ -1179,6 +1645,23 @@ export const getProduct = /* GraphQL */ `
           productID
           product {
             id
+            supplierID
+            supplier {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              products {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
             name
             sku
             revisedIP
@@ -1298,6 +1781,23 @@ export const getProduct = /* GraphQL */ `
           productID
           product {
             id
+            supplierID
+            supplier {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              products {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
             name
             sku
             revisedIP
@@ -1390,6 +1890,66 @@ export const listProducts = /* GraphQL */ `
     ) {
       items {
         id
+        supplierID
+        supplier {
+          id
+          name
+          phone
+          email
+          cnic
+          address
+          city
+          products {
+            items {
+              id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              name
+              sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
+              brand
+              model
+              unitPrice
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
         name
         sku
         revisedIP
@@ -1426,6 +1986,19 @@ export const listProducts = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -1514,6 +2087,19 @@ export const listProducts = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -1583,6 +2169,19 @@ export const listProducts = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -1664,6 +2263,19 @@ export const getStock = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -1794,6 +2406,66 @@ export const getStock = /* GraphQL */ `
       productID
       product {
         id
+        supplierID
+        supplier {
+          id
+          name
+          phone
+          email
+          cnic
+          address
+          city
+          products {
+            items {
+              id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              name
+              sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
+              brand
+              model
+              unitPrice
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
         name
         sku
         revisedIP
@@ -1830,6 +2502,19 @@ export const getStock = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -1918,6 +2603,19 @@ export const getStock = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -1987,6 +2685,19 @@ export const getStock = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -2075,6 +2786,7 @@ export const listStocks = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -2155,6 +2867,42 @@ export const listStocks = /* GraphQL */ `
         productID
         product {
           id
+          supplierID
+          supplier {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            products {
+              items {
+                id
+                supplierID
+                name
+                sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
+                brand
+                model
+                unitPrice
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           name
           sku
           revisedIP
@@ -2183,6 +2931,7 @@ export const listStocks = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -2230,6 +2979,7 @@ export const listStocks = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -2271,6 +3021,7 @@ export const listStocks = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -2492,6 +3243,19 @@ export const getInvoice = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -2717,6 +3481,23 @@ export const getInvoice = /* GraphQL */ `
           productID
           product {
             id
+            supplierID
+            supplier {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              products {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
             name
             sku
             revisedIP
@@ -3019,6 +3800,7 @@ export const listInvoices = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -3156,6 +3938,19 @@ export const listInvoices = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -3382,6 +4177,7 @@ export const getInvoiceItem = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -3519,6 +4315,19 @@ export const getInvoiceItem = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -3624,6 +4433,66 @@ export const getInvoiceItem = /* GraphQL */ `
       productID
       product {
         id
+        supplierID
+        supplier {
+          id
+          name
+          phone
+          email
+          cnic
+          address
+          city
+          products {
+            items {
+              id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              name
+              sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
+              brand
+              model
+              unitPrice
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
         name
         sku
         revisedIP
@@ -3660,6 +4529,19 @@ export const getInvoiceItem = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -3748,6 +4630,19 @@ export const getInvoiceItem = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -3817,6 +4712,19 @@ export const getInvoiceItem = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -4007,6 +4915,7 @@ export const listInvoiceItems = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -4071,6 +4980,42 @@ export const listInvoiceItems = /* GraphQL */ `
         productID
         product {
           id
+          supplierID
+          supplier {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            products {
+              items {
+                id
+                supplierID
+                name
+                sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
+                brand
+                model
+                unitPrice
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           name
           sku
           revisedIP
@@ -4099,6 +5044,7 @@ export const listInvoiceItems = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -4146,6 +5092,7 @@ export const listInvoiceItems = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -4187,6 +5134,7 @@ export const listInvoiceItems = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -4348,6 +5296,7 @@ export const getInstallment = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -4485,6 +5434,19 @@ export const getInstallment = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -4736,6 +5698,7 @@ export const listInstallments = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -5012,6 +5975,23 @@ export const getQuotation = /* GraphQL */ `
           productID
           product {
             id
+            supplierID
+            supplier {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              products {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
             name
             sku
             revisedIP
@@ -5226,6 +6206,19 @@ export const listQuotations = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -5402,6 +6395,19 @@ export const getQuotationItem = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -5447,6 +6453,66 @@ export const getQuotationItem = /* GraphQL */ `
       productID
       product {
         id
+        supplierID
+        supplier {
+          id
+          name
+          phone
+          email
+          cnic
+          address
+          city
+          products {
+            items {
+              id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              name
+              sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
+              brand
+              model
+              unitPrice
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
         name
         sku
         revisedIP
@@ -5483,6 +6549,19 @@ export const getQuotationItem = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -5571,6 +6650,19 @@ export const getQuotationItem = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -5640,6 +6732,19 @@ export const getQuotationItem = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -5772,6 +6877,7 @@ export const listQuotationItems = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -5805,6 +6911,42 @@ export const listQuotationItems = /* GraphQL */ `
         productID
         product {
           id
+          supplierID
+          supplier {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            products {
+              items {
+                id
+                supplierID
+                name
+                sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
+                brand
+                model
+                unitPrice
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           name
           sku
           revisedIP
@@ -5833,6 +6975,7 @@ export const listQuotationItems = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -5880,6 +7023,7 @@ export const listQuotationItems = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -5921,6 +7065,7 @@ export const listQuotationItems = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -6331,16 +7476,16 @@ export const customerByPhone = /* GraphQL */ `
     }
   }
 `;
-export const productBySKU = /* GraphQL */ `
-  query ProductBySKU(
-    $sku: String!
+export const supplierByPhone = /* GraphQL */ `
+  query SupplierByPhone(
+    $phone: String!
     $sortDirection: ModelSortDirection
-    $filter: ModelProductFilterInput
+    $filter: ModelSupplierFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    productBySKU(
-      sku: $sku
+    supplierByPhone(
+      phone: $phone
       sortDirection: $sortDirection
       filter: $filter
       limit: $limit
@@ -6348,6 +7493,180 @@ export const productBySKU = /* GraphQL */ `
     ) {
       items {
         id
+        name
+        phone
+        email
+        cnic
+        address
+        city
+        products {
+          items {
+            id
+            supplierID
+            supplier {
+              id
+              name
+              phone
+              email
+              cnic
+              address
+              city
+              products {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            name
+            sku
+            revisedIP
+            straightDiscount
+            specialDiscount
+            semiAnnual
+            collectionDiscount
+            smIncentive
+            brand
+            model
+            unitPrice
+            description
+            stocks {
+              items {
+                id
+                warehouseID
+                productID
+                quantity
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            invoiceItems {
+              items {
+                id
+                invoiceID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            quotationItems {
+              items {
+                id
+                quotationID
+                productID
+                quantity
+                pricePerUnit
+                totalPrice
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const productsBySupplier = /* GraphQL */ `
+  query ProductsBySupplier(
+    $supplierID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelProductFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    productsBySupplier(
+      supplierID: $supplierID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        supplierID
+        supplier {
+          id
+          name
+          phone
+          email
+          cnic
+          address
+          city
+          products {
+            items {
+              id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              name
+              sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
+              brand
+              model
+              unitPrice
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
         name
         sku
         revisedIP
@@ -6384,6 +7703,19 @@ export const productBySKU = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -6472,6 +7804,19 @@ export const productBySKU = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -6541,6 +7886,375 @@ export const productBySKU = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              name
+              sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
+              brand
+              model
+              unitPrice
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        createdAt
+        updatedAt
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const productBySKU = /* GraphQL */ `
+  query ProductBySKU(
+    $sku: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelProductFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    productBySKU(
+      sku: $sku
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        supplierID
+        supplier {
+          id
+          name
+          phone
+          email
+          cnic
+          address
+          city
+          products {
+            items {
+              id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              name
+              sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
+              brand
+              model
+              unitPrice
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            nextToken
+            __typename
+          }
+          createdAt
+          updatedAt
+          __typename
+        }
+        name
+        sku
+        revisedIP
+        straightDiscount
+        specialDiscount
+        semiAnnual
+        collectionDiscount
+        smIncentive
+        brand
+        model
+        unitPrice
+        description
+        stocks {
+          items {
+            id
+            warehouseID
+            warehouse {
+              id
+              name
+              location
+              contactNumber
+              stocks {
+                nextToken
+                __typename
+              }
+              invoices {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              name
+              sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
+              brand
+              model
+              unitPrice
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        invoiceItems {
+          items {
+            id
+            invoiceID
+            invoice {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              warehouseID
+              warehouse {
+                id
+                name
+                location
+                contactNumber
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              paidAmount
+              paymentMethod
+              dueDate
+              status
+              advance
+              month
+              percentage
+              items {
+                nextToken
+                __typename
+              }
+              installments {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              name
+              sku
+              revisedIP
+              straightDiscount
+              specialDiscount
+              semiAnnual
+              collectionDiscount
+              smIncentive
+              brand
+              model
+              unitPrice
+              description
+              stocks {
+                nextToken
+                __typename
+              }
+              invoiceItems {
+                nextToken
+                __typename
+              }
+              quotationItems {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            quantity
+            pricePerUnit
+            totalPrice
+            createdAt
+            updatedAt
+            __typename
+          }
+          nextToken
+          __typename
+        }
+        quotationItems {
+          items {
+            id
+            quotationID
+            quotation {
+              id
+              customerID
+              customer {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
+              totalAmount
+              items {
+                nextToken
+                __typename
+              }
+              createdAt
+              updatedAt
+              __typename
+            }
+            productID
+            product {
+              id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -6627,6 +8341,7 @@ export const stocksByWarehouse = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -6707,6 +8422,42 @@ export const stocksByWarehouse = /* GraphQL */ `
         productID
         product {
           id
+          supplierID
+          supplier {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            products {
+              items {
+                id
+                supplierID
+                name
+                sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
+                brand
+                model
+                unitPrice
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           name
           sku
           revisedIP
@@ -6735,6 +8486,7 @@ export const stocksByWarehouse = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -6782,6 +8534,7 @@ export const stocksByWarehouse = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -6823,6 +8576,7 @@ export const stocksByWarehouse = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -6902,6 +8656,7 @@ export const stocksByProduct = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -6982,6 +8737,42 @@ export const stocksByProduct = /* GraphQL */ `
         productID
         product {
           id
+          supplierID
+          supplier {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            products {
+              items {
+                id
+                supplierID
+                name
+                sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
+                brand
+                model
+                unitPrice
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           name
           sku
           revisedIP
@@ -7010,6 +8801,7 @@ export const stocksByProduct = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -7057,6 +8849,7 @@ export const stocksByProduct = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -7098,6 +8891,7 @@ export const stocksByProduct = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -7267,6 +9061,7 @@ export const invoicesByCustomer = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -7404,6 +9199,19 @@ export const invoicesByCustomer = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -7640,6 +9448,7 @@ export const invoicesByWarehouse = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -7777,6 +9586,19 @@ export const invoicesByWarehouse = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -8023,6 +9845,7 @@ export const itemsByInvoice = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -8087,6 +9910,42 @@ export const itemsByInvoice = /* GraphQL */ `
         productID
         product {
           id
+          supplierID
+          supplier {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            products {
+              items {
+                id
+                supplierID
+                name
+                sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
+                brand
+                model
+                unitPrice
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           name
           sku
           revisedIP
@@ -8115,6 +9974,7 @@ export const itemsByInvoice = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -8162,6 +10022,7 @@ export const itemsByInvoice = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -8203,6 +10064,7 @@ export const itemsByInvoice = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -8384,6 +10246,7 @@ export const invoiceItemsByProduct = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -8448,6 +10311,42 @@ export const invoiceItemsByProduct = /* GraphQL */ `
         productID
         product {
           id
+          supplierID
+          supplier {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            products {
+              items {
+                id
+                supplierID
+                name
+                sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
+                brand
+                model
+                unitPrice
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           name
           sku
           revisedIP
@@ -8476,6 +10375,7 @@ export const invoiceItemsByProduct = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -8523,6 +10423,7 @@ export const invoiceItemsByProduct = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -8564,6 +10465,7 @@ export const invoiceItemsByProduct = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -8745,6 +10647,7 @@ export const installmentsByInvoice = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -8958,6 +10861,19 @@ export const quotationsByCustomer = /* GraphQL */ `
             productID
             product {
               id
+              supplierID
+              supplier {
+                id
+                name
+                phone
+                email
+                cnic
+                address
+                city
+                createdAt
+                updatedAt
+                __typename
+              }
               name
               sku
               revisedIP
@@ -9086,6 +11002,7 @@ export const itemsByQuotation = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -9119,6 +11036,42 @@ export const itemsByQuotation = /* GraphQL */ `
         productID
         product {
           id
+          supplierID
+          supplier {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            products {
+              items {
+                id
+                supplierID
+                name
+                sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
+                brand
+                model
+                unitPrice
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           name
           sku
           revisedIP
@@ -9147,6 +11100,7 @@ export const itemsByQuotation = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -9194,6 +11148,7 @@ export const itemsByQuotation = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -9235,6 +11190,7 @@ export const itemsByQuotation = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -9358,6 +11314,7 @@ export const quotationItemsByProduct = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -9391,6 +11348,42 @@ export const quotationItemsByProduct = /* GraphQL */ `
         productID
         product {
           id
+          supplierID
+          supplier {
+            id
+            name
+            phone
+            email
+            cnic
+            address
+            city
+            products {
+              items {
+                id
+                supplierID
+                name
+                sku
+                revisedIP
+                straightDiscount
+                specialDiscount
+                semiAnnual
+                collectionDiscount
+                smIncentive
+                brand
+                model
+                unitPrice
+                description
+                createdAt
+                updatedAt
+                __typename
+              }
+              nextToken
+              __typename
+            }
+            createdAt
+            updatedAt
+            __typename
+          }
           name
           sku
           revisedIP
@@ -9419,6 +11412,7 @@ export const quotationItemsByProduct = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -9466,6 +11460,7 @@ export const quotationItemsByProduct = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP
@@ -9507,6 +11502,7 @@ export const quotationItemsByProduct = /* GraphQL */ `
               productID
               product {
                 id
+                supplierID
                 name
                 sku
                 revisedIP

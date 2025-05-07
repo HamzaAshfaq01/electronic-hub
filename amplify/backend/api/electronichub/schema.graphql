@@ -19,6 +19,26 @@ type Customer
 	createdAt: String
 }
 
+type Supplier
+	@model
+	@auth(
+		rules: [
+			{ allow: groups, operations: [create, read, update, delete], groups: ["admin"], provider: userPools }
+			{ allow: owner, operations: [create, read, update, delete], ownerField: "id", provider: userPools }
+			{ allow: private, operations: [read], provider: userPools }
+		]
+	) {
+	id: ID! @primaryKey
+	name: String!
+	phone: String! @index(name: "byPhone", queryField: "supplierByPhone")
+	email: String
+	cnic: String!
+	address: String
+	city: String
+	products: [Product] @hasMany(indexName: "bySupplier", fields: ["id"])
+	createdAt: String
+}
+
 type Warehouse
 	@model
 	@auth(
@@ -47,6 +67,8 @@ type Product
 		]
 	) {
 	id: ID! @primaryKey
+	supplierID: ID! @index(name: "bySupplier", queryField: "productsBySupplier")
+	supplier: Supplier @belongsTo(fields: ["supplierID"])
 	name: String!
 	sku: String! @index(name: "bySKU", queryField: "productBySKU")
 	revisedIP: String

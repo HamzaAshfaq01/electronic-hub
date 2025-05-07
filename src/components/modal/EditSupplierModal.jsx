@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { generateClient } from 'aws-amplify/api';
-import { supplierByPhone } from '../../graphql/queries';
-import { createSupplier } from '../../graphql/mutations';
+import { updateSupplier } from '../../graphql/mutations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
@@ -16,40 +15,35 @@ const validationSchema = Yup.object({
 });
 const client = generateClient();
 
-const AddCustomerModal = ({ isOpen, onClose, setCustomers }) => {
-	if (!isOpen) return null;
+const AddCustomerModal = ({ customerToEdit, onClose, setCustomers }) => {
+	if (!customerToEdit) return null;
 
 	const handleSubmit = async (values, { setSubmitting, resetForm }) => {
 		try {
-			const response = await client.graphql({
-				query: supplierByPhone,
-				variables: {
-					phone: values.phone.trim(),
-					limit: 1000,
-				},
-			});
-			if (response.data.supplierByPhone.items.length > 0) {
-				throw new Error('Supplier with this phone number already exists.');
-			}
-			values.createdAt = getCurrentFormattedDate();
 			await client.graphql({
-				query: createSupplier,
+				query: updateSupplier,
 				variables: { input: values },
+				authMode: 'userPool',
 			});
-			toast.success('Supplier added successfully!');
+			toast.success('Supplier edited successfully!');
 			resetForm();
 			onClose();
 			setCustomers((prevCustomers) => {
-				return [...prevCustomers, values];
+				return prevCustomers.map((customer) => {
+					if (customer.id === values.id) {
+						return values;
+					}
+					return customer;
+				});
 			});
 		} catch (error) {
 			if (error?.errors?.length > 0) {
 				const errorMessage = error.errors[0]?.message || 'An unknown error occurred.';
-				toast.error(`Failed to add supplier: ${errorMessage}`);
+				toast.error(`Failed to edit supplier: ${errorMessage}`);
 			} else if (error?.message) {
-				toast.error(`Failed to add supplier: ${error.message}`);
+				toast.error(`Failed to edit supplier: ${error.message}`);
 			} else {
-				toast.error('Failed to add supplier. Please try again later.');
+				toast.error('Failed to edit supplier. Please try again later.');
 			}
 		} finally {
 			setSubmitting(false);
@@ -60,7 +54,7 @@ const AddCustomerModal = ({ isOpen, onClose, setCustomers }) => {
 		<div className='fixed inset-0 right-0 bg-[#10182885] flex justify-end items-center h-full z-50'>
 			<div className='bg-white p-6 w-full max-w-[588px] shadow-lg h-full relative'>
 				<div className='flex justify-between items-center pb-[16px] border-b border-gray-200'>
-					<h2 className='text-[20px] font-medium text-[#1B1F29]'>Add Supplier</h2>
+					<h2 className='text-[20px] font-medium text-[#1B1F29]'>Edit Supplier</h2>
 					<button onClick={onClose} className='text-gray-500 text-[30px]'>
 						&times;
 					</button>
@@ -68,12 +62,13 @@ const AddCustomerModal = ({ isOpen, onClose, setCustomers }) => {
 
 				<Formik
 					initialValues={{
-						name: '',
-						email: '',
-						phone: '',
-						cnic: '',
-						address: '',
-						city: '',
+						id: customerToEdit.id,
+						name: customerToEdit.name || '',
+						email: customerToEdit.email || '',
+						phone: customerToEdit.phone || '',
+						cnic: customerToEdit.cnic || '',
+						address: customerToEdit.address || '',
+						city: customerToEdit.city || '',
 					}}
 					validationSchema={validationSchema}
 					onSubmit={handleSubmit}>

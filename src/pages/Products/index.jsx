@@ -108,7 +108,7 @@ export default function WareHouse() {
 					</div>
 				</div>
 
-				<div className='overflow-x-auto rounded-2xl border border-b border-gray-200 bg-white  pb-1 dark:border-gray-800 dark:bg-white/[0.03]'>
+				<div className='overflow-x-auto rounded-2xl border border-b border-gray-200 bg-white  pb-1 dark:border-gray-800 dark:bg-white/[0.03] responsive-table'>
 					<Table className='table-fixed w-full'>
 						<TableHeader className='border-gray-100 dark:border-gray-800 border-b'>
 							<TableRow className='w-full mx-3 col-span-12'>
@@ -140,6 +140,9 @@ export default function WareHouse() {
 									SM Incentive
 								</TableCell>
 								<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
+									Supplier
+								</TableCell>
+								<TableCell className='w-[150px] font-medium text-[#494949] text-start text-[14px] dark:text-[#667085] p-3'>
 									Action
 								</TableCell>
 							</TableRow>
@@ -169,6 +172,9 @@ export default function WareHouse() {
 											{product.collectionDiscount}
 										</TableCell>
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>{product.smIncentive}</TableCell>
+										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>
+											{product?.supplier?.name}
+										</TableCell>
 										<TableCell className='py-[26px] p-3 text-[#475467] font-normal'>
 											<div className='flex items-center gap-3'>
 												<button onClick={() => setProductToEdit(product)}>

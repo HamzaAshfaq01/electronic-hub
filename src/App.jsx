@@ -22,6 +22,7 @@ import Home from './pages/Dashboard/Home';
 import AllInstallments from './pages/Installments/AllInstallments';
 import Expenses from './pages/Accounting/Expenses';
 import AllClient from './pages/Client/AllClient';
+import AllSuppliers from './pages/Suppliers/AllSuppliers';
 
 export default function App() {
 	return (
@@ -45,6 +46,7 @@ export default function App() {
 						<Route path='/warehouse' element={<AllWareHouse />} />
 						<Route path='/warehouse/:warehouseId' element={<WareHouse />} />
 						<Route path='/expenses' element={<Expenses />} />
+						<Route path='/all-suppliers' element={<AllSuppliers />} />
 						<Route path='/all-client' element={<AllClient />} />
 						<Route path='/all-products' element={<Products />} />
 						<Route path='/profile' element={<UserProfiles />} />

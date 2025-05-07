@@ -144,6 +144,11 @@ const navItems = [
 		path: '/all-client',
 	},
 	{
+		icon: <UsersRound className='w-5 h-5' />,
+		name: 'Supplier Management',
+		path: '/all-suppliers',
+	},
+	{
 		icon: <Calendar className='w-5 h-5' />,
 		name: 'Installment Management',
 		path: '/all-installments',

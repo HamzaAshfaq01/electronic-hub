@@ -117,7 +117,7 @@ export default function Managewarehouses() {
 						</div>
 
 						{/* Table */}
-						<div className='overflow-x-auto rounded-2xl border border-b border-gray-200 bg-white  pb-1 dark:border-gray-800 dark:bg-white/[0.03]'>
+						<div className='overflow-x-auto rounded-2xl border border-b border-gray-200 bg-white  pb-1 dark:border-gray-800 dark:bg-white/[0.03] responsive-table'>
 							<Table className='table-fixed w-full'>
 								<TableHeader className='border-gray-100 dark:border-gray-800 border-b'>
 									<TableRow className='w-full mx-3 col-span-12'>
