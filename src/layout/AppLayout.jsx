@@ -42,7 +42,7 @@ const LayoutContent = () => {
 				} ${isMobileOpen ? 'ml-0' : ''}`}>
 				<AppSidebar />
 				<Backdrop />
-				<div className='p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6 md:py-[50px]'>
+				<div className='p-4 mx-auto max-w-(--breakpoint-xl) md:p-6 md:py-[50px]'>
 					<AppHeader />
 					<Outlet />
 				</div>
